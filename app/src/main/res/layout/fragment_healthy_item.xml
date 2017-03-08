@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/healthy_icon_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_toRightOf="@id/healthy_icon_img"
+        android:background="@color/batch_origin"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/healthy_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试" />
+
+        <TextView
+            android:id="@+id/healthy_msg_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试" />
+
+    </LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/healthy_arrow_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@mipmap/ic_launcher" />
+
+
+
+    <View
+        android:id="@+id/healthy_diver"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/font_red"
+        android:layout_below="@id/healthy_icon_img"
+        android:visibility="invisible"
+        ></View>
+
+
+
+</RelativeLayout>

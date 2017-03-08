@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:background="@color/intro_blue_color"></LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"></LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <view
+                android:id="@+id/view_left"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center|center_vertical"
+                android:layout_weight="1"
+                android:background="@color/font_red">
+
+            </view>
+
+
+            <TextView
+                android:id="@+id/tv_center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:layout_toRightOf="@id/view_left"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="第三方登录"
+                android:textColor="@color/black_70">
+
+            </TextView>
+
+
+            <view
+                android:id="@+id/view_right"
+                android:layout_width="0dp"
+                android:layout_height="0.5dp"
+                android:layout_gravity="center|center_vertical"
+                android:layout_weight="1"
+                android:background="@color/font_red">
+
+            </view>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_alignParentLeft="true"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:background="@color/font_red"
+                android:src="@mipmap/ic_launcher">
+
+            </ImageView>
+
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/font_red"
+                android:src="@mipmap/ic_launcher">
+
+            </ImageView>
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:background="@color/font_red"
+                android:src="@mipmap/ic_launcher">
+
+            </ImageView>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

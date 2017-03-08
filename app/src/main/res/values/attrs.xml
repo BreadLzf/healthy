@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Theme">
+
+    </declare-styleable>
+
+    <declare-styleable name="CoverView">
+        <attr name="cover" format="reference" />
+        <attr name="frame" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TopicSectionItem">
+        <attr name="label" format="string" />
+        <attr name="icona" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="PaySectionItem">
+        <attr name="pay_label" format="string" />
+        <attr name="pay_icon" format="reference" />
+        <attr name="pay_charge" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ProgressView">
+        <attr name="progress" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="move_outside_circle" format="boolean" />
+        <attr name="maintain_equal_circle" format="boolean" />
+        <attr name="use_custom_radii" format="boolean" />
+        <attr name="lock_enabled" format="boolean" />
+        <attr name="circle_x_radius" format="float" />
+        <attr name="circle_y_radius" format="float" />
+        <attr name="circle_stroke_width" format="float" />
+        <attr name="pointer_radius" format="float" />
+        <attr name="pointer_halo_width" format="float" />
+        <attr name="pointer_halo_border_width" format="float" />
+        <attr name="circle_color" format="string" />
+        <attr name="circle_progress_color" format="string" />
+        <attr name="pointer_color" format="string" />
+        <attr name="pointer_halo_color" format="string" />
+        <attr name="pointer_halo_color_ontouch" format="string" />
+        <attr name="pointer_alpha_ontouch" format="integer" />
+        <attr name="start_angle" format="float" />
+        <attr name="end_angle" format="float" />
+        <attr name="circle_fill" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="HorizontalListView">
+        <attr name="dividerWidth" format="dimension" />
+        <attr name="android:divider" />
+        <attr name="android:requiresFadingEdge" />
+        <attr name="android:fadingEdgeLength" />
+    </declare-styleable>
+
+    <declare-styleable name="UserInfoTaskView">
+        <attr name="aicon" format="reference" />
+        <attr name="atitle" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="UserInfoLvTaskView">
+        <attr name="unknown" format="boolean" />
+        <attr name="lv" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="TabWidgetV2">
+        <attr name="adjust_padding" format="dimension" />
+        <attr name="item_count" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="CircularSmartImageView">
+        <attr name="image_size" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CornerSmartImageView">
+        <attr name="radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="DividerSection">
+        <attr name="divider_drawable" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="LoadingContainer">
+        <attr name="emptyLayout" format="reference" />
+        <attr name="loadingLayout" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="SettingCheckBox">
+        <attr name="pref_name" format="string" />
+        <attr name="pref_default" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CoverLoadingView">
+        <attr name="cornerRadius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="NewGameDownloadButton">
+        <attr name="where" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RatingView">
+        <attr name="ratingType" format="string" />
+        <attr name="ratingMargin" format="dimension" />
+        <attr name="ratingValue" format="integer" />
+    </declare-styleable>
+
+
+
+
+    <attr name="backgroundSelector" format="color" />
+    <!--分隔线颜色-->
+    <attr name="tweetOperatorBackground" format="reference" />
+    <attr name="tweetOperatedBackground" format="reference" />
+    <!--tweet下的转发等等操作-->
+    <attr name="tweetReviewRating" format="reference" />
+    <attr name="myTweetHeadButton" format="reference" />
+    <attr name="homeMenuPopupBgTop" format="reference" />
+    <attr name="homeMenuPopupBgBottom" format="reference" />
+    <attr name="homeMenuPopupBgMid" format="reference" />
+    <!--各种详情页的背景，原灰色-->
+    <attr name="backgroundPressed" format="color" />
+    <!--主页面背景、详情页浮动块背景，原白色-->
+    <attr name="backgroundNormal" format="color" />
+    <!--分隔线颜色-->
+    <attr name="lineColor" format="color" />
+    <!--社区顶部红色区域-->
+    <attr name="redSelector" format="color" />
+    <!--书评详情楼主打分-->
+    <attr name="voteSelector" format="color" />
+    <!--书评详情楼主打分-->
+
+    <attr name="bookRateSelector" format="color" /><!--书评详情楼主打分-->
+    <attr name="VoteItemSelector" format="color" /><!--综合讨论区投票选项-->
+    <!-- 听书分类底部背景 -->
+    <attr name="audiobookInfoBottomBg" format="reference" />
+    <!-- 听书详情及书籍详情红色按钮selector -->
+    <attr name="audiobookRedButtonSelector" format="reference" />
+    <!-- 听书及书籍分类itemselector -->
+    <attr name="audiobookCategoryItemSelector" format="reference" />
+
+    <!--游戏中心评论-->
+    <attr name="gameCenterComment" format="color" />
+    <!--游戏中心同感-->
+    <attr name="gameCenterLike" format="color" />
+    <!--更改来源-网页-->
+    <attr name="readModeBorder" format="color" />
+    <!-- 养肥区dialog背景 -->
+    <attr name="feedAreaDialogBg" format="reference"></attr>
+
+    <!-- 追书券背景 -->
+    <attr name="voucherLeftBg" format="reference"></attr>
+    <attr name="voucherRightNormalBg" format="reference"></attr>
+    <attr name="voucherRightDisableBg" format="reference"></attr>
+
+    <!-- 消费记录背景 -->
+    <attr name="consumePopupBg" format="reference"></attr>
+    <attr name="consumeSubBg" format="reference"></attr>
+
+    <!-- 搜索-清空历史图标-->
+    <attr name="searchClearHistoryBg" format="reference"></attr>
+    <!-- 搜索历史item图标-->
+    <attr name="searchHistoryIcon" format="reference"></attr>
+    <!-- 可点击的文字颜色-->
+    <attr name="clickSecondTextColor" format="reference"></attr>
+    <!--红色矩形背景-->
+    <attr name="redRoundBg" format="color" />
+    <!-- Defines the custom XML attributes supported for a HorizontalListView -->
+
+
+
+
+    <!-- 设置旋转菜单对应的第一张图片 -->
+    <declare-styleable name="RoundSpinView">
+        <attr name="menuStart" format="reference" />
+    </declare-styleable>
+
+</resources>

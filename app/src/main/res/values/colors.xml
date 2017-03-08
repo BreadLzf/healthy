@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--新添加的颜色-->
+
+    <color name="primary_red">#b93221</color>
+    <color name="primary_red_dark">#a72600</color>
+    <color name="primary_red_dark_88">#88a72600</color>
+    <color name="primary_black">#1E1E1E</color>
+    <color name="primary_black_dark">#121212</color>
+    <color name="primary_gray_light">#dfdfdf</color>
+    <color name="primary_gray">#b2b2b2</color>
+    <color name="primary_red_pressed">#c75a4d</color>
+    <color name="primary_green">#69a44c</color>
+    <color name="primary_green_pressed">#7bb160</color>
+    <color name="primary_orange">#f9a778</color>
+    <color name="batch_origin">#ec6941</color>
+
+    <color name="origin_orange">#ec6941</color>
+
+    <color name="bg">#fff</color>
+    <color name="fly_color_rimary">#b93221</color>
+    <!-- v 3.0 -->
+    <color name="text_color_dark_v3">#FF352828</color>
+    <color name="text_color_light_v3">#FF9C9C9C</color>
+
+    <color name="bg_dialog_item">#F5F5F5</color>
+    <color name="bg_dialog_btn">#ebebeb</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="home_list_item_bg_nor">#fff</color>
+    <color name="home_list_item_bg_pre">#FFE9E9E9</color>
+    <color name="home_list_item_bg_sel">#FFF8E5CE</color>
+
+    <color name="common_list_item_bg_nor">#FFFFFFFF</color>
+    <color name="common_list_item_bg_pre">#FFE3E3E3</color>
+
+    <color name="bookshelf_time">#FF999999</color>
+    <color name="post_list_popwindow_top_nor">@color/primary_red</color>
+    <color name="post_list_popwindow_top_pre">@color/redv3_pressed</color>
+
+    <color name="add_topic_category_nor">#FFF5F5F5</color>
+    <color name="add_topic_category_pre">#FFECECEC</color>
+
+    <!-- new common bg -->
+    <color name="bg_dark">#FFF0F0F0</color>
+
+    <color name="grey">#9c9c9c</color>
+
+    <!-- reader -->
+    <color name="reader_mode_white_text_color">#383635</color>
+    <color name="reader_mode_brown_text_color">#3b3220</color>
+    <color name="reader_mode_green_text_color">#15350f</color>
+
+
+    <color name="reader_mode_gray_text_color">#776456</color>
+    <color name="reader_mode_yellow_text_color">#2d4c60</color>
+
+    <color name="reader_mode_show1_text_color">#262626</color>
+    <color name="reader_mode_show2_text_color">#3c2634</color>
+    <color name="reader_mode_show3_text_color">#403b48</color>
+    <color name="reader_mode_show4_text_color">#46271b</color>
+    <color name="reader_mode_show5_text_color">#202935</color>
+
+    <color name="reader_background_gray_color">#40332a</color>
+    <color name="reader_background_yellow_color">#031923</color>
+    <color name="reader_background_show8_color">#d2ccdb</color>
+    <color name="reader_background_show9_color">#ebcec2</color>
+    <color name="reader_background_show10_color">#d0d4d9</color>
+
+
+    <color name="btn_conent_color1">#000000</color>
+    <color name="btn_conent_color2">#ffffff</color>
+    <color name="btn_conent_color3">#ffffff</color>
+
+    <color name="title_conent_color1">#212121</color>
+    <color name="title_conent_color2">#262626</color>
+    <color name="title_conent_color3">#3a342b</color>
+    <color name="title_conent_color4">#3c2634</color>
+    <color name="title_conent_color5">#3c473d</color>
+    <color name="title_conent_color6">#95938f</color>
+    <color name="title_conent_color7">#637079</color>
+    <color name="title_conent_color8">#403b48</color>
+    <color name="title_conent_color9">#402419</color>
+    <color name="title_conent_color10">#2e3b4d</color>
+
+    <color name="reader_background_white_color">#EAE5E0</color>
+    <color name="reader_background_white_green">#bed0bf</color>
+    <color name="reading_night_text_color">#444</color>
+    <color name="reading_night_background_color">#000</color>
+    <color name="sub_text">#777777</color>
+    <color name="main_text">#000000</color>
+    <color name="activate_text">#E10000</color>
+    <color name="third_text_normal">#aaa</color>
+    <color name="reader_setting_bg">#E62B2B2B</color>
+
+    <!-- normal -->
+    <color name="deprecated_red">#FF5858</color>
+    <color name="black">#ff000000</color>
+    <color name="black_10">#1A000000</color>
+    <color name="black_30">#4C000000</color>
+    <color name="black_40">#66000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="black_70">#B2000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_10">#12FFFFFF</color>
+    <color name="white_30">#4CFFFFFF</color>
+    <color name="white_50">#80FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_90">#E5FFFFFF</color>
+    <color name="popup_red">#b93221</color>
+
+
+    <!-- shadow -->
+    <color name="shadow_color">#fff6f6f6</color>
+    <color name="text_shadow">#ff4e5466</color>
+    <color name="trans_black">#88000000</color>
+
+    <!-- add book -->
+    <color name="darkgray">#ffc3c3c3</color>
+
+    <!-- slidingmenu -->
+    <color name="slm_read_mode_bg">#ff222222</color>
+    <color name="slm_reader_app_name_text">#CCFFFFFF</color>
+    <color name="slm_reader_app_desc_text">#808080</color>
+
+    <!-- topic -->
+
+    <!-- book topic list item -->
+    <color name="book_topic_listitem_user">#a58d5e</color>
+    <color name="book_topic_top_text">#fff</color>
+    <color name="book_topic_popup_bg">#51000000</color>
+
+    <!-- post -->
+    <color name="post_detail_big_divider_text">#FFAAAAAA</color>
+    <color name="post_detail_vote_text">#FF000000</color>
+    <color name="post_detail_comment_text">#FF555555</color>
+    <color name="review_useful_yes_pre">#b93521</color>
+    <color name="review_useful_no_pre">#69a44c</color>
+
+    <!-- vote & vote item -->
+    <color name="empty_view_text">#FFaaaaaa</color>
+
+    <!-- book info -->
+    <color name="font_red">#FFE20606</color>
+    <color name="book_detail_info_none">#FFD5D5D5</color>
+    <color name="book_info_dl">#3FFFFFFF</color>
+
+    <!-- add book -->
+    <color name="add_book_text1">#FF333333</color>
+    <color name="add_book_text2">#FF777777</color>
+
+    <!-- resource list -->
+
+    <!-- read -->
+    <color name="reader_operation_bottom_bg_nor">#FF191919</color>
+    <color name="reader_operation_bottom_bg_pre">#FF0F0F0F</color>
+    <color name="reader_button_bg_pre">#90191919</color>
+    <color name="reader_res_list_item_pre">#FFEDEDED</color>
+    <color name="read_random_widget_bg">#ffe1d9c8</color>
+
+    <!-- download chapter -->
+    <color name="chapter_dl_bg">#F9252525</color>
+    <color name="user_info_background">#282828</color>
+
+
+    <color name="list_divider">#FFC6C6C6</color>
+
+    <color name="list_item_book_summary_sub">#FF888888</color>
+
+
+    <color name="feed_list_light">#FFAAAAAA</color>
+
+    <color name="divider_v3">#d9d9d9</color>
+
+    <color name="home_item_hightlight">#f5f5f5</color>
+
+    <color name="user_info_exp_active">#5fb14d</color>
+    <color name="user_info_exp_deactive">#aeaeae</color>
+    <color name="ab_back_dark_pressed">#4C000000</color>
+
+    <color name="open_monthly_color">#EF801D</color>
+    <color name="normal_monthly_color">#b2b2b2</color>
+
+    <color name="redv3_pressed">#822317</color>
+
+    <color name="bg_gray">#f7f7f7</color>
+    <color name="bg_white">#fff</color>
+
+
+    <color name="font_orange">#de6014</color>
+
+    <color name="linkify_text">@color/font_orange</color>
+    <color name="linkify_text_pressed">#eeb99a</color>
+
+    <color name="home_menu_nor">#f5f0eb</color>
+    <color name="home_menu_pre">#BDBDBD</color>
+
+    <color name="dark_ab_normal">#f9252525</color>
+
+    <color name="bg_reader_ab">#FF1E1E1E</color>
+
+    <color name="reader_error_text">#4c646464</color>
+    <color name="common_list_item_bg_dark_pre">#1a1a1a</color>
+    <color name="cover_semi_transparent">#4cffffff</color>
+    <color name="scv_finished_color">#f278b35b</color>
+
+
+    <color name="pay_charge_item_nor">#BDBDBD</color>
+    <color name="pay_charge_item_pre">#999999</color>
+
+    <color name="crop_outer_part">#99000000</color>
+
+    <color name="btn_bg_red">#e33124</color>
+    <color name="btn_bg_gray">#858585</color>
+    <color name="btn_bg_green">#5fb336</color>
+
+    <color name="shelf_msg_normal">#7D7D7D</color>
+    <color name="shelf_msg_highlight">#b93221</color>
+
+    <color name="intro_red_color">#EF5350</color>
+    <color name="intro_blue_color">#03A9F4</color>
+
+    <!-- tweet -->
+    <color name="tweet_operator_text_color">#b2b2b2</color>
+
+    <!-- audiobook -->
+    <color name="audio_book_black">#212121</color>
+
+    <color name="bg_male_story_btn">#90c5f0</color>
+    <color name="bg_male_story_btn_pressed">#70c5f0</color>
+    <color name="bg_female_story_btn">#e78f8f</color>
+    <color name="bg_female_story_btn_pressed">#c78f8f</color>
+
+    <!-- Theme -->
+    <!-- light -->
+    <color name="light_window_bg">#ffffff</color>
+    <color name="light_window_bg_dark">#eeeeee</color>
+    <color name="light_action_bar_bg">#b93221</color>
+    <color name="light_action_bar_bg_dark">#893221</color>
+    <color name="light_text_color">#212121</color>
+    <color name="light_text_secondary">#727272</color>
+    <color name="light_text_side">#b2b2b2</color>
+    <color name="light_line">#dfdfdf</color>
+
+    <!-- dark -->
+    <color name="dark_window_bg">#444444</color>
+    <color name="dark_window_bg_dark">#333333</color>
+    <color name="dark_action_bar_bg">#a4564d</color>
+    <color name="dark_action_bar_bg_dark">#83453e</color>
+    <color name="dark_text_color">#999999</color>
+    <color name="dark_text_secondary">#666666</color>
+    <color name="dark_text_side">#505050</color>
+    <color name="dark_line">#222222</color>
+    <color name="drak_img_mask">#42444444</color>
+    <!-- Theme end -->
+
+    <color name="pay_voucher_red">#e5bfbc</color>
+    <color name="pay_voucher_gray">#e2e2e2</color>
+
+    <color name="pay_consume_popup_bg">#f4f4f4</color>
+    <color name="pay_consume_sub_bg">#f8f8f8</color>
+
+    <color name="reader_menu_textcolor">#999999</color>
+    <color name="reader_menu_textcolor_second">#666666</color>
+
+    <color name="text_change_color">#b93221</color>
+    <color name="text_change_item_color">#B93521</color>
+
+    <!--灰色字体-->
+    <color name="month_text_color_gray">#727272</color>
+    <color name="month_text_color_black">#212121</color>
+    <color name="month_text_color_gold">#A58D5E</color>
+    <color name="month_bg_color_white">#fff</color>
+
+    <color name="text_white_color">#fff</color>
+    <color name="text_red_color">#b93221</color>
+
+    <color name="btn_bg_red_zs">#D82626</color>
+    <color name="half_transparent">#9000</color>
+    <color name="task_complete_color">#999999</color>
+
+    <color name="normal_text_color">#353535</color>
+    <color name="red_text_color">#f12235</color>
+
+    <color name="user_info_logout_press">#c75a4d</color>
+    <color name="user_info_logout_normal">#b93728</color>
+    <color name="reader_title_white">#262626</color>
+    <color name="reader_btn_white">#d8000000</color>
+    <color name="reader_promp_white">#59000000</color>
+
+
+    <color name="reader_title_brown">#3a342b</color>
+    <color name="reader_title_gray">#95938f</color>
+    <color name="reader_title_green">#3c473d</color>
+    <color name="reader_title_yellow">#637079</color>
+
+    <color name="reader_btn_yellow">#3fffffff</color>
+    <color name="reader_promp_yellow">#59ffffff</color>
+
+
+    <!--pagebinder 五种颜色-->
+    <color name="page_pay_line_white">#b6b6b6</color>
+    <color name="page_pay_line_yellow">#736a56</color>
+    <color name="page_pay_line_green">#929a92</color>
+    <color name="page_pay_line_brown">#83807c</color>
+    <color name="page_pay_line_black">#4f6069</color>
+
+
+
+    <!--pagebinder 包月引导五种颜色-->
+    <color name="page_pay_month_white">#212121</color>
+    <color name="page_pay_month_yellow">#3a342b</color>
+    <color name="page_pay_month_green">#3c473d</color>
+    <color name="page_pay_month_brown">#95938f</color>
+    <color name="page_pay_month_black">#637079</color>
+
+    <color name="monthly_book_number_color">#F1223F</color>
+
+
+
+
+</resources>

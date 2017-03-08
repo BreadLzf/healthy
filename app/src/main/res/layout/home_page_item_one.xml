@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/item_one_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="吃药是一门大学问？还真的不知道，吃药是一门大学问"
+        />
+
+
+    <ImageView
+        android:id="@+id/item_one_img"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_100"
+        android:layout_below="@id/item_one_title"
+        android:src="@mipmap/ic_launcher"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_below="@id/item_one_img"
+        android:drawableLeft="@mipmap/ic_launcher"
+        android:text="颈部知识"
+        />
+
+    <TextView
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_below="@id/item_one_img"
+        android:drawableLeft="@mipmap/ic_launcher"
+        android:text="颈部知识"
+        />
+
+
+</RelativeLayout>

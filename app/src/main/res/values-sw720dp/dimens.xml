@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- text size for sw720dp -->
+    <dimen name="text_size_8">10sp</dimen>
+    <dimen name="text_size_10">12sp</dimen>
+    <dimen name="text_size_11">13sp</dimen>
+    <dimen name="text_size_12">16sp</dimen>
+    <dimen name="text_size_13">17sp</dimen>
+    <dimen name="text_size_14">18sp</dimen>
+    <dimen name="text_size_15">20sp</dimen>
+    <dimen name="text_size_16">21sp</dimen>
+    <dimen name="text_size_17">22sp</dimen>
+    <dimen name="text_size_18">23sp</dimen>
+    <dimen name="text_size_20">26sp</dimen>
+    <dimen name="text_size_24">31sp</dimen>
+    <dimen name="text_size_30">39sp</dimen>
+    <dimen name="text_size_34">44sp</dimen>
+
+    <!-- dp for sw720dp -->
+    <dimen name="dp_5">7dp</dimen>
+    <dimen name="dp_6">8dp</dimen>
+    <dimen name="dp_7">9dp</dimen>
+    <dimen name="dp_8">10dp</dimen>
+    <dimen name="dp_9">12dp</dimen>
+    <dimen name="dp_10">13dp</dimen>
+    <dimen name="dp_12">16dp</dimen>
+    <dimen name="dp_13">17dp</dimen>
+    <dimen name="dp_15">20dp</dimen>
+    <dimen name="dp_16">21dp</dimen>
+    <dimen name="dp_18">23dp</dimen>
+    <dimen name="dp_20">25dp</dimen>
+    <dimen name="dp_22">29dp</dimen>
+    <dimen name="dp_24">31dp</dimen>
+    <dimen name="dp_25">33dp</dimen>
+    <dimen name="dp_28">36dp</dimen>
+    <dimen name="dp_30">39dp</dimen>
+    <dimen name="dp_32">42dp</dimen>
+    <dimen name="dp_35">45dp</dimen>
+    <dimen name="dp_36">46dp</dimen>
+    <dimen name="dp_40">50dp</dimen>
+    <dimen name="dp_42">55dp</dimen>
+    <dimen name="dp_48">62dp</dimen>
+    <dimen name="dp_53">69dp</dimen>
+    <dimen name="dp_55">83dp</dimen>
+    <dimen name="dp_56">85dp</dimen>
+    <dimen name="dp_60">88dp</dimen>
+    <dimen name="dp_72">94dp</dimen>
+    <dimen name="dp_75">98dp</dimen>
+    <dimen name="dp_80">104dp</dimen>
+    <dimen name="dp_88">114dp</dimen>
+    <dimen name="dp_90">117dp</dimen>
+    <dimen name="dp_100">130dp</dimen>
+
+    <dimen name="actionbar_height">73dp</dimen>
+    <dimen name="actionbar_back_width">90dp</dimen>
+
+    <!-- tab -->
+    <dimen name="tab_height">77dp</dimen>
+
+    <!-- home -->
+    <dimen name="shelf_flag_text">15px</dimen>
+
+
+    <dimen name="action_bar_bottom_height">70dp</dimen>
+
+    <!-- read page -->
+    <dimen name="page_text_size">20sp</dimen>
+
+    <dimen name="slidingmenu_offset_reader">260dp</dimen>
+    
+    
+    <!-- popupwindow -->
+    <dimen name="book_review_pop_height">400dip</dimen>
+    
+    <!-- post -->
+    <dimen name="post_comment_name_width">220dip</dimen>
+
+    <!-- pad sw720dp -->
+
+    <dimen name="tab_host_padding_top">15dp</dimen>
+    <dimen name="tab_host_text">18sp</dimen>
+
+    <!-- home -->
+    <dimen name="bookshelf_height">103dp</dimen>
+    <dimen name="home_topic_item_height">75dp</dimen>
+
+    <dimen name="cover_width_bookshelf">60dp</dimen>
+    <dimen name="cover_height_bookshelf">75dp</dimen>
+
+    <dimen name="home_shelf_item_top">20dp</dimen>
+
+
+
+
+    <dimen name="cover_width_rank">52dp</dimen>
+    <dimen name="cover_height_rank">52dp</dimen>
+
+    <dimen name="cover_width_book_summary">72dp</dimen>
+    <dimen name="cover_height_book_summary">90dp</dimen>
+
+    <dimen name="list_item_book_summary_left">22dp</dimen>
+    <dimen name="list_item_book_summary_top">22dp</dimen>
+    <dimen name="list_item_book_summary_sub">16sp</dimen>
+
+    <dimen name="cover_width_book_info_detail">156dp</dimen>
+    <dimen name="cover_height_book_info_detail">195dp</dimen>
+
+
+    <dimen name="list_item_resource_header_title">21sp</dimen>
+    <dimen name="list_item_resource_header_height">71dp</dimen>
+    <dimen name="list_item_resource_title">18sp</dimen>
+    <dimen name="list_item_resource_site">15sp</dimen>
+    <dimen name="list_item_resource_select">12sp</dimen>
+
+    <dimen name="read_toc_title_text">17sp</dimen>
+    <dimen name="list_item_read_toc_top">16dp</dimen>
+    <dimen name="list_item_read_chapter_top">16dp</dimen>
+
+
+    <dimen name="cover_width_book_review_list">44dp</dimen>
+    <dimen name="cover_height_book_review_list">55dp</dimen>
+    <dimen name="cover_width_ugc_list">56dp</dimen>
+    <dimen name="cover_height_ugc_list">70dp</dimen>
+
+    <dimen name="cover_width_post_detail_author">55dp</dimen>
+
+    <dimen name="list_item_review_left">24dp</dimen>
+    <dimen name="list_item_review_content_top">22dp</dimen>
+    <dimen name="list_item_post_avatar_verify_margin">-14dp</dimen>
+
+
+
+
+    <dimen name="book_post_pop_top">15dp</dimen>
+    <dimen name="book_post_pop_item_top">19dp</dimen>
+    <dimen name="book_post_pop_text">16sp</dimen>
+    <dimen name="book_post_pop_item_text">18sp</dimen>
+
+    <dimen name="add_post_top">17dp</dimen>
+    <dimen name="list_item_add_review_rating_top">22dp</dimen>
+
+
+    <dimen name="splash_logo_top">150dp</dimen>
+
+    <dimen name="search_empty_add_left">14dp</dimen>
+    <dimen name="search_empty_add_right">23dp</dimen>
+
+    <dimen name="post_detail_vote_img_width">80dp</dimen>
+    <dimen name="post_detail_vote_item_top">18dp</dimen>
+    <dimen name="post_detail_list_item_top">18dp</dimen>
+    <dimen name="post_detail_list_item_below_width">90dp</dimen>
+
+
+    <!-- v 3.0 -->
+    <dimen name="cover_width_book_v3">73dp</dimen>
+    <dimen name="cover_height_book_v3">94dp</dimen>
+
+    <dimen name="use_info_task">20sp</dimen>
+    <dimen name="use_info_task_left">15dp</dimen>
+
+    <dimen name="slm_right_read_item_height">62dp</dimen>
+
+    <dimen name="settings_item_l">18sp</dimen>
+    <dimen name="settings_item_s">15sp</dimen>
+
+</resources>
