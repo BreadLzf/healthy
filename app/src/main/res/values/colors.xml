@@ -322,5 +322,11 @@
 
 
 
+    <!--新添加的颜色-->
+
+    <color name="login_base_color">#1adddf</color>
+
+
+
 
 </resources>

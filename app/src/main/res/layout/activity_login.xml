@@ -9,21 +9,18 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:layout_marginRight="@dimen/dp_20"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="162dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:orientation="vertical"
-        android:background="@color/primary_red"
+        android:background="@color/white_90"
         >
 
 
       <RelativeLayout
           android:layout_width="match_parent"
-          android:layout_marginLeft="@dimen/dp_40"
-          android:layout_marginRight="@dimen/dp_40"
-          android:paddingTop="@dimen/dp_10"
+          android:paddingTop="19.5dp"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
 
@@ -32,35 +29,45 @@
               android:id="@+id/login_tv"
               android:layout_alignParentLeft="true"
               android:layout_width="wrap_content"
+              android:layout_marginLeft="48.5dp"
               android:layout_height="wrap_content"
+              android:textSize="@dimen/text_size_17"
+              android:layout_marginBottom="6.5dp"
               android:text="登录"
               />
 
-          <view
-              android:layout_width="@dimen/dp_20"
+          <View
+              android:layout_width="@dimen/dp_40"
               android:layout_height="@dimen/dp_2"
-              android:background="@color/primary_green"
+              android:layout_marginLeft="44.5dp"
+              android:background="@color/login_base_color"
               android:layout_below="@id/login_tv"
-              ></view>
+              ></View>
 
           <TextView
               android:id="@+id/register_tv"
               android:layout_alignParentRight="true"
               android:layout_gravity="right"
+              android:layout_marginRight="48.5dp"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
+              android:textSize="@dimen/text_size_17"
+              android:layout_marginBottom="6.5dp"
               android:text="注册"
               />
-          <view
-              android:layout_width="@dimen/dp_20"
+
+          <View
+              android:layout_width="@dimen/dp_40"
               android:layout_height="@dimen/dp_2"
-              android:background="@color/primary_green"
+              android:layout_marginRight="44.5dp"
+              android:layout_alignParentRight="true"
+              android:background="@color/login_base_color"
               android:layout_below="@id/register_tv"
-              ></view>
+              ></View>
 
       </RelativeLayout>
 
-  <include  layout="@layout/login_layout"></include>
+  <!--<include  layout="@layout/login_layout"></include>-->
 
         <include  layout="@layout/register_layout"></include>
 
