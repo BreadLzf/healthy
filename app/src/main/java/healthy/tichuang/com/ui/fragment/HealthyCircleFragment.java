@@ -19,7 +19,6 @@ import healthy.tichuang.com.ui.base.BaseFragment;
 
 public class HealthyCircleFragment extends BaseFragment {
 
-    private boolean isInit = false;
 
     public static HealthyCircleFragment newInstance() {
         return new HealthyCircleFragment();
@@ -47,8 +46,6 @@ public class HealthyCircleFragment extends BaseFragment {
         Activity context = getActivity();
         healthyContainer = (ViewGroup) v.findViewById(R.id.healthy_container);
         initView(context);
-        isPrepared = true;
-        loadData();
         return v;
     }
 
@@ -65,13 +62,12 @@ public class HealthyCircleFragment extends BaseFragment {
 
     private void initView(Activity context) {
         Intent intent = null;
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "测试", "测试", R.mipmap.ic_launcher, R.mipmap.ic_launcher, intent, true));
+        healthyContainer.addView(new HealthyItem(context, "颈部", "颈部简单描述", R.drawable.healthy_head, intent, true));
+        healthyContainer.addView(new HealthyItem(context, "肩部", "肩部简单描述", R.drawable.healthy_jian, intent, true));
+        healthyContainer.addView(new HealthyItem(context, "上肢", "上肢简单描述", R.drawable.healthy_hand, intent, true));
+        healthyContainer.addView(new HealthyItem(context, "足踝部", "足踝部简单描述", R.drawable.healhthy_foot, intent, true));
+        healthyContainer.addView(new HealthyItem(context, "活动", "活动描述", R.drawable.healthy_active, intent, true));
+        healthyContainer.addView(new HealthyItem(context, "意见反馈", "我们耐心倾听您的每一个反馈", R.drawable.healthy_feed, intent, true));
+
     }
 }

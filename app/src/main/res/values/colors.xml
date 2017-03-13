@@ -325,7 +325,7 @@
     <!--新添加的颜色-->
 
     <color name="login_base_color">#1adddf</color>
-
+    <color name="line_base_color">#e5e5e5</color>
 
 
 

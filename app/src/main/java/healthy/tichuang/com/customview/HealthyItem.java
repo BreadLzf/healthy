@@ -33,18 +33,15 @@ public class HealthyItem extends FrameLayout {
         super(context, attributeSet);
     }
 
-    public HealthyItem(final Context context, final String title, String message, int iconRes, int arrowRes, Intent intent, boolean isShowdiver) {
+    public HealthyItem(final Context context, final String title, String message, int iconRes, Intent intent, boolean isShowdiver) {
         super(context);
         mintent = intent;
         View rootView = LayoutInflater.from(context).inflate(R.layout.fragment_healthy_item, this);
         iconImage = (ImageView) rootView.findViewById(R.id.healthy_icon_img);
-        arrowImage = (ImageView) rootView.findViewById(R.id.healthy_arrow_img);
         titleTv = (TextView) rootView.findViewById(R.id.healthy_title_tv);
         msgTv = (TextView) rootView.findViewById(R.id.healthy_msg_tv);
         diverView = (View) rootView.findViewById(R.id.healthy_diver);
-
         iconImage.setImageResource(iconRes);
-        arrowImage.setImageResource(arrowRes);
         titleTv.setText(title);
         msgTv.setText(message);
         if (isShowdiver){
