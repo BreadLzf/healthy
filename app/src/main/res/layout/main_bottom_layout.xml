@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:background="@color/white_90"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="60dp"
+              android:background="@color/white_90"
+              android:orientation="vertical">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/grey" />
+        android:background="@color/grey"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +31,9 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:src="@drawable/home_first_light"
+                    />
 
                 <TextView
                     android:id="@+id/tv_home_page"
@@ -39,15 +41,16 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/img_home_page"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="4.5dp"
                     android:text="首页"
-                    android:textColor="@color/grey"
-                    android:textSize="12sp" />
+                    android:textColor="@color/login_base_color"
+                    android:textSize="12sp"/>
             </RelativeLayout>
 
         </RelativeLayout>
 
         <RelativeLayout
-
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -63,7 +66,9 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:src="@drawable/home_manger_normal"
+                    />
 
                 <TextView
                     android:id="@+id/tv_health_manger"
@@ -71,9 +76,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/img_health_manger"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="4.5dp"
                     android:text="健康管理"
                     android:textColor="@color/grey"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -94,17 +101,23 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@mipmap/ic_launcher" />
+
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:src="@drawable/home_sport_normal"
+                    />
 
                 <TextView
                     android:id="@+id/tv_sport_recover"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/img_sport_recover"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="4.5dp"
                     android:text="运动康复"
                     android:textColor="@color/grey"
-                    android:textSize="12sp"
-                    android:layout_below="@+id/img_sport_recover" />
+
+                    android:textSize="12sp"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -125,8 +138,11 @@
                     android:id="@+id/img_health_circle"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+
                     android:layout_centerHorizontal="true"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:src="@drawable/home_circle_normal"
+                    />
 
                 <TextView
                     android:id="@+id/tv_health_circle"
@@ -134,9 +150,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/img_health_circle"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="4.5dp"
                     android:text="健康圈"
+
                     android:textColor="@color/grey"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"/>
             </RelativeLayout>
         </RelativeLayout>
 
@@ -157,7 +176,9 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_centerHorizontal="true"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:src="@drawable/home_person_normal"
+                    />
 
                 <TextView
                     android:id="@+id/tv_user_center"
@@ -165,9 +186,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/img_user_center"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="4.5dp"
                     android:text="个人中心"
+
                     android:textColor="@color/grey"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"/>
             </RelativeLayout>
         </RelativeLayout>
 

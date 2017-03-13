@@ -95,7 +95,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         user_center_tv = (TextView) findViewById(R.id.tv_user_center);
         initClick();
         initData();
-        testUrl();
+//        testUrl();
 
     }
 
@@ -109,9 +109,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
 
     private void initData() {
-
-        selectColor = getResources().getColor(R.color.grey);
-        unSelectColor = getResources().getColor(R.color.read_random_widget_bg);
+        selectColor = getResources().getColor(R.color.login_base_color);
+        unSelectColor = getResources().getColor(R.color.grey);
 
         String[] tagString = {"home_page", "healthy_manger", "sport_recover", "healthy_circle", "user_center"};
         fragments = new Fragment[5];
@@ -215,24 +214,24 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         resetColor();
         switch (pos) {
             case 0:
-                home_page_image.setImageResource(R.mipmap.ic_launcher);
+                home_page_image.setImageResource(R.drawable.home_first_light);
                 home_page_tv.setTextColor(selectColor);
                 break;
             case 1:
-                healthy_manger_image.setImageResource(R.mipmap.ic_launcher);
+                healthy_manger_image.setImageResource(R.drawable.home_manger_light);
                 healthy_manger_tv.setTextColor(selectColor);
                 break;
             case 2:
-                sport_recover_image.setImageResource(R.mipmap.ic_launcher);
+                sport_recover_image.setImageResource(R.drawable.home_sport_light);
                 sport_recover_tv.setTextColor(selectColor);
                 break;
             case 3:
-                healthy_circle_image.setImageResource(R.mipmap.ic_launcher);
+                healthy_circle_image.setImageResource(R.drawable.home_circle_light);
                 healthy_circle_tv.setTextColor(selectColor);
                 break;
 
             case 4:
-                user_center_image.setImageResource(R.mipmap.ic_launcher);
+                user_center_image.setImageResource(R.drawable.home_person_light);
                 user_center_tv.setTextColor(selectColor);
                 break;
         }
@@ -240,11 +239,11 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
 
     public void resetColor() {
-        home_page_image.setImageResource(R.mipmap.ic_launcher);
-        healthy_manger_image.setImageResource(R.mipmap.ic_launcher);
-        sport_recover_image.setImageResource(R.mipmap.ic_launcher);
-        healthy_circle_image.setImageResource(R.mipmap.ic_launcher);
-        user_center_image.setImageResource(R.mipmap.ic_launcher);
+        home_page_image.setImageResource(R.drawable.home_first_normal);
+        healthy_manger_image.setImageResource(R.drawable.home_manger_normal);
+        sport_recover_image.setImageResource(R.drawable.home_sport_normal);
+        healthy_circle_image.setImageResource(R.drawable.home_circle_normal);
+        user_center_image.setImageResource(R.drawable.home_person_normal);
         home_page_tv.setTextColor(unSelectColor);
         healthy_manger_tv.setTextColor(unSelectColor);
         sport_recover_tv.setTextColor(unSelectColor);
