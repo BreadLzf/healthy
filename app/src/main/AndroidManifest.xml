@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="healthy.tichuang.com.android_handhoop">
+          package="healthy.tichuang.com.android_handhoop">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 
     <application
@@ -13,20 +13,20 @@
         android:theme="@style/AppTheme">
         <activity android:name="healthy.tichuang.com.ui.splash.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <activity
             android:name="healthy.tichuang.com.ui.home.HomeActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name="healthy.tichuang.com.ui.intro.IntroActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
 
 
         <activity
@@ -34,7 +34,44 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name="healthy.tichuang.com.ui.activity.HealthyFamilyActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            />
+
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.MyHealthyFamilyActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.MyHealthyMangerActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.MyCollectActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.MyExpertActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.MyReserveActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.MyNewsActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.MySettingActivity"
+            android:launchMode="standard"
+            ></activity>
     </application>
 
 </manifest>

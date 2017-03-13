@@ -59,6 +59,7 @@
             <include layout="@layout/person_base_line"></include>
 
             <RelativeLayout
+                android:id="@+id/user_center_manger_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -99,6 +100,8 @@
 
 
             <RelativeLayout
+                android:id="@+id/user_center_collect_layout"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -140,6 +143,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/user_center_expert_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -182,6 +186,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/user_center_reserve_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -222,6 +227,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/user_center_news_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -268,6 +274,7 @@
                 ></TextView>
 
             <RelativeLayout
+                android:id="@+id/user_center_setting_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

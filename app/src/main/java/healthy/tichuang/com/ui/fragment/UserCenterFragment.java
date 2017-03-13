@@ -1,5 +1,6 @@
 package healthy.tichuang.com.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,21 +9,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import healthy.tichuang.com.android_handhoop.R;
 import healthy.tichuang.com.ui.activity.ModifyUserActivity;
+import healthy.tichuang.com.ui.activity.MyCollectActivity;
+import healthy.tichuang.com.ui.activity.MyExpertActivity;
+import healthy.tichuang.com.ui.activity.MyHealthyFamilyActivity;
+import healthy.tichuang.com.ui.activity.MyHealthyMangerActivity;
+import healthy.tichuang.com.ui.activity.MyNewsActivity;
+import healthy.tichuang.com.ui.activity.MyReserveActivity;
+import healthy.tichuang.com.ui.activity.MySettingActivity;
 import healthy.tichuang.com.ui.base.BaseFragment;
 
 /**
  * Created by punisher on 2017/3/1.
  */
 
-public class UserCenterFragment extends BaseFragment   implements View.OnClickListener{
+public class UserCenterFragment extends BaseFragment implements View.OnClickListener {
 
     private ImageView mEditBtn;
-    private View  rootView;
-    private ViewGroup personContainer;
+    private View rootView;
+    private RelativeLayout healthyFamilyLayout;
+    private RelativeLayout healthyMangerLayout;
+    private RelativeLayout healthyCollectLayout;
+    private RelativeLayout healthyExpertLayout;
+    private RelativeLayout healthyReservationLayout;//预约
+    private RelativeLayout healthyNewsLayout;
+    private RelativeLayout healthySettingLayout;
 
+    private Activity mActivity;
 
 
     public static UserCenterFragment newInstance() {
@@ -44,34 +60,40 @@ public class UserCenterFragment extends BaseFragment   implements View.OnClickLi
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        initView(inflater,container);
-//        initItem(getActivity());
+        mActivity = getActivity();
+        initView(inflater, container);
+        initClick();
         loadData();
         return rootView;
     }
 
 
-    private  void   initView(LayoutInflater inflater, ViewGroup container){
-        rootView= inflater.inflate(R.layout.fragment_user_center, container, false);
-
+    private void initView(LayoutInflater inflater, ViewGroup container) {
+        rootView = inflater.inflate(R.layout.fragment_user_center, container, false);
         mEditBtn = (ImageView) rootView.findViewById(R.id.user_center_to_edit_btn);
         mEditBtn.setOnClickListener(this);
+
+        healthyFamilyLayout = (RelativeLayout) rootView.findViewById(R.id.user_center_family_layout);
+        healthyMangerLayout = (RelativeLayout) rootView.findViewById(R.id.user_center_manger_layout);
+        healthyCollectLayout = (RelativeLayout) rootView.findViewById(R.id.user_center_collect_layout);
+        healthyExpertLayout = (RelativeLayout) rootView.findViewById(R.id.user_center_expert_layout);
+        healthyReservationLayout = (RelativeLayout) rootView.findViewById(R.id.user_center_reserve_layout);
+        healthyNewsLayout = (RelativeLayout) rootView.findViewById(R.id.user_center_news_layout);
+        healthySettingLayout = (RelativeLayout) rootView.findViewById(R.id.user_center_setting_layout);
+
 
     }
 
 
-
-//    private  void  initItem(Activity context){
-//        Intent  intent =null;
-//        personContainer .addView(new PersonItem(context, "我的健康家庭",R.drawable.person_family, intent, true));
-//        personContainer .addView(new PersonItem(context, "我的健康管理",R.drawable.person_manger, intent, true));
-//        personContainer .addView(new PersonItem(context, "我的收藏",R.drawable.person_collection, intent, true));
-//        personContainer .addView(new PersonItem(context, "我的专家",R.drawable.person_expert, intent, true));
-//        personContainer .addView(new PersonItem(context, "我的预约",R.drawable.person_reservation, intent, true));
-//        personContainer .addView(new PersonItem(context, "消息",R.drawable.person_news, intent, true));
-//        personContainer .addView(new PersonItem(context, "设置",R.drawable.person_setting, intent, true));
-//
-//    }
+    private void initClick() {
+        healthyFamilyLayout.setOnClickListener(this);
+        healthyMangerLayout.setOnClickListener(this);
+        healthyCollectLayout.setOnClickListener(this);
+        healthyExpertLayout.setOnClickListener(this);
+        healthyReservationLayout.setOnClickListener(this);
+        healthyNewsLayout.setOnClickListener(this);
+        healthySettingLayout.setOnClickListener(this);
+    }
 
 
     @Override
@@ -81,23 +103,64 @@ public class UserCenterFragment extends BaseFragment   implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        Intent  intent;
-         switch (v.getId()){
-             case  R.id.user_center_to_edit_btn:
-                 intent =new Intent(getActivity(), ModifyUserActivity.class);
-                 startActivity(intent);
-                 break;
-         }
-    }
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.user_center_to_edit_btn:
+                intent = new Intent(mActivity, ModifyUserActivity.class);
+                startActivity(intent);
+                break;
 
+
+            case R.id.user_center_family_layout:
+                intent = new Intent(mActivity, MyHealthyFamilyActivity.class);
+                startActivity(intent);
+                break;
+
+
+            case R.id.user_center_manger_layout:
+                intent = new Intent(mActivity, MyHealthyMangerActivity.class);
+                startActivity(intent);
+                break;
+
+
+            case R.id.user_center_collect_layout:
+                intent = new Intent(mActivity, MyCollectActivity.class);
+                startActivity(intent);
+                break;
+
+
+            case R.id.user_center_expert_layout:
+                intent = new Intent(mActivity,MyExpertActivity.class);
+                startActivity(intent);
+                break;
+
+
+            case R.id.user_center_reserve_layout:
+                intent = new Intent(mActivity, MyReserveActivity.class);
+                startActivity(intent);
+                break;
+
+
+            case R.id.user_center_news_layout:
+                intent = new Intent(mActivity, MyNewsActivity.class);
+                startActivity(intent);
+                break;
+
+
+            case R.id.user_center_setting_layout:
+                intent = new Intent(mActivity, MySettingActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
 
 
     @Override
     protected void loadData() {
-        if (!isPrepared||isVisible()){
+        if (!isPrepared || isVisible()) {
             return;
-        }else {
-            Log.e("UserCenterFragment","请求");
+        } else {
+            Log.e("UserCenterFragment", "请求");
         }
     }
 }
