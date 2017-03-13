@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/user_center_family_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_health_fam_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="12.5dp"
+                    android:src="@drawable/person_family"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_17"
+                    android:layout_toRightOf="@id/user_health_fam_img"
+                    android:text="我的健康家庭"
+                    android:textColor="@color/black_70"
+                    android:textSize="@dimen/text_size_15"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/person_right"
+                    />
+
+            </RelativeLayout>
+
+            <include layout="@layout/person_base_line"></include>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_health_manger_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="12.5dp"
+                    android:src="@drawable/person_manger"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_17"
+                    android:layout_toRightOf="@id/user_health_manger_img"
+                    android:text="我的健康管理"
+                    android:textColor="@color/black_70"
+                    android:textSize="@dimen/text_size_15"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/person_right"
+                    />
+
+            </RelativeLayout>
+
+            <include layout="@layout/person_base_line"></include>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_health_collect_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="12.5dp"
+                    android:src="@drawable/person_collection"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_17"
+                    android:layout_toRightOf="@id/user_health_collect_img"
+                    android:text="我的收藏"
+                    android:textColor="@color/black_70"
+                    android:textSize="@dimen/text_size_15"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/person_right"
+                    />
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/person_base_line"></include>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_health_expert_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="12.5dp"
+                    android:src="@drawable/person_expert"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_17"
+                    android:layout_toRightOf="@id/user_health_expert_img"
+                    android:text="我的专家"
+                    android:textColor="@color/black_70"
+                    android:textSize="@dimen/text_size_15"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/person_right"
+                    />
+
+
+            </RelativeLayout>
+
+            <include layout="@layout/person_base_line"></include>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_health_order_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="12.5dp"
+                    android:src="@drawable/person_reservation"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_17"
+                    android:layout_toRightOf="@id/user_health_order_img"
+                    android:text="我的预约"
+                    android:textColor="@color/black_70"
+                    android:textSize="@dimen/text_size_15"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/person_right"
+                    />
+            </RelativeLayout>
+
+            <include layout="@layout/person_base_line"></include>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_health_msg_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="12.5dp"
+                    android:src="@drawable/person_news"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_17"
+                    android:layout_toRightOf="@id/user_health_msg_img"
+                    android:text="消息"
+                    android:textColor="@color/black_70"
+                    android:textSize="@dimen/text_size_15"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/person_right"
+                    />
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_8"
+                android:background="@color/grey"
+                ></TextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/user_health_setting_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_12"
+                    android:layout_marginRight="12.5dp"
+                    android:src="@drawable/person_setting"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/dp_17"
+                    android:layout_marginTop="@dimen/dp_17"
+                    android:layout_toRightOf="@id/user_health_setting_img"
+                    android:text="设置"
+                    android:textColor="@color/black_70"
+                    android:textSize="@dimen/text_size_15"/>
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:src="@drawable/person_right"
+                    />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

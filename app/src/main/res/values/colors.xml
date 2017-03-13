@@ -329,4 +329,10 @@
 
 
 
+
+
+    <!--个人中心-->
+    <color name="person_base_text_color">#333333</color>
+
+
 </resources>

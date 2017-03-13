@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+    <View
+        android:id="@+id/person_diver"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/healthy_icon_img"
+        android:layout_marginLeft="12dp"
+        android:background="@color/grey"
+        android:visibility="invisible"
+        ></View>
+
+
+    <ImageView
+        android:id="@+id/person_arrow_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="12dp"
+        android:src="@drawable/right_arrow"
+        />
+
+    <ImageView
+        android:id="@+id/person_icon_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="12.5dp"
+        />
+
+    <TextView
+        android:id="@+id/person_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="颈部"
+        android:textColor="@color/black_70"
+        android:textSize="@dimen/text_size_15"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/dp_17"
+        android:layout_marginBottom="@dimen/dp_17"
+        android:layout_toRightOf="@+id/person_icon_img"
+        android:layout_toEndOf="@+id/person_icon_img"/>
+
+
+</RelativeLayout>
