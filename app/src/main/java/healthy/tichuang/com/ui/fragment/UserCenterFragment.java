@@ -1,14 +1,16 @@
 package healthy.tichuang.com.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import healthy.tichuang.com.android_handhoop.R;
+import healthy.tichuang.com.ui.activity.ModifyUserActivity;
 import healthy.tichuang.com.ui.base.BaseFragment;
 
 /**
@@ -17,7 +19,7 @@ import healthy.tichuang.com.ui.base.BaseFragment;
 
 public class UserCenterFragment extends BaseFragment   implements View.OnClickListener{
 
-    private Button  mEditBtn;
+    private ImageView mEditBtn;
     private View  rootView;
     private ViewGroup personContainer;
 
@@ -52,7 +54,7 @@ public class UserCenterFragment extends BaseFragment   implements View.OnClickLi
     private  void   initView(LayoutInflater inflater, ViewGroup container){
         rootView= inflater.inflate(R.layout.fragment_user_center, container, false);
 
-        mEditBtn = (Button) rootView.findViewById(R.id.user_center_to_edit_btn);
+        mEditBtn = (ImageView) rootView.findViewById(R.id.user_center_to_edit_btn);
         mEditBtn.setOnClickListener(this);
 
     }
@@ -79,7 +81,13 @@ public class UserCenterFragment extends BaseFragment   implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-
+        Intent  intent;
+         switch (v.getId()){
+             case  R.id.user_center_to_edit_btn:
+                 intent =new Intent(getActivity(), ModifyUserActivity.class);
+                 startActivity(intent);
+                 break;
+         }
     }
 
 
