@@ -4,6 +4,11 @@
     android:layout_height="match_parent">
 
 
+    <!--注册登录的最终使用布局-->
+
+
+    <include layout="@layout/author_login_layout"></include>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,12 +71,7 @@
 
   <!--<include  layout="@layout/login_layout"></include>-->
 
-        <include layout="@layout/author_login_layout"
-                 android:layout_width="match_parent"></include>
-
         <include layout="@layout/register_layout"></include>
-
-
 
 
     </LinearLayout>
