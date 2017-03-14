@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="14.5dp"
+        android:layout_marginTop="14.5dp"
+        android:text="选择难度系数"
+        android:textColor="#5b6469"
+        android:textSize="@dimen/text_size_11"
+        />
+
+    <include layout="@layout/person_base_line"></include>
+
+
+    <Button
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18.5dp"
+        android:layout_marginTop="@dimen/dp_22"
+        android:text="简单"
+        android:textSize="@dimen/text_size_14"/>
+
+
+    <Button
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18.5dp"
+        android:layout_marginTop="18.5dp"
+        android:text="中等"
+        android:textSize="@dimen/text_size_14"/>
+
+
+    <Button
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18.5dp"
+        android:layout_marginTop="18.5dp"
+
+        android:text="较难"
+        android:textSize="@dimen/text_size_14"/>
+
+
+    <Button
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="19.5dp"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="确定"
+        android:textSize="@dimen/text_size_17"/>
+</LinearLayout>
