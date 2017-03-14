@@ -1,52 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical">
 
 
+    <include layout="@layout/expert_detail_include"></include>
 
-    <RelativeLayout
+
+    <!--第二层-->
+
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.8"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp_80"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="150dp"
+        android:background="@color/white_90"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_20"
+        android:text="@string/expert_detail"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14"/>
+
+
+    <Button
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="@dimen/dp_60"
         android:background="@color/login_base_color"
-        >
+        android:text="预约专家"
+        android:textColor="@color/white_90"
+        android:textSize="@dimen/text_size_17"/>
 
-        <ImageView
-            android:id="@+id/expert_detail_img"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/expert_head"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white_90"
-            android:text="专家姓名"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/expert_detail_img"
-            android:textSize="@dimen/text_size_15"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="21.5dp"
-            />
-
-    </RelativeLayout>
-
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@color/btn_bg_gray"
-        >
-
-
-    </FrameLayout>
-
-
-
-</>
+</FrameLayout>

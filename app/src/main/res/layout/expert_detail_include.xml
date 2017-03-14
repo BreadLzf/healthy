@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/expert_detail"
-        android:layout_marginTop="@dimen/dp_20"
-        android:layout_marginLeft="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_10"
-        android:textSize="@dimen/text_size_14"
-        android:textColor="@color/black_70"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:background="@color/login_base_color"
+        >
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/expert_detail_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="38dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/expert_head"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/expert_detail_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="21.5dp"
+            android:layout_marginTop="5dp"
+            android:text="专家姓名"
+            android:textColor="@color/white_90"
+            android:textSize="@dimen/text_size_15"
+            />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/grey"
+        ></LinearLayout>
+
+</LinearLayout>
