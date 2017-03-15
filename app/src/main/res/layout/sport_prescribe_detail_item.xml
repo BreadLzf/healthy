@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_12"
+                android:layout_marginRight="@dimen/dp_12"
+                android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/prescribe_item_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19.5dp"
+        android:textSize="@dimen/text_size_14"
+        android:textColor="@color/black_70"
+        android:text="项目强度"
+
+        />
+
+
+    <TextView
+        android:id="@+id/prescribe_item_one_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/prescribe_item_title_tv"
+        android:layout_marginTop="@dimen/dp_15"
+        android:textSize="@dimen/text_size_11"
+        android:textColor="@color/black_70"
+        android:text="01、要点描述、要点描述、要点描述、要点描述、要点描述"
+        />
+
+
+    <TextView
+        android:id="@+id/prescribe_item_two_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/prescribe_item_one_tv"
+        android:layout_marginTop="11.5dp"
+        android:layout_marginBottom="19.5dp"
+        android:textSize="@dimen/text_size_11"
+        android:textColor="@color/black_70"
+        android:text="01、要点描述、要点描述、要点描述、要点描述、要点描述"
+        />
+
+</RelativeLayout>
