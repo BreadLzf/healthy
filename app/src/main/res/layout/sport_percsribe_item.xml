@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+                android:layout_marginLeft="9.5dp"
+                android:layout_marginRight="9.5dp"
+              android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/sport_prescribe_for_tv"
+        android:layout_marginTop="14.5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="运动目的：xxxx"
+        />
+
+
+
+    <TextView
+        android:id="@+id/sport_prescribe_type_tv"
+        android:layout_below="@id/sport_prescribe_for_tv"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="运动目的：xxxx"
+        />
+
+
+
+    <TextView
+        android:id="@+id/sport_prescribe_strong_tv"
+        android:layout_below="@id/sport_prescribe_type_tv"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="运动目的：xxxx"
+        android:layout_marginBottom="14.5dp"
+        />
+
+
+    <ImageView
+        android:layout_width="116.5dp"
+        android:layout_height="89dp"
+        android:src="@drawable/sport_prescribe_item"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="9.5dp"
+        />
+</RelativeLayout>

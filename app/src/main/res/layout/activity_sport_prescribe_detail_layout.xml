@@ -38,7 +38,7 @@
         />
 
     <ListView
-        android:id="@+id/sport_prescribe_list"
+        android:id="@+id/sport_prescribe__detail_list"
         android:layout_width="match_parent"
         android:layout_marginLeft="@dimen/dp_12"
         android:layout_marginRight="@dimen/dp_12"
