@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:src="@drawable/chronic_disease_bg"
+        android:layout_marginTop="12.5dp"
+        android:id="@+id/imageView"
+        android:scaleType="fitXY"
+        />
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="文字说明 文字说明 文字说明文字说明 文字说明 文字说明文字说明 文字说明 文字说明文字说明 文字说明 文字说明"
+          android:textSize="@dimen/text_size_13"
+          android:textColor="@color/black_70"
+          android:layout_marginLeft="11.5dp"
+          android:layout_marginRight="11.5dp"
+          android:layout_marginTop="12.5dp"
+          android:layout_marginBottom="16.5dp"
+          />
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="11.5dp"
+        android:layout_marginRight="11.5dp"
+        android:layout_marginTop="16.5dp"
+        android:layout_marginBottom="16.5dp"
+        android:layout_below="@id/body_healthy_check_title"
+        android:rowCount="2"
+        android:useDefaultMargins="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:gravity="center"
+            android:text="骨密度"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:gravity="center"
+
+            android:text="体成分"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:gravity="center"
+            android:text="肺功能"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="动脉硬化"
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="运动能力"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:gravity="center"
+            android:text="亚健康"
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:gravity="center"
+            android:text="心肺功能"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:gravity="center"
+            android:text="综合评价"
+            />
+    </GridLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/grey"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingBottom="@dimen/dp_8"
+        android:paddingTop="@dimen/dp_8"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/chronic_bottom_self"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/chronic_bottom_data"
+            android:text="自测"
+            />
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="2dp"
+            android:layout_below="@+id/chronic_bottom_data"
+            android:layout_marginLeft="@dimen/dp_60"
+            android:layout_centerHorizontal="true"
+            android:layout_toLeftOf="@+id/chronic_bottom_data"
+            android:background="@color/login_base_color"/>
+
+
+
+        <TextView
+            android:id="@+id/chronic_bottom_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dp_50"
+            android:layout_marginRight="@dimen/dp_50"
+            android:text="数据"
+            />
+
+
+        <View
+            android:layout_width="28dp"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/chronic_bottom_data"
+
+            android:background="@color/login_base_color"/>
+
+        <TextView
+            android:id="@+id/chronic_bottom_healthy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="健康趋势"
+            android:layout_toRightOf="@+id/chronic_bottom_data"
+            />
+
+        <View
+            android:layout_width="55dp"
+            android:layout_height="2dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/chronic_bottom_data"
+            android:layout_marginRight="@dimen/dp_60"
+            android:layout_toRightOf="@+id/chronic_bottom_data"
+            android:background="@color/login_base_color"/>
+    </RelativeLayout>
+
+
+
+
+
+    <include layout="@layout/body_healthy_self_layout"/>
+
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/body_healthy_self_layout"
+        />
+
+    <!--数据-->
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/body_healthy_data_item"
+        />
+
+
+    <!--健康趋势-->
+    <ViewStub
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

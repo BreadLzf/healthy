@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import healthy.tichuang.com.android_handhoop.R;
-import healthy.tichuang.com.customview.HealthyCircleView;
+//import healthy.tichuang.com.customview.HealthyCircleView;
 import healthy.tichuang.com.ui.base.BaseFragment;
 
 /**
@@ -17,7 +17,7 @@ import healthy.tichuang.com.ui.base.BaseFragment;
 
 public class HealthyMangerFragment extends BaseFragment {
     private View rootView;
-    private HealthyCircleView  mHealthyCircleView;
+//    private HealthyCircleView  mHealthyCircleView;
     private  boolean isInit=false;
 
     public static HealthyMangerFragment newInstance() {
