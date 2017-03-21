@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-<!--注册登录的最底层的布局-->
+    <!--注册登录的最底层的布局-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -12,6 +12,7 @@
         android:background="@color/login_base_color">
 
         <ImageView
+            android:id="@+id/login_head_img"
             android:layout_width="84dp"
             android:layout_height="84dp"
             android:layout_centerHorizontal="true"
@@ -34,6 +35,8 @@
 
 
     <RelativeLayout
+        android:id="@+id/login_third_layout"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -108,7 +111,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-
                 android:src="@drawable/login_wx">
 
             </ImageView>

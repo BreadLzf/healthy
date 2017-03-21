@@ -74,6 +74,11 @@
             android:name="healthy.tichuang.com.ui.activity.MySettingActivity"
             android:launchMode="standard"
             ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.login.AuthorLoginActivity"
+            android:launchMode="standard"
+            ></activity>
     </application>
 
 </manifest>
