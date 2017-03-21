@@ -16,4 +16,19 @@ public interface HealthyApiService {
     Call<TestBean>   testApi(@Query("validData") String validData, @Query("executeData") String executeData);
 
 
+
+    @POST ("/api/user-register")
+    Call<TestBean>   registerApi(@Query("validData") String validData, @Query("executeData") String executeData);
+
+
+
+    @POST ("/api/get-vcode")
+    Call<TestBean>   messageCodeAPI(@Query("validData") String validData, @Query("executeData") String executeData);
+
+
+
+    @POST ("/api/user-login")
+    Call<TestBean>   loginApi(@Query("validData") String validData, @Query("executeData") String executeData);
+
+
 }

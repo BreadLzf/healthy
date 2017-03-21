@@ -96,6 +96,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         initClick();
         initData();
 //        testUrl();
+        getmessagecode();
 
     }
 
@@ -278,6 +279,44 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 TestBean testBean =response.body();
                 Log.e("onResponse","msg"+testBean.msg);
               ;
+                Log.e("onResponse","json"+  gson.toJson(response.body()));
+
+            }
+
+            @Override
+            public void onFailure(Call<TestBean> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+
+    private void getmessagecode() {
+        final Gson gson = new Gson();
+
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(MD5Encrypt.md5("1486954192"));
+        stringBuffer.append("23ce786d7846b95e9f14cc3391147e5e");
+        String token = MD5Encrypt.md5(stringBuffer.toString());
+
+        ValidData validData = new ValidData();
+        validData.time = "1486954192";
+        validData.token = token;
+
+
+        ExecuteData executeData = new ExecuteData();
+        executeData.phone = "1383838438";
+
+        String validStr = gson.toJson(validData);
+        String execuStr = gson.toJson(executeData);
+        Call<TestBean>  call =healthyApi.messageCode(validStr, execuStr);
+        call.enqueue(new Callback<TestBean>() {
+            @Override
+            public void onResponse(Call<TestBean> call, Response<TestBean> response) {
+                TestBean testBean =response.body();
+                Log.e("onResponse","msg"+testBean.msg);
+                ;
                 Log.e("onResponse","json"+  gson.toJson(response.body()));
 
             }

@@ -37,4 +37,21 @@ public class HealthyApi {
         return service.testApi(validData,executeData);
     }
 
+
+    public Call<TestBean> login(String  validData, String executeData) {
+        return service.testApi(validData,executeData);
+    }
+
+
+
+    public Call<TestBean> register(String  validData, String executeData) {
+        return service.testApi(validData,executeData);
+    }
+
+
+    public Call<TestBean> messageCode(String  validData, String executeData) {
+        return service.testApi(validData,executeData);
+    }
+
+
 }
