@@ -17,9 +17,8 @@ import healthy.tichuang.com.android_handhoop.R;
 public class BaseActivity extends AppCompatActivity {
 
 
-
     public void setCustomActionBarEnabled() {
-        ActionBar  actionBar =getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(false);
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setDisplayShowTitleEnabled(false);
@@ -27,7 +26,20 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
-    public void initActionBar(int backRes,  String middleTitle,int rightRes, final OnCustomClickListener listener) {
+
+    public void initActionBar(int titleResource) {
+        initActionBar(getString(titleResource));
+    }
+
+    public void initActionBar(String title) {
+        setCustomActionBarEnabled();
+    }
+
+
+
+
+
+      public void initActionBar(int backRes, String middleTitle, int rightRes, final OnCustomClickListener listener) {
         setCustomActionBarEnabled();
         View customView = LayoutInflater.from(this).inflate(R.layout.custom_actionbar_layout, null);
         ImageView rightImg = (ImageView) customView.findViewById(R.id.custom_right_img);
@@ -48,6 +60,47 @@ public class BaseActivity extends AppCompatActivity {
         });
         getSupportActionBar().setCustomView(customView);
     }
+
+    public void initActionBar( String middleTitle,  final OnCustomClickListener listener) {
+        setCustomActionBarEnabled();
+        View customView = LayoutInflater.from(this).inflate(R.layout.custom_actionbar_back, null);
+        ((TextView) customView.findViewById(R.id.custom_middle_title)).setText(middleTitle);
+
+        customView.findViewById(R.id.custom_left_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        getSupportActionBar().setCustomView(customView);
+    }
+
+
+
+
+    public void initActionBar(String middleTitle, String rightTitle, final OnCustomClickListener listener) {
+        setCustomActionBarEnabled();
+
+        View customView = LayoutInflater.from(this).inflate(R.layout.custom_action_title_layout, null);
+        ((TextView) customView.findViewById(R.id.custom_title_right)).setText(rightTitle);
+        ((TextView) customView.findViewById(R.id.custom_title_middle)).setText(middleTitle);
+        TextView right = (TextView) customView.findViewById(R.id.custom_title_right);
+
+
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick();
+            }
+        });
+        getSupportActionBar().setCustomView(customView);
+
+    }
+
+
+
+
 
 
 
