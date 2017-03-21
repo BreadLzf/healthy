@@ -8,4 +8,6 @@ public class ExecuteData {
     public  String user_name;
     public  String  password;
     public  String  phone;
+    public  String  login_name;
+    public  String vcode ;
 }

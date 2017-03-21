@@ -16,6 +16,7 @@ public class HealthyApi {
     private HealthyApiService service;
 
     public HealthyApi(OkHttpClient okHttpClient) {
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(AppContents.API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create()) // 添加Gson转换器
@@ -39,19 +40,22 @@ public class HealthyApi {
 
 
     public Call<TestBean> login(String  validData, String executeData) {
-        return service.testApi(validData,executeData);
+        return service.loginApi(validData,executeData);
     }
 
 
 
     public Call<TestBean> register(String  validData, String executeData) {
-        return service.testApi(validData,executeData);
+        return service.registerApi(validData,executeData);
     }
 
 
     public Call<TestBean> messageCode(String  validData, String executeData) {
-        return service.testApi(validData,executeData);
+        return service.messageCodeAPI(validData,executeData);
     }
+
+
+
 
 
 }
