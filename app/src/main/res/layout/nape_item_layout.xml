@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11.5dp"
+                android:layout_marginRight="11.5dp">
+
+
+
+
+    <LinearLayout
+        android:id="@+id/nape_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nape_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15.5dp"
+                android:layout_marginTop="@dimen/dp_22"
+                android:lines="1"
+                android:text="【颈部疾病有那些颈椎病是常见的职业病】"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nape_item_title"
+                android:layout_marginBottom="34dp"
+                android:text="需要注意的是，目前绝大多数目前绝大多数目前绝大多数目前绝大多数"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dp_22"
+                android:src="@drawable/nape_head"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/nape_top_layout"
+       >
+
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="吐槽"
+           android:layout_marginLeft="7.5dp"
+           android:gravity="center"
+           android:drawablePadding="7.5dp"
+           android:drawableLeft="@drawable/nape_traver"
+           android:layout_centerVertical="true"
+           />
+
+
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="15"
+           android:layout_marginLeft="7.5dp"
+           android:layout_alignParentRight="true"
+           android:gravity="center"
+           android:drawablePadding="7dp"
+           android:drawableLeft="@drawable/nape_msg"
+           android:layout_centerVertical="true"
+           />
+
+
+
+
+   </RelativeLayout>
+
+</RelativeLayout>
