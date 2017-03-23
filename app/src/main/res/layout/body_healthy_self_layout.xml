@@ -39,18 +39,14 @@
                 >
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/chronic_disease_time"
-                    />
-
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/dp_5"
                     android:text="预约测试"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/chronic_disease_time"
                     android:textColor="@color/white_90"
                     />
 
@@ -63,17 +59,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/primary_red"
-
                 android:gravity="center"
                 android:orientation="horizontal"
                 >
-
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/chronic_disease_report"
-                    />
 
 
                 <TextView
@@ -81,7 +69,8 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/dp_5"
                     android:text="生成报告"
-
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/chronic_disease_report"
                     android:textColor="@color/white_90"
 
                     />
