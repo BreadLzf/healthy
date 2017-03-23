@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="11.5dp"
+              android:layout_marginRight="11.5dp"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/nape_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29.5dp"
+        android:text="【颈部疾病有那些颈椎病是常见的职业病】"
+        android:textColor="@color/black_70"
+        android:textSize="@dimen/text_size_17"
+        />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_24">
+
+        <ImageView
+            android:id="@+id/nape_detail_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/nape_traver"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/nape_detail_img"
+            android:text="兔子草"
+            android:textColor="#a0a0a0"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="2017-3-23"
+            android:textSize="@dimen/text_size_11"/>
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数"
+        />
+
+    
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home_big"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数"
+        />
+</LinearLayout>
