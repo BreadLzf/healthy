@@ -23,13 +23,8 @@ public class AuthorLoginActivity extends BaseActivity  implements View.OnClickLi
     private RelativeLayout third_login_layout;
     private TextView  loginTv;
     private TextView  regiestTv;
-
     private ImageView loginHeadImg;
-
-
-
-
-    private LinearLayout registLayout;
+    private LinearLayout registertLayout;
 
 
 
@@ -45,7 +40,7 @@ public class AuthorLoginActivity extends BaseActivity  implements View.OnClickLi
         loginTv.setOnClickListener(this);
         regiestTv.setOnClickListener(this);
         loginLayout =(LinearLayout)findViewById(R.id.login_layout);
-        registLayout =(LinearLayout)findViewById(R.id.register_layout);
+        registertLayout =(LinearLayout)findViewById(R.id.register_layout);
         third_login_layout =(RelativeLayout)findViewById(R.id.login_third_layout);
         third_login_layout.setVisibility(View.VISIBLE);
         loginHeadImg =(ImageView)findViewById(R.id.login_head_img);
@@ -65,7 +60,7 @@ public class AuthorLoginActivity extends BaseActivity  implements View.OnClickLi
             case R.id.login_tv:
                 third_login_layout.setVisibility(View.VISIBLE);
                 loginLayout.setVisibility(View.VISIBLE);
-                registLayout.setVisibility(View.GONE);
+                registertLayout.setVisibility(View.GONE);
                 loginHeadImg.setImageResource(R.drawable.login_person_icon);
 
                 break;
@@ -73,7 +68,7 @@ public class AuthorLoginActivity extends BaseActivity  implements View.OnClickLi
             case R.id.register_tv:
                 loginLayout.setVisibility(View.GONE);
                 third_login_layout.setVisibility(View.INVISIBLE);
-                registLayout.setVisibility(View.VISIBLE);
+                registertLayout.setVisibility(View.VISIBLE);
                 loginHeadImg.setImageResource(R.drawable.login_regist_head);
                 break;
         }
