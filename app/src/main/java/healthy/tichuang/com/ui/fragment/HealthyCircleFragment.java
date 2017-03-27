@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import healthy.tichuang.com.android_handhoop.R;
 import healthy.tichuang.com.customview.HealthyItem;
+import healthy.tichuang.com.ui.activity.NapeListActivity;
 import healthy.tichuang.com.ui.base.BaseFragment;
 
 /**
@@ -61,13 +62,26 @@ public class HealthyCircleFragment extends BaseFragment {
 
 
     private void initView(Activity context) {
-        Intent intent = null;
-        healthyContainer.addView(new HealthyItem(context, "颈部", "颈部简单描述", R.drawable.healthy_head, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "肩部", "肩部简单描述", R.drawable.healthy_jian, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "上肢", "上肢简单描述", R.drawable.healthy_hand, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "足踝部", "足踝部简单描述", R.drawable.healhthy_foot, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "活动", "活动描述", R.drawable.healthy_active, intent, true));
-        healthyContainer.addView(new HealthyItem(context, "意见反馈", "我们耐心倾听您的每一个反馈", R.drawable.healthy_feed, intent, true));
+
+        try {
+            Intent napeIntent =new Intent(context, NapeListActivity.class);
+            healthyContainer.addView(new HealthyItem(context, "颈部", "颈部简单描述", R.drawable.healthy_head, napeIntent, true));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        try {
+            Intent  shouldIntent =new Intent( context,NapeListActivity.class);
+            healthyContainer.addView(new HealthyItem(context, "肩部", "肩部简单描述", R.drawable.healthy_jian, shouldIntent, true));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        healthyContainer.addView(new HealthyItem(context, "上肢", "上肢简单描述", R.drawable.healthy_hand, intent, true));
+//        healthyContainer.addView(new HealthyItem(context, "足踝部", "足踝部简单描述", R.drawable.healhthy_foot, intent, true));
+//        healthyContainer.addView(new HealthyItem(context, "活动", "活动描述", R.drawable.healthy_active, intent, true));
+//        healthyContainer.addView(new HealthyItem(context, "意见反馈", "我们耐心倾听您的每一个反馈", R.drawable.healthy_feed, intent, true));
 
     }
 }

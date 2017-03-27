@@ -80,6 +80,20 @@
             android:name="healthy.tichuang.com.ui.login.AuthorLoginActivity"
             android:launchMode="standard"
             ></activity>
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.NapeDetailActivity"
+            android:launchMode="standard"
+            ></activity>
+
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.NapeListActivity"
+            android:launchMode="standard"
+            ></activity>
+
+
+
+
     </application>
 
 </manifest>
