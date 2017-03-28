@@ -32,11 +32,11 @@ dependencies {
     //解析器
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     //parse
-    compile 'com.parse:parse-android:1.13.1'
     //圆形ImageView
     compile 'de.hdodenhof:circleimageview:2.1.0'
     //日历控件
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
+    //skay 网络请求库
     compile 'com.tamic.novate:novate:1.2.9'
 
     //注解

@@ -19,6 +19,6 @@ public class MyHealthyFamilyActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_healthy_family);
-
+        initToolBar("我的健康家庭",R.drawable.chronic_disease_back);
     }
 }
