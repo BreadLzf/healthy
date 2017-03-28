@@ -43,7 +43,7 @@ public class BaseActivity extends AppCompatActivity {
      * @param rightSource
      * @param listener
      */
-    public  void  initToolBar(String  middleTitle,int leftSource,int rightSource,final  OnCustomClickListener listener){
+    public  void  initRightImgToolBar(String  middleTitle,int leftSource,int rightSource,final  OnCustomClickListener listener){
         Toolbar  toolbar =(Toolbar) findViewById(R.id.healthy_right_tool);
 
         ImageView  back =(ImageView)toolbar. findViewById(R.id.healthy_right_tool_back);
@@ -69,7 +69,93 @@ public class BaseActivity extends AppCompatActivity {
 
     }
 
-    
+
+    /**
+     * 左边返回 中间标题 右边文字
+     * @param middleTitle
+     * @param leftSource
+     * @param rightStr
+     * @param listener
+     */
+    public  void  initRightTextToolBar(String  middleTitle,int leftSource,String rightStr,final  OnCustomClickListener listener){
+        Toolbar  toolbar =(Toolbar) findViewById(R.id.healthy_tool_text);
+
+        ImageView  back =(ImageView)toolbar. findViewById(R.id.healthy_tool_text_back);
+        TextView textView =(TextView) toolbar. findViewById(R.id.healthy_tool_text_title);
+        TextView rightTv =(TextView)toolbar. findViewById(R.id.healthy_tool_text_msg);
+
+        back.setImageResource(leftSource);
+        textView.setText(middleTitle);
+        rightTv.setText(rightStr);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        rightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick();
+            }
+        });
+
+    }
+
+
+    /**
+     * 没有返回按钮的toolbar
+     * @param middleTitle
+     * @param rightStr
+     * @param listener
+     */
+    public  void  initNoBackToolBar(String  middleTitle ,String rightStr,final  OnCustomClickListener listener){
+        Toolbar  toolbar =(Toolbar) findViewById(R.id.healthy_no_back_tool);
+        TextView textView =(TextView) toolbar. findViewById(R.id.healthy_no_back_tool_title);
+        TextView rightTv =(TextView)toolbar. findViewById(R.id.healthy_no_back_tool_msg);
+
+        textView.setText(middleTitle);
+        rightTv.setText(rightStr);
+
+        rightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick();
+            }
+        });
+
+    }
+
+
+    /**
+     * 没有标题的toolbar
+     * @param leftBack
+     * @param rightStr
+     * @param listener
+     */
+    public  void  initNoTitleToolBar(int leftBack ,int rightStr,final  OnCustomClickListener listener){
+        Toolbar  toolbar =(Toolbar) findViewById(R.id.healthy_no_title_toolbar);
+        ImageView back =(ImageView) toolbar. findViewById(R.id.healthy_no_title_toolbar_back);
+        ImageView rightTv =(ImageView)toolbar. findViewById(R.id.healthy_no_title_toolbar_img);
+        back.setImageResource(leftBack);
+        rightTv.setImageResource(rightStr);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        rightTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick();
+            }
+        });
+
+    }
 
 
 
