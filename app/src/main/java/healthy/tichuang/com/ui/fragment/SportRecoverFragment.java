@@ -1,12 +1,15 @@
 package healthy.tichuang.com.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import healthy.tichuang.com.android_handhoop.R;
 import healthy.tichuang.com.ui.base.BaseFragment;
@@ -16,7 +19,7 @@ import healthy.tichuang.com.ui.base.BaseFragment;
  * 运动康复
  */
 
-public class SportRecoverFragment extends BaseFragment   implements View.OnClickListener{
+public class SportRecoverFragment extends BaseFragment implements View.OnClickListener {
     private View rootView;
     private TextView first_Vist_Doctor;
     private TextView two_Vist_Doctor;
@@ -47,14 +50,36 @@ public class SportRecoverFragment extends BaseFragment   implements View.OnClick
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_sport_layout, container, false);
-        first_Vist_Doctor =(TextView)rootView.findViewById(R.id.sport_recover_first);
-        two_Vist_Doctor=(TextView)rootView.findViewById(R.id.sport_recover_two);
-//        first_Vist_Doctor.setTextColor(Color.parseColor("#"));
-        first_Vist_Doctor.setOnClickListener(this);
-        two_Vist_Doctor.setOnClickListener(this);
+        initToolBar();
+
     }
 
-//
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.healthy_sport_tool);
+        TextView middle = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_first);
+        TextView right = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_again);
+        toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
+        middle.setText("初诊");
+        right.setText("复诊");
+        middle.setTextColor(Color.parseColor("#e5e5e5"));
+        right.setTextColor(Color.parseColor("#e5e5e5"));
+        middle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "初诊", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "复诊", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    //
     @Override
     protected void loadData() {
         if (!isPrepared || !isVisible()) {
@@ -66,15 +91,7 @@ public class SportRecoverFragment extends BaseFragment   implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case  R.id.sport_recover_first:
 
-                break;
-
-            case  R.id.sport_recover_two:
-
-                break;
-        }
 
     }
 }

@@ -1,11 +1,15 @@
 package healthy.tichuang.com.ui.fragment;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import healthy.tichuang.com.android_handhoop.R;
 import healthy.tichuang.com.ui.base.BaseFragment;
@@ -47,6 +51,22 @@ public class HomePageFragment extends BaseFragment {
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        initToolbar();
+    }
+
+
+
+    private void initToolbar() {
+        Toolbar toolbar =(Toolbar) rootView.findViewById(R.id.healthy_only_title_toolbar);
+        TextView middle =(TextView)toolbar.findViewById(R.id.healthy_only_title_toolbar_text);
+        toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
+        middle.setText("运动健康康复");
+        //toolbar 设置图片
+        Drawable drawable =getResources().getDrawable(R.drawable.login_regist_head); //图片需要更换
+        drawable.setBounds(0,0,drawable.getMinimumWidth(),drawable.getMinimumHeight());
+        middle.setCompoundDrawables(drawable,null,null,null);
+        middle.setTextColor(Color.parseColor("#e5e5e5"));
     }
 
 

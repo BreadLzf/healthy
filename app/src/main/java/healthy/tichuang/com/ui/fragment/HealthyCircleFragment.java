@@ -2,12 +2,15 @@ package healthy.tichuang.com.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import healthy.tichuang.com.android_handhoop.R;
 import healthy.tichuang.com.customview.HealthyItem;
@@ -44,10 +47,19 @@ public class HealthyCircleFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_healthy_circle, container, false);
-        healthyContainer = (ViewGroup) v.findViewById(R.id.healthy_container);
         Activity context = getActivity();
+        initToolBar(v);
+        healthyContainer = (ViewGroup) v.findViewById(R.id.healthy_container);
         initView(context);
         return v;
+    }
+
+    private void initToolBar(View v) {
+        Toolbar toolbar =(Toolbar) v.findViewById(R.id.healthy_only_title_toolbar);
+        TextView middle =(TextView)toolbar.findViewById(R.id.healthy_only_title_toolbar_text);
+        toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
+        middle.setText("社区");
+        middle.setTextColor(Color.parseColor("#e5e5e5"));
     }
 
 

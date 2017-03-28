@@ -1,15 +1,20 @@
 package healthy.tichuang.com.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import healthy.tichuang.com.android_handhoop.R;
-//import healthy.tichuang.com.customview.HealthyCircleView;
 import healthy.tichuang.com.ui.base.BaseFragment;
+
+//import healthy.tichuang.com.customview.HealthyCircleView;
 
 /**
  * Created by punisher on 2017/3/1.
@@ -49,12 +54,26 @@ public class HealthyMangerFragment extends BaseFragment {
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_healthy_mag_layout, container, false);
-
+        initToolBar();
 
     }
 
-
-
+    private void initToolBar() {
+        Toolbar toolbar =(Toolbar)rootView.findViewById(R.id.healthy_no_back_tool);
+        TextView middle =(TextView)toolbar.findViewById(R.id.healthy_no_back_tool_title);
+        TextView right =(TextView)toolbar.findViewById(R.id.healthy_no_back_tool_msg);
+        toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
+        middle.setText("社区");
+        right.setText("专家库");
+        middle.setTextColor(Color.parseColor("#e5e5e5"));
+        right.setTextColor(Color.parseColor("#e5e5e5"));
+        right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"ceshi",Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     @Override

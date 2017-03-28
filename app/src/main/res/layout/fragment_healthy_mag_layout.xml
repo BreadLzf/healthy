@@ -5,7 +5,7 @@
               android:orientation="vertical"
     >
 
-    <include  layout="@layout/custom_tool_back"/>
+    <include  layout="@layout/custom_no_back_toolbar"/>
 
 
     <!--              xmlns:app="http://schemas.android.com/apk/res-auto"

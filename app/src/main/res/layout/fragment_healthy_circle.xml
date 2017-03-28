@@ -4,6 +4,8 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+    <include layout="@layout/custom_only_title_toolbar"/>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -16,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-               android:layout_gravity="center"
+            android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:drawableLeft="@drawable/healthy_search"
             android:drawablePadding="@dimen/dp_6"
@@ -31,6 +33,7 @@
         android:layout_marginTop="7.5dp"
         android:scrollbars="none"
         >
+
         <LinearLayout
             android:id="@+id/healthy_container"
             android:layout_width="match_parent"
@@ -40,9 +43,6 @@
 
 
     </ScrollView>
-
-
-
 
 
 </LinearLayout>

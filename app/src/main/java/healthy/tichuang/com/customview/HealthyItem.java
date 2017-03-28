@@ -17,10 +17,8 @@ import healthy.tichuang.com.android_handhoop.R;
 
 public class HealthyItem extends FrameLayout {
 
-    private Intent mintent;
-
+    private Intent mIntent;
     private ImageView iconImage;
-    private ImageView arrowImage;
     private TextView titleTv;
     private TextView msgTv;
     private View diverView;
@@ -35,7 +33,7 @@ public class HealthyItem extends FrameLayout {
 
     public HealthyItem(final Context context, final String title, String message, int iconRes, Intent intent, boolean isShowdiver) {
         super(context);
-        mintent = intent;
+        mIntent = intent;
         View rootView = LayoutInflater.from(context).inflate(R.layout.fragment_healthy_item, this);
         iconImage = (ImageView) rootView.findViewById(R.id.healthy_icon_img);
         titleTv = (TextView) rootView.findViewById(R.id.healthy_title_tv);
@@ -51,9 +49,18 @@ public class HealthyItem extends FrameLayout {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onItemClick(context,title);
             }
         });
 
+    }
+
+
+    /**
+     * 子类必须重写
+     */
+    protected void onItemClick(final Context context, final String title) {
+        mIntent.putExtra("title",title);
+        context.startActivity(mIntent);
     }
 }
