@@ -91,6 +91,15 @@
             android:launchMode="standard"
             ></activity>
 
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.ActiveActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="healthy.tichuang.com.ui.activity.FeedBackActivity"
+            android:launchMode="standard"
+            ></activity>
 
 
 
