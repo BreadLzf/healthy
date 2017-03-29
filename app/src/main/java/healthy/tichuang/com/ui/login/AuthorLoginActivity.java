@@ -25,6 +25,7 @@ import healthy.tichuang.com.android_handhoop.R;
 import healthy.tichuang.com.api.HealthyApiService;
 import healthy.tichuang.com.encryptutil.MD5Encrypt;
 import healthy.tichuang.com.modle.BaseResponse;
+import healthy.tichuang.com.modle.ExecuteData;
 import healthy.tichuang.com.modle.LoginModel;
 import healthy.tichuang.com.modle.ValidData;
 import healthy.tichuang.com.ui.base.BaseActivity;
@@ -89,6 +90,20 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         login_confrim_btn.setOnClickListener(this);
 
 
+        //注册
+        regist_phone_ed = (EditText) findViewById(R.id.register_phone_edit);
+        regist_code_ed = (EditText) findViewById(R.id.register_code_edit);
+        regist_code_tv = (TextView) findViewById(R.id.register_get_code_tv);
+        regist_pass_ed = (EditText) findViewById(R.id.register_pass_edit);
+        regist_confirm_btn = (Button) findViewById(R.id.register_confirm_btn);
+
+        regist_phone_ed.addTextChangedListener(watcher);
+        regist_code_ed.addTextChangedListener(watcher);
+        regist_pass_ed.addTextChangedListener(watcher);
+
+        regist_confirm_btn.setOnClickListener(this);
+        regist_code_tv.setOnClickListener(this);
+
     }
 
 
@@ -125,14 +140,25 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             case R.id.login_confirm_btn:
                 phoneLogin();
                 break;
+
+            //注册
+            case   R.id.register_confirm_btn:
+                sendRegister();
+                break;
+
+            //获取短信码
+            case R.id.register_get_code_tv:
+
+                break;
         }
     }
 
-
+    /**
+     * 发起登录请求
+     */
     private void phoneLogin() {
         String phoneStr = login_phone_ed.getText().toString();
         String passStr = login_pass_ed.getText().toString();
-
 
 
         StringBuffer stringBuffer = new StringBuffer();
@@ -195,9 +221,48 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
     }
 
 
+    private void sendRegister() {
+        String phoneStr = regist_phone_ed.getText().toString();
+        String codeStr = regist_code_ed.getText().toString();
+        String passStr =regist_pass_ed.getText().toString();
 
 
-    private  void  sendRegister(){
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(MD5Encrypt.md5("1486954192"));
+        stringBuffer.append("23ce786d7846b95e9f14cc3391147e5e");
+        String token = MD5Encrypt.md5(stringBuffer.toString());
+
+        ValidData validData = new ValidData();
+        validData.time = "1486954192";
+        validData.token = token;
+        String oneStr = GsonHelper.javaBeanToJson(validData);
+
+
+        ExecuteData login = new ExecuteData();
+        login.login_name="沈洪浪";
+        login.password="123456";
+        login.vcode="1234";
+        String twoStr = GsonHelper.javaBeanToJson(login);
+
+        Novate novate = new Novate.Builder(AuthorLoginActivity.this)
+                .baseUrl(AppContents.API_BASE_URL)
+                .build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+
+        novate.call(apiService.registerApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
+            @Override
+            public void onError(Throwable e) {
+                Log.e("skay 注册db", "onError");
+
+            }
+
+            @Override
+            public void onNext(BaseResponse testBean) {
+                Log.e("skay 注册db", "db" + testBean.msg + "<code>" + testBean.code);
+            }
+        });
+
+
 
     }
 
@@ -219,16 +284,23 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
 
         @Override
         public void afterTextChanged(Editable s) {
-            boolean userName = login_phone_ed.getEditableText().toString().trim().length() > 0;
-            boolean password = login_pass_ed.getEditableText().toString().trim().length() > 0;
-
-            if (userName && password) {
+            boolean login_userName = login_phone_ed.getEditableText().toString().trim().length() > 0;
+            boolean login_password = login_pass_ed.getEditableText().toString().trim().length() > 0;
+            if (login_userName && login_password) {
                 login_confrim_btn.setEnabled(true);
             } else {
                 login_confrim_btn.setEnabled(false);
-
             }
 
+            boolean regist_phone = regist_phone_ed.getEditableText().toString().trim().length() > 0;
+            boolean regist_code = regist_code_ed.getEditableText().toString().trim().length() > 0;
+            boolean regist_pass = regist_pass_ed.getEditableText().toString().trim().length() > 0;
+
+            if (regist_phone&&regist_code&&regist_pass){
+                regist_confirm_btn.setEnabled(true);
+            }else{
+                regist_confirm_btn.setEnabled(false);
+            }
         }
     }
 
