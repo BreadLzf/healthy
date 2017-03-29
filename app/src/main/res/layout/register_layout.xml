@@ -4,7 +4,7 @@
               android:id="@+id/register_layout"
               android:layout_height="wrap_content"
               android:orientation="vertical"
-              android:visibility="gone">
+              android:visibility="visible">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             />
 
         <EditText
+            android:id="@+id/register_phone_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_24"
@@ -56,6 +57,7 @@
             />
 
         <EditText
+            android:id="@+id/register_code_edit"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -67,6 +69,7 @@
 
 
         <TextView
+            android:id="@+id/register_get_code_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -101,6 +104,7 @@
             />
 
         <EditText
+            android:id="@+id/register_pass_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_24"
@@ -143,6 +147,7 @@
 
 
     <Button
+        android:id="@+id/register_confirm_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_16"

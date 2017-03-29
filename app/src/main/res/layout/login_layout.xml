@@ -21,6 +21,7 @@
             />
 
         <EditText
+            android:id="@+id/login_phone_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_24"
@@ -56,6 +57,7 @@
             />
 
         <EditText
+            android:id="@+id/login_pass_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -87,6 +89,7 @@
 
 
     <Button
+        android:id="@+id/login_confirm_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_35"
@@ -97,6 +100,7 @@
 
 
     <TextView
+        android:id="@+id/login_forget_pass_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"

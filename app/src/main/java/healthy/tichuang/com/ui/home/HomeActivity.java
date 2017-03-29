@@ -18,10 +18,9 @@ import java.util.HashMap;
 
 import healthy.tichuang.com.AppContents;
 import healthy.tichuang.com.android_handhoop.R;
-import healthy.tichuang.com.api.HealthyApi;
 import healthy.tichuang.com.encryptutil.MD5Encrypt;
+import healthy.tichuang.com.modle.BaseResponse;
 import healthy.tichuang.com.modle.ExecuteData;
-import healthy.tichuang.com.modle.TestBean;
 import healthy.tichuang.com.modle.ValidData;
 import healthy.tichuang.com.ui.base.BaseActivity;
 import healthy.tichuang.com.ui.fragment.HealthyCircleFragment;
@@ -31,7 +30,6 @@ import healthy.tichuang.com.ui.fragment.SportRecoverFragment;
 import healthy.tichuang.com.ui.fragment.UserCenterFragment;
 import healthy.tichuang.com.util.AppHelper;
 import healthy.tichuang.com.util.GsonHelper;
-import retrofit2.Call;
 
 /**
  * Created by punisher on 2017/2/28.
@@ -40,7 +38,6 @@ import retrofit2.Call;
 
 public class HomeActivity extends BaseActivity implements View.OnClickListener {
     private static String TAG = "HomeActivity";
-    private HealthyApi healthyApi = HealthyApi.getInstance();
 
     private RelativeLayout home_page_layout;
     private RelativeLayout healthy_manger_layout;
@@ -101,9 +98,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         user_center_tv = (TextView) findViewById(R.id.tv_user_center);
         initClick();
         initData();
-        testUrl();
-        getmessagecode();
-        register();
+//        testUrl();
+//        getmessagecode();
+//        register();
 
     }
 
@@ -279,22 +276,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
         String validStr = gson.toJson(validData);
         String execuStr = gson.toJson(executeData);
-        Call<TestBean> call = healthyApi.testApi(validStr, execuStr);
-//        call.enqueue(new Callback<TestBean>() {
-//            @Override
-//            public void onResponse(Call<TestBean> call, Response<TestBean> response) {
-//                TestBean testBean = response.body();
-//                Log.e("onResponse", "msg" + testBean.msg);
-//                ;
-//                Log.e("onResponse", "json" + gson.toJson(response.body()));
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<TestBean> call, Throwable t) {
-//
-//            }
-//        });
+
 
     }
 
@@ -309,21 +291,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         String execuStr = GsonHelper.javaBeanToJson(executeData);
 
 
-//        Call<TestBean> call = healthyApi.messageCode(validStr, execuStr);
-//        call.enqueue(new Callback<TestBean>() {
-//            @Override
-//            public void onResponse(Call<TestBean> call, Response<TestBean> response) {
-//                TestBean testBean = response.body();
-//                ;
-//                Log.e("onResponse", "json" + mGson.toJson(response.body()));
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<TestBean> call, Throwable t) {
-//
-//            }
-//        });
 
     }
 
@@ -356,7 +323,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
                 .baseUrl(AppContents.API_BASE_URL)
                 .build();
         HashMap  m  = new HashMap();
-        novate.executePost("",  m ,new Novate.ResponseCallBack<TestBean>(){
+        novate.executePost("",  m ,new Novate.ResponseCallBack<BaseResponse>(){
 
 
             @Override
@@ -376,7 +343,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
             }
 
             @Override
-            public void onSuccee(TestBean response) {
+            public void onSuccee(BaseResponse response) {
 
             }
         });
@@ -392,18 +359,18 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
 
 
 
-//        Call<TestBean> call = healthyApi.register(validStr, execuStr);
-//        call.enqueue(new Callback<TestBean>() {
+//        Call<BaseResponse> call = healthyApi.register(validStr, execuStr);
+//        call.enqueue(new Callback<BaseResponse>() {
 //            @Override
-//            public void onResponse(Call<TestBean> call, Response<TestBean> response) {
-//                TestBean testBean = response.body();
+//            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+//                BaseResponse testBean = response.body();
 //                Log.e("onResponse", "json" + gson.toJson(response.body()));
 //                Toast.makeText(HomeActivity.this, "json", Toast.LENGTH_LONG).show();
 //
 //            }
 //
 //            @Override
-//            public void onFailure(Call<TestBean> call, Throwable t) {
+//            public void onFailure(Call<BaseResponse> call, Throwable t) {
 //
 //            }
 //        });
