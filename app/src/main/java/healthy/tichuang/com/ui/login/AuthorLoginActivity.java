@@ -30,6 +30,7 @@ import healthy.tichuang.com.modle.LoginModel;
 import healthy.tichuang.com.modle.ValidData;
 import healthy.tichuang.com.ui.base.BaseActivity;
 import healthy.tichuang.com.util.GsonHelper;
+import healthy.tichuang.com.util.ToastUtil;
 
 /**
  * Created by punisher on 2017/3/1.
@@ -185,12 +186,14 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         novate.call(apiService.loginApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
             @Override
             public void onError(Throwable e) {
-                Log.e("skay", "onError");
+                ToastUtil.show(AuthorLoginActivity.this,e.getMessage());
 
             }
 
             @Override
             public void onNext(BaseResponse testBean) {
+                ToastUtil.show(AuthorLoginActivity.this,testBean.msg+"");
+
                 Log.e("skay", "db" + testBean.msg + "<code>" + testBean.code);
             }
         });
@@ -252,12 +255,14 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         novate.call(apiService.registerApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
             @Override
             public void onError(Throwable e) {
-                Log.e("skay 注册db", "onError");
+                ToastUtil.show(AuthorLoginActivity.this,e.getMessage());
 
             }
 
             @Override
             public void onNext(BaseResponse testBean) {
+                ToastUtil.show(AuthorLoginActivity.this,testBean.msg+"");
+
                 Log.e("skay 注册db", "db" + testBean.msg + "<code>" + testBean.code);
             }
         });
