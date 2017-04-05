@@ -16,7 +16,11 @@ public class ModifyUserActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_user);
-        initToolBar("个人信息",R.drawable.chronic_disease_back);
+        initNoBackToolBar("个人信息", "保存", new OnCustomClickListener() {
+            @Override
+            public void onItemClick() {
 
+            }
+        });
     }
 }

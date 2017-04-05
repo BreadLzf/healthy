@@ -80,7 +80,7 @@ public class BaseActivity extends AppCompatActivity {
      * @param rightStr
      * @param listener
      */
-    public void initRightTextToolBar(String middleTitle, int leftSource, String rightStr, final OnCustomClickListener listener) {
+    public void initRightTextToolBar(int leftSource,String middleTitle,  String rightStr, final OnCustomClickListener listener) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.healthy_tool_text);
 
         ImageView back = (ImageView) toolbar.findViewById(R.id.healthy_tool_text_back);
