@@ -11,25 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.tamic.novate.Novate;
-import com.tamic.novate.Throwable;
 
-import java.util.HashMap;
-
-import healthy.tichuang.com.AppContents;
 import healthy.tichuang.com.android_handhoop.R;
-import healthy.tichuang.com.encryptutil.MD5Encrypt;
-import healthy.tichuang.com.modle.BaseResponse;
-import healthy.tichuang.com.modle.ExecuteData;
-import healthy.tichuang.com.modle.ValidData;
 import healthy.tichuang.com.ui.base.BaseActivity;
 import healthy.tichuang.com.ui.fragment.HealthyCircleFragment;
 import healthy.tichuang.com.ui.fragment.HealthyMangerFragment;
 import healthy.tichuang.com.ui.fragment.HomePageFragment;
 import healthy.tichuang.com.ui.fragment.SportRecoverFragment;
 import healthy.tichuang.com.ui.fragment.UserCenterFragment;
-import healthy.tichuang.com.util.AppHelper;
-import healthy.tichuang.com.util.GsonHelper;
 
 /**
  * Created by punisher on 2017/2/28.
@@ -256,131 +245,5 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener {
         user_center_tv.setTextColor(unSelectColor);
 
     }
-
-    private void testUrl() {
-        final Gson gson = new Gson();
-
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(MD5Encrypt.md5("1486954192"));
-        stringBuffer.append("5bbfd68e674314de6775c6efb3ee9d02");
-        String token = MD5Encrypt.md5(stringBuffer.toString());
-
-        ValidData validData = new ValidData();
-        validData.time = "1486954192";
-        validData.token = token;
-
-
-        ExecuteData executeData = new ExecuteData();
-        executeData.user_name = "沉洪浪";
-        executeData.password = "123456";
-
-        String validStr = gson.toJson(validData);
-        String execuStr = gson.toJson(executeData);
-
-
-    }
-
-
-    private void getmessagecode() {
-       String  validData =AppHelper.formatRequestValidData("");
-
-        ExecuteData executeData = new ExecuteData();
-        executeData.phone = "1383838438";
-
-        String validStr = GsonHelper.javaBeanToJson(validData);
-        String execuStr = GsonHelper.javaBeanToJson(executeData);
-
-
-
-    }
-
-
-    private void register() {
-        final Gson gson = new Gson();
-
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(MD5Encrypt.md5("1486954192"));
-        stringBuffer.append("23ce786d7846b95e9f14cc3391147e5e");
-        String token = MD5Encrypt.md5(stringBuffer.toString());
-
-        ValidData validData = new ValidData();
-        validData.time = "1486954192";
-        validData.token = token;
-
-
-        ExecuteData executeData = new ExecuteData();
-        executeData.login_name = "18951623490";
-        executeData.password = "123456";
-        executeData.vcode = "1234";
-
-        String validStr = gson.toJson(validData);
-        String execuStr = gson.toJson(executeData);
-
-
-
-
-        Novate novate = new Novate.Builder(this)
-                .baseUrl(AppContents.API_BASE_URL)
-                .build();
-        HashMap  m  = new HashMap();
-        novate.executePost("",  m ,new Novate.ResponseCallBack<BaseResponse>(){
-
-
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                e.getCode();
-
-            }
-
-            @Override
-            public void onSuccee(BaseResponse response) {
-
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-//        Call<BaseResponse> call = healthyApi.register(validStr, execuStr);
-//        call.enqueue(new Callback<BaseResponse>() {
-//            @Override
-//            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-//                BaseResponse testBean = response.body();
-//                Log.e("onResponse", "json" + gson.toJson(response.body()));
-//                Toast.makeText(HomeActivity.this, "json", Toast.LENGTH_LONG).show();
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<BaseResponse> call, Throwable t) {
-//
-//            }
-//        });
-    }
-
-
-
-   private   void testSkay(){
-
-   }
-
 }
 

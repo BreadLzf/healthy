@@ -8,7 +8,7 @@ import butterknife.ButterKnife;
 import healthy.tichuang.com.AppContents;
 import healthy.tichuang.com.android_handhoop.R;
 import healthy.tichuang.com.ui.base.BaseActivity;
-import healthy.tichuang.com.ui.home.HomeActivity;
+import healthy.tichuang.com.ui.login.AuthorLoginActivity;
 import healthy.tichuang.com.util.SharedPerfercecesUtil;
 
 public class SplashActivity extends BaseActivity {
@@ -35,7 +35,7 @@ public class SplashActivity extends BaseActivity {
 //                    intent =new Intent(SplashActivity.this, HomeActivity.class);
 //                }
 
-                intent = new Intent(SplashActivity.this, HomeActivity.class);
+                intent = new Intent(SplashActivity.this, AuthorLoginActivity.class);
                 startActivity(intent);
                 finish();
             }

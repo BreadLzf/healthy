@@ -1,55 +1,31 @@
 package healthy.tichuang.com.api;
 
+import android.content.Context;
+
+import com.tamic.novate.Novate;
+
+import healthy.tichuang.com.AppContents;
+import healthy.tichuang.com.modle.BaseResponse;
+import retrofit2.Call;
+
 /**
  * Created by punisher on 2017/3/2.
  */
 
 public class HealthyApi {
-//    public static HealthyApi instance;
-//    private HealthyApiService service;
-//
-//    public HealthyApi(OkHttpClient okHttpClient) {
-//
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(AppContents.API_BASE_URL)
-//                .addConverterFactory(GsonConverterFactory.create()) // 添加Gson转换器
-//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-//                .client(okHttpClient)
-//                .build();
-//        service = retrofit.create(HealthyApiService.class);
-//    }
-//
-//    public static HealthyApi getInstance() {
-//        OkHttpClient okHttpClient=new OkHttpClient();
-//        if (instance == null)
-//            instance = new HealthyApi(okHttpClient);
-//        return instance;
-//    }
-//
-//
-//
-//    public Call<BaseResponse> testApi(String  validData, String executeData) {
-//        return service.testApi(validData,executeData);
-//    }
-//
-//
-////    public Call<BaseResponse> login(String  validData, String executeData) {
-////        return service.loginApi(validData,executeData);
-////    }
-//
-//
-//
-//    public Call<BaseResponse> register(String  validData, String executeData) {
-//        return service.registerApi(validData,executeData);
-//    }
-//
-//
-//    public Call<BaseResponse> messageCode(String  validData, String executeData) {
-//        return service.messageCodeAPI(validData,executeData);
-//    }
+
+    private HealthyApiService service;
+    private Context context;
 
 
+    public HealthyApi(Context context) {
+        this.context = context;
+        Novate novate = new Novate.Builder(context).baseUrl(AppContents.API_BASE_URL).build();
+        service=novate.create(HealthyApiService.class);
+    }
 
-
+    public Call<BaseResponse> login(String validData, String executeData) {
+        return (Call<BaseResponse>) service.loginApi(validData, executeData);
+    }
 
 }

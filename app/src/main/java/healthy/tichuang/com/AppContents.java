@@ -6,7 +6,7 @@ package healthy.tichuang.com;
  */
 
 public class AppContents {
-    public static final String API_BASE_URL = "http://sk.51dh.com.cn";
+    public static final String API_BASE_URL = "http://hsm.oztechgroup.com";
 
     public static  String  FIRST_ENTER ="first_enter";
 

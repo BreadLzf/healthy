@@ -174,15 +174,16 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
 
 
         LoginModel login = new LoginModel();
-        login.setLogin_name("沈洪浪");
+        login.setLogin_name("18641371890");
         login.setPassword("123456");
         String twoStr = GsonHelper.javaBeanToJson(login);
 
-        Novate novate = new Novate.Builder(AuthorLoginActivity.this)
-                .baseUrl(AppContents.API_BASE_URL)
-                .build();
-        HealthyApiService apiService = novate.create(HealthyApiService.class);
 
+
+
+
+        Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
         novate.call(apiService.loginApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
             @Override
             public void onError(Throwable e) {
@@ -193,8 +194,6 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onNext(BaseResponse testBean) {
                 ToastUtil.show(AuthorLoginActivity.this,testBean.msg+"");
-
-                Log.e("skay", "db" + testBean.msg + "<code>" + testBean.code);
             }
         });
 
