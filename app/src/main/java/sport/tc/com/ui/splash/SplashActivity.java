@@ -8,7 +8,7 @@ import butterknife.ButterKnife;
 import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.ui.base.BaseActivity;
-import sport.tc.com.ui.home.HomeActivity;
+import sport.tc.com.ui.login.AuthorLoginActivity;
 import sport.tc.com.util.SharedPerfercecesUtil;
 
 public class SplashActivity extends BaseActivity {
@@ -35,7 +35,7 @@ public class SplashActivity extends BaseActivity {
 //                    intent =new Intent(SplashActivity.this, HomeActivity.class);
 //                }
 
-                intent = new Intent(SplashActivity.this, HomeActivity.class);
+                intent = new Intent(SplashActivity.this, AuthorLoginActivity.class);
                 startActivity(intent);
                 finish();
             }

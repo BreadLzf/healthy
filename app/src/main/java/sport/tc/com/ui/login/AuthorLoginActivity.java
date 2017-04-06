@@ -23,14 +23,16 @@ import sport.tc.com.AppContents;
 import sport.tc.com.Intents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
-import sport.tc.com.encryptutil.MD5Encrypt;
 import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.ExecuteData;
 import sport.tc.com.modle.LoginModel;
 import sport.tc.com.modle.ValidData;
 import sport.tc.com.ui.base.BaseActivity;
+import sport.tc.com.util.AppHelper;
 import sport.tc.com.util.GsonHelper;
 import sport.tc.com.util.ToastUtil;
+
+import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 
 /**
  * Created by punisher on 2017/3/1.
@@ -143,15 +145,45 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
                 break;
 
             //注册
-            case   R.id.register_confirm_btn:
+            case R.id.register_confirm_btn:
                 sendRegister();
                 break;
 
             //获取短信码
             case R.id.register_get_code_tv:
-
+                getCode();
                 break;
         }
+    }
+
+
+    private void getCode() {
+
+        ValidData validData = new ValidData();
+        validData.time = String.valueOf(System.currentTimeMillis());
+//        String oneStr= AppHelper.prouductValidData();
+
+
+        String oneStr= AppHelper.prouductValidData();
+        ExecuteData executeData = new ExecuteData();
+        executeData.phone = regist_phone_ed.getText().toString().trim();
+        String twoStr=GsonHelper.javaBeanToJson(executeData);
+
+        Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        novate.call(apiService.messageCodeAPI(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
+            @Override
+            public void onError(Throwable e) {
+                ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
+
+            }
+
+            @Override
+            public void onNext(BaseResponse testBean) {
+                ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
+            }
+        });
+
     }
 
     /**
@@ -162,24 +194,22 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         String passStr = login_pass_ed.getText().toString();
 
 
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(MD5Encrypt.md5("1486954192"));
-        stringBuffer.append("5bbfd68e674314de6775c6efb3ee9d02");
-        String token = MD5Encrypt.md5(stringBuffer.toString());
+//        StringBuffer stringBuffer = new StringBuffer();
+//        stringBuffer.append(MD5Encrypt.md5("1486954192"));
+//        stringBuffer.append("5bbfd68e674314de6775c6efb3ee9d02");
+//        String token = MD5Encrypt.md5(stringBuffer.toString());
 
-        ValidData validData = new ValidData();
-        validData.time = "1486954192";
-        validData.token = token;
-        String oneStr = GsonHelper.javaBeanToJson(validData);
+//        ValidData validData = new ValidData();
+//        validData.time = String.valueOf(System.currentTimeMillis());
+//        validData.token = AppHelper.prouductValidData();
+//        String oneStr = javaBeanToJson(validData);
+        String oneStr= AppHelper.prouductValidData();
 
 
         LoginModel login = new LoginModel();
         login.setLogin_name("18641371890");
         login.setPassword("123456");
-        String twoStr = GsonHelper.javaBeanToJson(login);
-
-
-
+        String twoStr = javaBeanToJson(login);
 
 
         Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
@@ -187,13 +217,13 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         novate.call(apiService.loginApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
             @Override
             public void onError(Throwable e) {
-                ToastUtil.show(AuthorLoginActivity.this,e.getMessage());
+                ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
 
             }
 
             @Override
             public void onNext(BaseResponse testBean) {
-                ToastUtil.show(AuthorLoginActivity.this,testBean.msg+"");
+                ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
             }
         });
 
@@ -226,25 +256,26 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
     private void sendRegister() {
         String phoneStr = regist_phone_ed.getText().toString();
         String codeStr = regist_code_ed.getText().toString();
-        String passStr =regist_pass_ed.getText().toString();
+        String passStr = regist_pass_ed.getText().toString();
 
 
-        StringBuffer stringBuffer = new StringBuffer();
-        stringBuffer.append(MD5Encrypt.md5("1486954192"));
-        stringBuffer.append("23ce786d7846b95e9f14cc3391147e5e");
-        String token = MD5Encrypt.md5(stringBuffer.toString());
+//        StringBuffer stringBuffer = new StringBuffer();
+//        stringBuffer.append(MD5Encrypt.md5("1486954192"));
+//        stringBuffer.append("23ce786d7846b95e9f14cc3391147e5e");
+//        String token = MD5Encrypt.md5(stringBuffer.toString());
 
-        ValidData validData = new ValidData();
-        validData.time = "1486954192";
-        validData.token = token;
-        String oneStr = GsonHelper.javaBeanToJson(validData);
+//        ValidData validData = new ValidData();
+//        validData.time = String.valueOf(System.currentTimeMillis());
+//        validData.token = AppHelper.prouductValidData();
+//        String oneStr = javaBeanToJson(validData);
 
+        String oneStr= AppHelper.prouductValidData();
 
         ExecuteData login = new ExecuteData();
-        login.login_name="沈洪浪";
-        login.password="123456";
-        login.vcode="1234";
-        String twoStr = GsonHelper.javaBeanToJson(login);
+        login.login_name = "18576759600";
+        login.password = "123456";
+        login.vcode = "1234";
+        String twoStr = javaBeanToJson(login);
 
         Novate novate = new Novate.Builder(AuthorLoginActivity.this)
                 .baseUrl(AppContents.API_BASE_URL)
@@ -254,18 +285,17 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         novate.call(apiService.registerApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
             @Override
             public void onError(Throwable e) {
-                ToastUtil.show(AuthorLoginActivity.this,e.getMessage());
+                ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
 
             }
 
             @Override
             public void onNext(BaseResponse testBean) {
-                ToastUtil.show(AuthorLoginActivity.this,testBean.msg+"");
+                ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
 
                 Log.e("skay 注册db", "db" + testBean.msg + "<code>" + testBean.code);
             }
         });
-
 
 
     }
@@ -300,9 +330,9 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             boolean regist_code = regist_code_ed.getEditableText().toString().trim().length() > 0;
             boolean regist_pass = regist_pass_ed.getEditableText().toString().trim().length() > 0;
 
-            if (regist_phone&&regist_code&&regist_pass){
+            if (regist_phone && regist_code && regist_pass) {
                 regist_confirm_btn.setEnabled(true);
-            }else{
+            } else {
                 regist_confirm_btn.setEnabled(false);
             }
         }
