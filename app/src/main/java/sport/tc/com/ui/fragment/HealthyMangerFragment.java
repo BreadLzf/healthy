@@ -22,8 +22,6 @@ import sport.tc.com.ui.base.BaseFragment;
 
 public class HealthyMangerFragment extends BaseFragment {
     private View rootView;
-//    private HealthyCircleView  mHealthyCircleView;
-    private  boolean isInit=false;
 
     public static HealthyMangerFragment newInstance() {
         return new HealthyMangerFragment();

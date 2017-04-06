@@ -9,8 +9,11 @@ import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.PaintFlagsDrawFilter;
+import android.graphics.Path;
+import android.graphics.PathDashPathEffect;
 import android.graphics.PathEffect;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -29,8 +32,12 @@ public class HealthyView  extends View{
 
 
 
-    private Paint mPaint = new Paint();
+    private Paint mPaint;
+    private Paint  arrowPaint;
+    private  Paint iconPaint;
     private PaintFlagsDrawFilter pfd;
+    private String bgCycle = "#FFE1FF";
+
 
     private int startMenu;   //菜单的第一张图片的资源id
 
@@ -81,12 +88,24 @@ public class HealthyView  extends View{
 
     public HealthyView(Context context, AttributeSet attrs) {
         super(context,attrs);
+
         if(attrs!=null){
             TypedArray a = getContext().obtainStyledAttributes(attrs,
                     R.styleable.RoundSpinView);
             startMenu = a.getResourceId(R.styleable.RoundSpinView_menuStart, 0);
         }
         pfd = new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
+        initPaint();
+        quadrantTouched = new boolean[] { false, false, false, false, false };
+        mGestureDetector = new GestureDetector(getContext(), new MyGestureListener());
+
+        setupStones();
+    }
+
+
+
+    private  void  initPaint(){
+        mPaint = new Paint();
         mPaint.setColor(Color.WHITE);
         mPaint.setStrokeWidth(2);
         mPaint.setAntiAlias(true); //消除锯齿
@@ -94,12 +113,26 @@ public class HealthyView  extends View{
         PathEffect effects = new DashPathEffect(new float[]{5,5,5,5},1);
         mPaint.setPathEffect(effects);
 
+        arrowPaint = new Paint();
+        arrowPaint.setAntiAlias(true);
+        arrowPaint.setColor(Color.parseColor(bgCycle));
+        PathDashPathEffect effect2 = new PathDashPathEffect(getPath(), 105, 0, PathDashPathEffect.Style.ROTATE);
+        arrowPaint.setPathEffect(effect2);
+        iconPaint = new Paint();
 
-        quadrantTouched = new boolean[] { false, false, false, false, false };
-        mGestureDetector = new GestureDetector(getContext(),
-                new MyGestureListener());
+    }
 
-        setupStones();
+
+    /** 画三角形
+     * @return
+     */
+    private Path getPath(){
+        Path path = new Path();
+        path.moveTo(0, 0);
+        path.lineTo(0, 20f);
+        path.lineTo(17.32f, 10f);
+        path.close();
+        return path ;
     }
 
     @Override
@@ -328,14 +361,76 @@ public class HealthyView  extends View{
     public void onDraw(Canvas canvas) {
         //画一个白色的圆环
         canvas.drawCircle(mPointX, mPointY, mRadius, mPaint);
+        drawBgCycleArrow(canvas, arrowPaint);
+        drawCenterIcon(canvas, iconPaint);
 
         //将每个菜单画出来
         for (int index = 0; index < STONE_COUNT; index++) {
             if (!mStones[index].isVisible)
                 continue;
             drawInCenter(canvas, mStones[index].bitmap, mStones[index].x, mStones[index].y);
+            Log.e("point","x>>"+mStones[index].x+ "<<<<y>>>"+mStones[index].y);
+
         }
+
     }
+
+
+    /**
+     * 画背景箭头
+     * @param canvas
+     */
+    private void drawBgCycleArrow(Canvas canvas, Paint paint){
+        canvas.drawCircle(mPointX, mPointY, mRadius+10, paint);
+    }
+
+    private void drawCenterIcon(Canvas canvas, Paint paint){
+        Bitmap mBitmap = ((BitmapDrawable) getResources().getDrawable(R.drawable.home_body_open)).getBitmap();
+        canvas.drawBitmap(mBitmap, mPointX-mBitmap.getWidth()/2, mPointY-mBitmap.getHeight()/2, paint);
+        drawMyText(canvas, "开启健康之路", mPointX, mPointY+mBitmap.getHeight()/2);
+    }
+
+
+    private void drawMyText(Canvas canvas, String text, int offsetX, int offsetY){
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setTextSize(40);
+        paint.setColor(Color.BLACK);
+        Paint.FontMetricsInt fontMetrics = paint.getFontMetricsInt();
+
+        int textHeight = (int)Math.ceil(paint.getFontMetricsInt().descent - paint.getFontMetricsInt().ascent);
+        int textWidth = getTextWidth(paint, text) ;
+
+        Rect targetRect = new Rect(offsetX-textWidth/2, offsetY, offsetX+textWidth/2, offsetY+textHeight);
+
+        // 转载请注明出处：http://blog.csdn.net/hursing
+        int baseline = (targetRect.bottom + targetRect.top - fontMetrics.bottom - fontMetrics.top) / 2;
+        // 下面这行是实现水平居中，drawText对应改为传入targetRect.centerX()
+        paint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText(text, targetRect.centerX(), baseline, paint);
+    }
+
+
+
+
+    /**
+     * 计算文字总长度
+     * @param paint
+     * @param str
+     * @return
+     */
+    private int getTextWidth(Paint paint, String str) {
+        int iRet = 0;
+        if (str != null && str.length() > 0) {
+            int len = str.length();
+            float[] widths = new float[len];
+            paint.getTextWidths(str, widths);
+            for (int j = 0; j < len; j++) {
+                iRet += (int) Math.ceil(widths[j]);
+            }
+        }
+        return iRet;
+    }
+
 
     /**
      * 把中心点放到中心处
