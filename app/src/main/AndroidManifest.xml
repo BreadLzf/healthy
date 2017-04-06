@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="healthy.tichuang.com.android_handhoop">
+          package="sport.tc.com.android_handhoop">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/login_regist_head"
+        android:icon="${app_icon}"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:largeHeap="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name="healthy.tichuang.com.ui.splash.SplashActivity"
+        <activity android:name="sport.tc.com.ui.splash.SplashActivity"
                   android:theme="@style/MyTheme"
             >
             <intent-filter>
@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.home.HomeActivity"
+            android:name="sport.tc.com.ui.home.HomeActivity"
             android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait"/>
@@ -32,72 +32,72 @@
 
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.ModifyUserActivity"
+            android:name="sport.tc.com.ui.activity.ModifyUserActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="healthy.tichuang.com.ui.activity.HealthyFamilyActivity"
+            android:name="sport.tc.com.ui.activity.HealthyFamilyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             />
 
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.MyHealthyFamilyActivity"
+            android:name="sport.tc.com.ui.activity.MyHealthyFamilyActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.MyHealthyMangerActivity"
+            android:name="sport.tc.com.ui.activity.MyHealthyMangerActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.MyCollectActivity"
+            android:name="sport.tc.com.ui.activity.MyCollectActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.MyExpertActivity"
+            android:name="sport.tc.com.ui.activity.MyExpertActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.MyReserveActivity"
+            android:name="sport.tc.com.ui.activity.MyReserveActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.MyNewsActivity"
+            android:name="sport.tc.com.ui.activity.MyNewsActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.MySettingActivity"
+            android:name="sport.tc.com.ui.activity.MySettingActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.login.AuthorLoginActivity"
+            android:name="sport.tc.com.ui.login.AuthorLoginActivity"
             android:launchMode="standard"
             ></activity>
         <activity
-            android:name="healthy.tichuang.com.ui.activity.NapeDetailActivity"
+            android:name="sport.tc.com.ui.activity.NapeDetailActivity"
             android:launchMode="standard"
             ></activity>
 
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.NapeListActivity"
-            android:launchMode="standard"
-            ></activity>
-
-        <activity
-            android:name="healthy.tichuang.com.ui.activity.ActiveActivity"
+            android:name="sport.tc.com.ui.activity.NapeListActivity"
             android:launchMode="standard"
             ></activity>
 
         <activity
-            android:name="healthy.tichuang.com.ui.activity.FeedBackActivity"
+            android:name="sport.tc.com.ui.activity.ActiveActivity"
+            android:launchMode="standard"
+            ></activity>
+
+        <activity
+            android:name="sport.tc.com.ui.activity.FeedBackActivity"
             android:launchMode="standard"
             ></activity>
 
