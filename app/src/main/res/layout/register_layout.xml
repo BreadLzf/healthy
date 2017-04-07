@@ -28,7 +28,6 @@
             android:layout_marginTop="@dimen/dp_24"
             android:background="@null"
             android:hint="请输入手机号"
-            android:text="18951623490"
             android:textColorHint="@color/grey"
             />
 
@@ -64,8 +63,7 @@
             android:layout_marginTop="24dp"
             android:layout_toRightOf="@id/login_phone_img"
             android:background="@null"
-            android:hint="452623"
-            android:text="1234"
+            android:hint="输入验证码"
             android:textColorHint="@color/grey"
             />
 

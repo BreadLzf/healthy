@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,11 +22,12 @@ import sport.tc.com.AppContents;
 import sport.tc.com.Intents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
+import sport.tc.com.modle.Account;
 import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.ExecuteData;
 import sport.tc.com.modle.LoginModel;
-import sport.tc.com.modle.ValidData;
 import sport.tc.com.ui.base.BaseActivity;
+import sport.tc.com.ui.home.HomeActivity;
 import sport.tc.com.util.AppHelper;
 import sport.tc.com.util.GsonHelper;
 import sport.tc.com.util.ToastUtil;
@@ -87,8 +87,7 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         login_pass_ed = (EditText) findViewById(R.id.login_pass_edit);
         login_confrim_btn = (Button) findViewById(R.id.login_confirm_btn);
         login_forget_pass_tv = (TextView) findViewById(R.id.login_forget_pass_tv);
-        login_phone_ed.addTextChangedListener(watcher);
-        login_pass_ed.addTextChangedListener(watcher);
+
         login_forget_pass_tv.setOnClickListener(this);
         login_confrim_btn.setOnClickListener(this);
 
@@ -100,9 +99,6 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         regist_pass_ed = (EditText) findViewById(R.id.register_pass_edit);
         regist_confirm_btn = (Button) findViewById(R.id.register_confirm_btn);
 
-        regist_phone_ed.addTextChangedListener(watcher);
-        regist_code_ed.addTextChangedListener(watcher);
-        regist_pass_ed.addTextChangedListener(watcher);
 
         regist_confirm_btn.setOnClickListener(this);
         regist_code_tv.setOnClickListener(this);
@@ -159,15 +155,21 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
 
     private void getCode() {
 
-        ValidData validData = new ValidData();
-        validData.time = String.valueOf(System.currentTimeMillis());
-//        String oneStr= AppHelper.prouductValidData();
+        String phone = regist_phone_ed.getText().toString().trim();
+        if (phone.isEmpty()) {
+            ToastUtil.show(AuthorLoginActivity.this, "手机号码不能为空");
+        }
+
+        if (!phone.isEmpty() && !AppHelper.isPhoneNumber(phone)) {
+            ToastUtil.show(AuthorLoginActivity.this, "手机号码格式不正确");
+
+        }
 
 
-        String oneStr= AppHelper.prouductValidData();
+        String oneStr = AppHelper.prouductValidData();
         ExecuteData executeData = new ExecuteData();
         executeData.phone = regist_phone_ed.getText().toString().trim();
-        String twoStr=GsonHelper.javaBeanToJson(executeData);
+        String twoStr = GsonHelper.javaBeanToJson(executeData);
 
         Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
@@ -192,29 +194,28 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
     private void phoneLogin() {
         String phoneStr = login_phone_ed.getText().toString();
         String passStr = login_pass_ed.getText().toString();
+        if (phoneStr.isEmpty()) {
+            ToastUtil.show(AuthorLoginActivity.this, "手机号码不能为空");
+            return;
+        }
+        if (passStr.isEmpty()) {
+            ToastUtil.show(AuthorLoginActivity.this, "密码不能为空");
+        }
+        if (!phoneStr.isEmpty() && !AppHelper.isPhoneNumber(phoneStr)) {
+            ToastUtil.show(AuthorLoginActivity.this, "手机号码格式不正确");
+            return;
+        }
 
-
-//        StringBuffer stringBuffer = new StringBuffer();
-//        stringBuffer.append(MD5Encrypt.md5("1486954192"));
-//        stringBuffer.append("5bbfd68e674314de6775c6efb3ee9d02");
-//        String token = MD5Encrypt.md5(stringBuffer.toString());
-
-//        ValidData validData = new ValidData();
-//        validData.time = String.valueOf(System.currentTimeMillis());
-//        validData.token = AppHelper.prouductValidData();
-//        String oneStr = javaBeanToJson(validData);
-        String oneStr= AppHelper.prouductValidData();
-
+        String oneStr = AppHelper.prouductValidData();
 
         LoginModel login = new LoginModel();
-        login.setLogin_name("18641371890");
-        login.setPassword("123456");
+        login.setLogin_name(phoneStr);
+        login.setPassword(passStr);
         String twoStr = javaBeanToJson(login);
-
 
         Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.loginApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
+        novate.call(apiService.loginApi(oneStr, twoStr), new BaseSubscriber<Account>(this) {
             @Override
             public void onError(Throwable e) {
                 ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
@@ -222,33 +223,16 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             }
 
             @Override
-            public void onNext(BaseResponse testBean) {
-                ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
+            public void onNext(Account account) {
+                ToastUtil.show(AuthorLoginActivity.this, account.getCode() + "");
+                if (account != null && account.getCode().equals("000")) {
+                    Intent intent = new Intent(AuthorLoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                } else {
+
+                }
             }
         });
-
-
-//        novate.executePost("/api/user-login",map,new  Novate.ResponseCallBack< BaseResponse>(){
-//            @Override
-//            public void onStart() {
-//
-//            }
-//
-//            @Override
-//            public void onCompleted() {
-//
-//            }
-//
-//            @Override
-//            public void onError(Throwable e) {
-//
-//            }
-//
-//            @Override
-//            public void onSuccee(BaseResponse response) {
-//
-//            }
-//        });
 
     }
 
@@ -258,23 +242,34 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         String codeStr = regist_code_ed.getText().toString();
         String passStr = regist_pass_ed.getText().toString();
 
+        if (phoneStr.isEmpty()) {
+            ToastUtil.show(AuthorLoginActivity.this, "手机号码不能为空");
+            return;
+        }
+        if (!phoneStr.isEmpty() && !AppHelper.isPhoneNumber(phoneStr)) {
+            ToastUtil.show(AuthorLoginActivity.this, "手机号码格式不正确");
+            return;
+        }
 
-//        StringBuffer stringBuffer = new StringBuffer();
-//        stringBuffer.append(MD5Encrypt.md5("1486954192"));
-//        stringBuffer.append("23ce786d7846b95e9f14cc3391147e5e");
-//        String token = MD5Encrypt.md5(stringBuffer.toString());
+        if (codeStr.isEmpty()) {
+            ToastUtil.show(AuthorLoginActivity.this, "验证码不能为空");
+            return;
+        }
 
-//        ValidData validData = new ValidData();
-//        validData.time = String.valueOf(System.currentTimeMillis());
-//        validData.token = AppHelper.prouductValidData();
-//        String oneStr = javaBeanToJson(validData);
+        if(!codeStr.isEmpty()&&codeStr.length()<3){
+            ToastUtil.show(AuthorLoginActivity.this, "验证码格式不正确");
+        }
 
-        String oneStr= AppHelper.prouductValidData();
+        if (passStr.isEmpty()) {
+            ToastUtil.show(AuthorLoginActivity.this, "密码不能为空");
+            return;
+        }
 
+        String oneStr = AppHelper.prouductValidData();
         ExecuteData login = new ExecuteData();
-        login.login_name = "18576759600";
-        login.password = "123456";
-        login.vcode = "1234";
+        login.login_name = phoneStr;
+        login.password = passStr;
+        login.vcode = codeStr;
         String twoStr = javaBeanToJson(login);
 
         Novate novate = new Novate.Builder(AuthorLoginActivity.this)
@@ -292,8 +287,6 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void onNext(BaseResponse testBean) {
                 ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
-
-                Log.e("skay 注册db", "db" + testBean.msg + "<code>" + testBean.code);
             }
         });
 
@@ -325,16 +318,16 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             } else {
                 login_confrim_btn.setEnabled(false);
             }
+//
+//            boolean regist_phone = regist_phone_ed.getEditableText().toString().trim().length() > 0;
+//            boolean regist_code = regist_code_ed.getEditableText().toString().trim().length() > 0;
+//            boolean regist_pass = regist_pass_ed.getEditableText().toString().trim().length() > 0;
 
-            boolean regist_phone = regist_phone_ed.getEditableText().toString().trim().length() > 0;
-            boolean regist_code = regist_code_ed.getEditableText().toString().trim().length() > 0;
-            boolean regist_pass = regist_pass_ed.getEditableText().toString().trim().length() > 0;
-
-            if (regist_phone && regist_code && regist_pass) {
-                regist_confirm_btn.setEnabled(true);
-            } else {
-                regist_confirm_btn.setEnabled(false);
-            }
+//            if (regist_phone && regist_code && regist_pass) {
+//                regist_confirm_btn.setEnabled(true);
+//            } else {
+//                regist_confirm_btn.setEnabled(false);
+//            }
         }
     }
 
