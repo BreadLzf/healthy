@@ -158,33 +158,36 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         String phone = regist_phone_ed.getText().toString().trim();
         if (phone.isEmpty()) {
             ToastUtil.show(AuthorLoginActivity.this, "手机号码不能为空");
+            return;
         }
 
         if (!phone.isEmpty() && !AppHelper.isPhoneNumber(phone)) {
             ToastUtil.show(AuthorLoginActivity.this, "手机号码格式不正确");
-
+            return;
         }
 
+        if(!phone.isEmpty()&&AppHelper.isPhoneNumber(phone)){
+            String oneStr = AppHelper.prouductValidData();
+            ExecuteData executeData = new ExecuteData();
+            executeData.phone = regist_phone_ed.getText().toString().trim();
+            String twoStr = GsonHelper.javaBeanToJson(executeData);
 
-        String oneStr = AppHelper.prouductValidData();
-        ExecuteData executeData = new ExecuteData();
-        executeData.phone = regist_phone_ed.getText().toString().trim();
-        String twoStr = GsonHelper.javaBeanToJson(executeData);
+            Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
+            HealthyApiService apiService = novate.create(HealthyApiService.class);
 
-        Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
-        HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.messageCodeAPI(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
-            @Override
-            public void onError(Throwable e) {
-                ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
+            novate.call(apiService.messageCodeAPI(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
+                @Override
+                public void onError(Throwable e) {
+                    ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
 
-            }
+                }
 
-            @Override
-            public void onNext(BaseResponse testBean) {
-                ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
-            }
-        });
+                @Override
+                public void onNext(BaseResponse testBean) {
+                    ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
+                }
+            });
+        }
 
     }
 
@@ -206,34 +209,35 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             return;
         }
 
-        String oneStr = AppHelper.prouductValidData();
+        if (!phoneStr.isEmpty()&&AppHelper.isPhoneNumber(phoneStr)&&!passStr.isEmpty()){
+            String oneStr = AppHelper.prouductValidData();
+            LoginModel login = new LoginModel();
+            login.setLogin_name(phoneStr);
+            login.setPassword(passStr);
+            String twoStr = javaBeanToJson(login);
 
-        LoginModel login = new LoginModel();
-        login.setLogin_name(phoneStr);
-        login.setPassword(passStr);
-        String twoStr = javaBeanToJson(login);
-
-        Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
-        HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.loginApi(oneStr, twoStr), new BaseSubscriber<Account>(this) {
-            @Override
-            public void onError(Throwable e) {
-                ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
-
-            }
-
-            @Override
-            public void onNext(Account account) {
-                ToastUtil.show(AuthorLoginActivity.this, account.getCode() + "");
-                if (account != null && account.getCode().equals("000")) {
-                    Intent intent = new Intent(AuthorLoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                } else {
+            Novate novate = new Novate.Builder(AuthorLoginActivity.this).baseUrl(AppContents.API_BASE_URL).build();
+            HealthyApiService apiService = novate.create(HealthyApiService.class);
+            novate.call(apiService.loginApi(oneStr, twoStr), new BaseSubscriber<Account>(this) {
+                @Override
+                public void onError(Throwable e) {
+                    ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
 
                 }
-            }
-        });
 
+                @Override
+                public void onNext(Account account) {
+                    ToastUtil.show(AuthorLoginActivity.this, account.getCode() + "");
+                    if (account != null && account.getCode().equals("000")) {
+                        Intent intent = new Intent(AuthorLoginActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+
+                    }
+                }
+            });
+        }
     }
 
 
@@ -256,8 +260,9 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             return;
         }
 
-        if(!codeStr.isEmpty()&&codeStr.length()<3){
+        if (!codeStr.isEmpty() && codeStr.length() < 3) {
             ToastUtil.show(AuthorLoginActivity.this, "验证码格式不正确");
+            return;
         }
 
         if (passStr.isEmpty()) {
@@ -265,32 +270,33 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             return;
         }
 
-        String oneStr = AppHelper.prouductValidData();
-        ExecuteData login = new ExecuteData();
-        login.login_name = phoneStr;
-        login.password = passStr;
-        login.vcode = codeStr;
-        String twoStr = javaBeanToJson(login);
 
-        Novate novate = new Novate.Builder(AuthorLoginActivity.this)
-                .baseUrl(AppContents.API_BASE_URL)
-                .build();
-        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        if (!passStr.isEmpty()&&!phoneStr.isEmpty()&&AppHelper.isPhoneNumber(phoneStr)){
+            String oneStr = AppHelper.prouductValidData();
+            ExecuteData login = new ExecuteData();
+            login.login_name = phoneStr;
+            login.password = passStr;
+            login.vcode = codeStr;
+            String twoStr = javaBeanToJson(login);
 
-        novate.call(apiService.registerApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
-            @Override
-            public void onError(Throwable e) {
-                ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
+            Novate novate = new Novate.Builder(AuthorLoginActivity.this)
+                    .baseUrl(AppContents.API_BASE_URL)
+                    .build();
+            HealthyApiService apiService = novate.create(HealthyApiService.class);
 
-            }
+            novate.call(apiService.registerApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
+                @Override
+                public void onError(Throwable e) {
+                    ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
 
-            @Override
-            public void onNext(BaseResponse testBean) {
-                ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
-            }
-        });
+                }
 
-
+                @Override
+                public void onNext(BaseResponse testBean) {
+                    ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
+                }
+            });
+        }
     }
 
 
@@ -318,18 +324,6 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             } else {
                 login_confrim_btn.setEnabled(false);
             }
-//
-//            boolean regist_phone = regist_phone_ed.getEditableText().toString().trim().length() > 0;
-//            boolean regist_code = regist_code_ed.getEditableText().toString().trim().length() > 0;
-//            boolean regist_pass = regist_pass_ed.getEditableText().toString().trim().length() > 0;
-
-//            if (regist_phone && regist_code && regist_pass) {
-//                regist_confirm_btn.setEnabled(true);
-//            } else {
-//                regist_confirm_btn.setEnabled(false);
-//            }
         }
     }
-
-
 }
