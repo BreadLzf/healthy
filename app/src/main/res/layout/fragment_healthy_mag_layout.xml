@@ -1,46 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
     >
 
-    <include layout="@layout/custom_no_back_toolbar"/>
+    <include
+        android:id="@+id/title"
+        layout="@layout/custom_no_back_toolbar"/>
 
-
-    <!--
-    -->
-    <!--<sport.tc.com.customview.CustomView-->
-    <!--android:id="@+id/healthy_circle_view"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_alignParentLeft="true"-->
-    <!--android:layout_alignParentStart="true" />-->
-
-
-    <sport.tc.com.customview.HealthyView
-        android:id="@+id/rsv_test"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:background="@drawable/menubkground"
-        app:menuStart="@drawable/menu1"
-        />
 
     <RelativeLayout
+        android:id="@+id/title_below"
         android:layout_width="match_parent"
         android:layout_height="29.5dp"
+        android:layout_below="@+id/title"
         android:background="@color/grey"
-        android:visibility="gone"
+        android:visibility="visible"
         >
 
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -60,62 +41,35 @@
             />
     </RelativeLayout>
 
-
-    <LinearLayout
+    <sport.tc.com.customview.CircleMenuLayout
+        android:id="@+id/custom_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_below"
         >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="体质健康测评"
-            />
+        <FrameLayout
+            android:id="@id/id_circle_menu_item_center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
 
+            <ImageView
+                android:id="@+id/id_circle_item_center_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/home_body_open"
+                />
+        </FrameLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="慢性病评估"
-            />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="运动风险评估"
-            />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="锁定健康目标"
-            />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="运动处方"
-            />
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="开启健康之路"
-            />
-
-    </LinearLayout>
+    </sport.tc.com.customview.CircleMenuLayout>
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:paddingBottom="21dp"
         >
 
@@ -157,4 +111,4 @@
 
 
     </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

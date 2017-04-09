@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,15 +78,7 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
         });
     }
 
-    //
-    @Override
-    protected void loadData() {
-        if (!isPrepared || !isVisible()) {
-            return;
-        } else {
-            Log.e("SportRecoverFragment", "请求");
-        }
-    }
+
 
     @Override
     public void onClick(View v) {

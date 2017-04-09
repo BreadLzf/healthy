@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import sport.tc.com.android_handhoop.R;
+import sport.tc.com.customview.CircleMenuLayout;
 import sport.tc.com.ui.base.BaseFragment;
 
 //import healthy.tichuang.com.customview.HealthyCircleView;
@@ -22,6 +22,16 @@ import sport.tc.com.ui.base.BaseFragment;
 
 public class HealthyMangerFragment extends BaseFragment {
     private View rootView;
+
+
+    private CircleMenuLayout mCircleMenuLayout;
+
+    private String[] mItemTexts = new String[] { "体质健康测评 ", "慢病评估", "运动风险评估",
+            "锁定健康目标", "运动处方" };
+    private int[] mItemImgs = new int[] { R.drawable.home_body_healthy,
+            R.drawable.home_body_chronic, R.drawable.home_body_sport,
+            R.drawable.home_body_lock, R.drawable.home_body_chu};
+
 
     public static HealthyMangerFragment newInstance() {
         return new HealthyMangerFragment();
@@ -41,17 +51,28 @@ public class HealthyMangerFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         initView(inflater, container);
-        isPrepared=true;
-        loadData();
-
         return rootView;
     }
 
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_healthy_mag_layout, container, false);
+        mCircleMenuLayout = (CircleMenuLayout)rootView.findViewById(R.id.custom_view);
+        mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
+        mCircleMenuLayout.setRotateDrawable(getResources().getDrawable(R.drawable.round));
+        mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
+            @Override
+            public void itemClick(View view, int pos) {
+                Toast.makeText(getActivity(),mItemTexts[pos],Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void itemCenterClick(View view) {
+                Toast.makeText(getActivity(),"点击中心",Toast.LENGTH_SHORT).show();
+
+            }
+        });
         initToolBar();
 
     }
@@ -74,12 +95,5 @@ public class HealthyMangerFragment extends BaseFragment {
     }
 
 
-    @Override
-    protected void loadData() {
-        if (!isPrepared||!isVisible()){
-            return;
-        }else {
-            Log.e("HealthyMangerFragment","请求");
-        }
-    }
+
 }

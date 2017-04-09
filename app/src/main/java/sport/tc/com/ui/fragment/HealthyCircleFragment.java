@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,15 +63,6 @@ public class HealthyCircleFragment extends BaseFragment {
         middle.setTextColor(Color.parseColor("#e5e5e5"));
     }
 
-
-    @Override
-    protected void loadData() {
-        if (!isPrepared || !isVisible()) {
-            return;
-        } else {
-            Log.e("HealthyCircleFragment", "请求");
-        }
-    }
 
 
     private void initView(Activity context) {

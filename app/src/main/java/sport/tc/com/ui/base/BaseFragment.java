@@ -26,33 +26,4 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVisibleHint()) {
-            isVisble = true;
-            onVisible();
-        } else {
-            isVisble = false;
-            onInVisible();
-        }
-    }
-
-
-    protected void onInVisible() {
-        loadData();
-    }
-
-    protected void onVisible() {
-        //加载数据
-        loadData();
-    }
-
-    protected abstract void loadData();
-
-
-
-
-
 }

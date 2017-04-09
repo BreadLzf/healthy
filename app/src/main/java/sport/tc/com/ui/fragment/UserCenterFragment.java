@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +62,6 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         mActivity = getActivity();
         initView(inflater, container);
         initClick();
-        loadData();
         return rootView;
     }
 
@@ -154,13 +152,4 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         }
     }
 
-
-    @Override
-    protected void loadData() {
-        if (!isPrepared || isVisible()) {
-            return;
-        } else {
-            Log.e("UserCenterFragment", "请求");
-        }
-    }
 }
