@@ -60,4 +60,15 @@ public interface HealthyApiService {
     Observable<Account> modifyUserApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
+    /**
+     * 文章列表
+     * @param validData
+     * @param executeData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-article-list")
+    Observable<BaseResponse> artcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
 }

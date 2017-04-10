@@ -107,7 +107,6 @@ public class HealthyCircleFragment extends BaseFragment {
 
         try {
             Intent  feedIntent =new Intent(context, FeedBackActivity.class);
-
             healthyContainer.addView(new HealthyItem(context, "意见反馈", "我们耐心倾听您的每一个反馈", R.drawable.healthy_feed, feedIntent, true));
         } catch (Exception e) {
             e.printStackTrace();

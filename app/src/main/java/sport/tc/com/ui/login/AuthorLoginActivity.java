@@ -30,6 +30,7 @@ import sport.tc.com.ui.base.BaseActivity;
 import sport.tc.com.ui.home.HomeActivity;
 import sport.tc.com.util.AppHelper;
 import sport.tc.com.util.GsonHelper;
+import sport.tc.com.util.SharedPerfercecesUtil;
 import sport.tc.com.util.ToastUtil;
 
 import static sport.tc.com.util.GsonHelper.javaBeanToJson;
@@ -167,7 +168,7 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         }
 
         if(!phone.isEmpty()&&AppHelper.isPhoneNumber(phone)){
-            String oneStr = AppHelper.prouductValidData();
+            String oneStr = AppHelper.prouductValidData(this);
             ExecuteData executeData = new ExecuteData();
             executeData.phone = regist_phone_ed.getText().toString().trim();
             String twoStr = GsonHelper.javaBeanToJson(executeData);
@@ -210,7 +211,7 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
         }
 
         if (!phoneStr.isEmpty()&&AppHelper.isPhoneNumber(phoneStr)&&!passStr.isEmpty()){
-            String oneStr = AppHelper.prouductValidData();
+            String oneStr = AppHelper.prouductValidData(this);
             LoginModel login = new LoginModel();
             login.setLogin_name(phoneStr);
             login.setPassword(passStr);
@@ -229,6 +230,8 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
                 public void onNext(Account account) {
                     ToastUtil.show(AuthorLoginActivity.this, account.getCode() + "");
                     if (account != null && account.getCode().equals("000")) {
+
+                        SharedPerfercecesUtil.put(AuthorLoginActivity.this,AppContents.USER_IDENT,account.getData().getUser_identity());
                         Intent intent = new Intent(AuthorLoginActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
@@ -272,7 +275,7 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
 
 
         if (!passStr.isEmpty()&&!phoneStr.isEmpty()&&AppHelper.isPhoneNumber(phoneStr)){
-            String oneStr = AppHelper.prouductValidData();
+            String oneStr = AppHelper.prouductValidData(this);
             ExecuteData login = new ExecuteData();
             login.login_name = phoneStr;
             login.password = passStr;
@@ -287,13 +290,12 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
             novate.call(apiService.registerApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
                 @Override
                 public void onError(Throwable e) {
-                    ToastUtil.show(AuthorLoginActivity.this, e.getMessage());
 
                 }
 
                 @Override
                 public void onNext(BaseResponse testBean) {
-                    ToastUtil.show(AuthorLoginActivity.this, testBean.msg + "");
+
                 }
             });
         }
