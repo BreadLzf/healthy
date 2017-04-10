@@ -57,7 +57,7 @@ public interface HealthyApiService {
      */
     @FormUrlEncoded
     @POST ("api/set-user-info")
-    Observable<Account> modifyUserApi(@Field("validData") String validData, @Field("executeData") String executeData);
+    Observable<BaseResponse> modifyUserApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
     /**

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import sport.tc.com.android_handhoop.R;
@@ -24,11 +25,12 @@ public class BaseActivity extends AppCompatActivity {
      */
     public void initToolBar(String middleTitle, int leftSource) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.healthy_normal_toolbar);
+        LinearLayout layout =(LinearLayout) toolbar.findViewById(R.id.custom_tool_left_layout);
         ImageView imageView = (ImageView) toolbar.findViewById(R.id.custom_tool_left_back);
         TextView textView = (TextView) toolbar.findViewById(R.id.custom_tool_middle_title);
         imageView.setImageResource(leftSource);
         textView.setText(middleTitle);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -83,15 +85,17 @@ public class BaseActivity extends AppCompatActivity {
     public void initRightTextToolBar(int leftSource,String middleTitle,  String rightStr, final OnCustomClickListener listener) {
         Toolbar toolbar = (Toolbar) findViewById(R.id.healthy_tool_text);
 
-        ImageView back = (ImageView) toolbar.findViewById(R.id.healthy_tool_text_back);
+        LinearLayout backLayout = (LinearLayout) toolbar.findViewById(R.id.healthy_tool_layout);
+        ImageView backImg = (ImageView) toolbar.findViewById(R.id.healthy_tool_text_back);
+
         TextView textView = (TextView) toolbar.findViewById(R.id.healthy_tool_text_title);
         TextView rightTv = (TextView) toolbar.findViewById(R.id.healthy_tool_text_msg);
 
-        back.setImageResource(leftSource);
+        backImg.setImageResource(leftSource);
         textView.setText(middleTitle);
         rightTv.setText(rightStr);
 
-        back.setOnClickListener(new View.OnClickListener() {
+        backLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();

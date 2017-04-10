@@ -67,10 +67,11 @@ public class HealthyCircleFragment extends BaseFragment {
 
     private void initView(Activity context) {
 
-        Intent  shouldIntent =new Intent( context,NapeListActivity.class);
 
 
         try {
+            Intent  shouldIntent =new Intent( context,NapeListActivity.class);
+            shouldIntent.putExtra("type","1");
             healthyContainer.addView(new HealthyItem(context, "颈部", "颈部简单描述", R.drawable.healthy_head, shouldIntent, true));
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,6 +79,8 @@ public class HealthyCircleFragment extends BaseFragment {
 
 
         try {
+            Intent  shouldIntent =new Intent( context,NapeListActivity.class);
+            shouldIntent.putExtra("type","2");
             healthyContainer.addView(new HealthyItem(context, "肩部", "肩部简单描述", R.drawable.healthy_jian, shouldIntent, true));
         } catch (Exception e) {
             e.printStackTrace();
@@ -85,6 +88,8 @@ public class HealthyCircleFragment extends BaseFragment {
 
 
         try {
+            Intent  shouldIntent =new Intent( context,NapeListActivity.class);
+            shouldIntent.putExtra("type","3");
             healthyContainer.addView(new HealthyItem(context, "上肢", "上肢简单描述", R.drawable.healthy_hand, shouldIntent, true));
         } catch (Exception e) {
             e.printStackTrace();
@@ -92,6 +97,8 @@ public class HealthyCircleFragment extends BaseFragment {
 
 
         try {
+            Intent  shouldIntent =new Intent( context,NapeListActivity.class);
+            shouldIntent.putExtra("type","4");
             healthyContainer.addView(new HealthyItem(context, "足踝部", "足踝部简单描述", R.drawable.healhthy_foot, shouldIntent, true));
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,6 +106,8 @@ public class HealthyCircleFragment extends BaseFragment {
 
 
         try {
+            Intent  shouldIntent =new Intent( context,NapeListActivity.class);
+            shouldIntent.putExtra("type","5");
             Intent  activeIntent =new Intent(context, ActiveActivity.class);
             healthyContainer.addView(new HealthyItem(context, "活动", "活动描述", R.drawable.healthy_active, activeIntent, true));
         } catch (Exception e) {
@@ -106,6 +115,8 @@ public class HealthyCircleFragment extends BaseFragment {
         }
 
         try {
+            Intent  shouldIntent =new Intent( context,NapeListActivity.class);
+            shouldIntent.putExtra("type","6");
             Intent  feedIntent =new Intent(context, FeedBackActivity.class);
             healthyContainer.addView(new HealthyItem(context, "意见反馈", "我们耐心倾听您的每一个反馈", R.drawable.healthy_feed, feedIntent, true));
         } catch (Exception e) {

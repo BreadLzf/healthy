@@ -2,6 +2,7 @@ package sport.tc.com.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
@@ -25,6 +26,8 @@ public class NapeListActivity extends BaseActivity {
 
     private static final int COUNT = 10;
     private int CUNRRENT_PAGE = 0;
+    private String  heealthyCircleAppType="1";
+    private  String  type="";
 
 
     @Override
@@ -33,23 +36,25 @@ public class NapeListActivity extends BaseActivity {
         setContentView(R.layout.activity_nape_include_layout);
         String string = getIntent().getStringExtra("title");
         initToolBar(string, R.drawable.chronic_disease_back);
+        type =getIntent().getStringExtra("type");
+        Log.e("type", getIntent().getStringExtra("type"));
         getArticleList();
     }
 
 
     private void getArticleList() {
-        String oneStr = AppHelper.prouductValidData(this);
+        String validData = AppHelper.prouductValidData(this);
         ArticleRequest articleRequest = new ArticleRequest();
         articleRequest.cur_page=CUNRRENT_PAGE;
         articleRequest.page_num=COUNT;
         articleRequest.is_index="1";
-        articleRequest.app_type="1";
-        articleRequest.type="1";
-        String twoStr = javaBeanToJson(articleRequest);
+        articleRequest.app_type=heealthyCircleAppType;
+        articleRequest.type=type;
+        String executeData = javaBeanToJson(articleRequest);
 
         Novate novate = new Novate.Builder(NapeListActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.artcleListApi(oneStr, twoStr), new BaseSubscriber<BaseResponse>(this) {
+        novate.call(apiService.artcleListApi(validData, executeData), new BaseSubscriber<BaseResponse>(this) {
             @Override
             public void onError(Throwable e) {
 

@@ -10,14 +10,23 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.tamic.novate.BaseSubscriber;
+import com.tamic.novate.Novate;
+import com.tamic.novate.Throwable;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
+import sport.tc.com.api.HealthyApiService;
+import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.ModifyUser;
 import sport.tc.com.ui.base.BaseActivity;
-import sport.tc.com.util.GsonHelper;
+import sport.tc.com.util.AppHelper;
 import sport.tc.com.util.ToastUtil;
+
+import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 
 /**
  * Created by punisher on 2017/3/2.
@@ -129,12 +138,12 @@ public class ModifyUserActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.modify_head_img:
-                ToastUtil.show(this,"头像");
+                ToastUtil.show(this, "头像");
                 break;
             case R.id.modify_head_layout:
                 break;
             case R.id.modify_user_nick_name:
-                ToastUtil.show(this,"昵称");
+                ToastUtil.show(this, "昵称");
 
                 break;
             case R.id.modify_user_sex_man:
@@ -156,15 +165,34 @@ public class ModifyUserActivity extends BaseActivity {
 
     private void postUserMessage() {
 
+        String validData = AppHelper.prouductValidData(this);
+
         ModifyUser modifyUser = new ModifyUser();
-        modifyUser.setSex(sex);
-        modifyUser.setBirth(birth);
-        modifyUser.setHeight(height);
-        modifyUser.setWeight(weight);
-        modifyUser.setBmi(bmi);
-        modifyUser.setPhone(phone);
-        modifyUser.setWear_hand(wear_hand);
-        String modifyJson = GsonHelper.javaBeanToJson(modifyUser);
+        modifyUser.setSex("1");
+        modifyUser.setBirth("19890313");
+        modifyUser.setHeight("170");
+        modifyUser.setWeight("55");
+        modifyUser.setBmi("68");
+        modifyUser.setPhone("18576759600");
+        modifyUser.setWear_hand("1");
+        String executeData = javaBeanToJson(modifyUser);
+
+
+        Novate novate = new Novate.Builder(ModifyUserActivity.this).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        novate.call(apiService.modifyUserApi(validData, executeData), new BaseSubscriber<BaseResponse>(this) {
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(BaseResponse baseResponse) {
+
+            }
+        });
 
     }
+
+
 }
