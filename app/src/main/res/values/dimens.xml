@@ -82,4 +82,7 @@
 
     <dimen name="tab_host_padding_top">12dp</dimen>
     <dimen name="tab_host_text">14sp</dimen>
+
+    <dimen name="crop_size">300dp</dimen>
+
 </resources>

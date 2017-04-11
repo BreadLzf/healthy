@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/.." />
+            <option value="$PROJECT_DIR$/../library_BottomSheet1" />
+            <option value="$PROJECT_DIR$/../library_DialogUpgrader" />
+            <option value="$PROJECT_DIR$/../library_handmark_pullToRefresh" />
+            <option value="$PROJECT_DIR$/../library_justifytext" />
+            <option value="$PROJECT_DIR$/../library_mxFastPlay" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/../library_refreshingview" />
+            <option value="$PROJECT_DIR$/../library_shareSDK_MainLabs_2_5_8" />
+            <option value="$PROJECT_DIR$/../library_shareSDK_oneKeyShare_2_5_8" />
+            <option value="$PROJECT_DIR$/../library_slidingmenu" />
+            <option value="$PROJECT_DIR$/../splashActivity" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

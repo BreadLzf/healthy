@@ -1,6 +1,9 @@
 package sport.tc.com.ui.activity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -14,12 +17,15 @@ import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
 
+import java.io.File;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
+import sport.tc.com.customview.Crop;
 import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.ModifyUser;
 import sport.tc.com.ui.base.BaseActivity;
@@ -194,5 +200,23 @@ public class ModifyUserActivity extends BaseActivity {
 
     }
 
+
+
+    private void beginCrop(Uri source) {
+        Uri outputUri = Uri.fromFile(new File(getCacheDir(), "cropped"));
+        Intent intent = new Intent(this, CropPhotoActivity.class);
+        intent.setData(source);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+        startActivityForResult(intent, Crop.REQUEST_CROP);
+    }
+
+    private void handleCrop(int resultCode, Intent result) {
+        if (resultCode == RESULT_OK) {
+            Uri output = Crop.getOutput(result);
+//            new UploadAvatarTask(this, "正在上传图片...", output).start();
+        } else if (resultCode == Crop.RESULT_ERROR) {
+            ToastUtil.show(this, Crop.getError(result).getMessage());
+        }
+    }
 
 }

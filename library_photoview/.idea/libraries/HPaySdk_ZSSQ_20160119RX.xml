@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="HPaySdk_ZSSQ_20160119RX">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../splashActivity/libs/HPaySdk_ZSSQ_20160119RX.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

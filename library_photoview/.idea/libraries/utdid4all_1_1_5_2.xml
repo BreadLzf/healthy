@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="utdid4all-1.1.5.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../splashActivity/libs/utdid4all-1.1.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

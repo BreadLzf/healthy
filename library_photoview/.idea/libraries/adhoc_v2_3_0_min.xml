@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="adhoc-v2.3.0-min">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../splashActivity/libs/adhoc-v2.3.0-min.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

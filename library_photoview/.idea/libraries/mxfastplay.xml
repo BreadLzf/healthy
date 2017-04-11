@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mxfastplay">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../library_mxFastPlay/libs/mxfastplay.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

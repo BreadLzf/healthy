@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Android-Zhuishushenqi.iml" filepath="$PROJECT_DIR$/../Android-Zhuishushenqi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_BottomSheet1/library_BottomSheet1.iml" filepath="$PROJECT_DIR$/../library_BottomSheet1/library_BottomSheet1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_DialogUpgrader/library_DialogUpgrader.iml" filepath="$PROJECT_DIR$/../library_DialogUpgrader/library_DialogUpgrader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_handmark_pullToRefresh/library_handmark_pullToRefresh.iml" filepath="$PROJECT_DIR$/../library_handmark_pullToRefresh/library_handmark_pullToRefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_justifytext/library_justifytext.iml" filepath="$PROJECT_DIR$/../library_justifytext/library_justifytext.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_mxFastPlay/library_mxFastPlay.iml" filepath="$PROJECT_DIR$/../library_mxFastPlay/library_mxFastPlay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library_photoview.iml" filepath="$PROJECT_DIR$/library_photoview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_refreshingview/library_refreshingview.iml" filepath="$PROJECT_DIR$/../library_refreshingview/library_refreshingview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_shareSDK_MainLabs_2_5_8/library_shareSDK_MainLabs_2_5_8.iml" filepath="$PROJECT_DIR$/../library_shareSDK_MainLabs_2_5_8/library_shareSDK_MainLabs_2_5_8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_shareSDK_oneKeyShare_2_5_8/library_shareSDK_oneKeyShare_2_5_8.iml" filepath="$PROJECT_DIR$/../library_shareSDK_oneKeyShare_2_5_8/library_shareSDK_oneKeyShare_2_5_8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../library_slidingmenu/library_slidingmenu.iml" filepath="$PROJECT_DIR$/../library_slidingmenu/library_slidingmenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../splashActivity/splashActivity.iml" filepath="$PROJECT_DIR$/../splashActivity/splashActivity.iml" />
+    </modules>
+  </component>
+</project>

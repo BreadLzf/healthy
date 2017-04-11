@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ShareSDK-QZone-2.6.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../library_shareSDK_MainLabs_2_5_8/libs/ShareSDK-QZone-2.6.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

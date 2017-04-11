@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mframework">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../library_shareSDK_oneKeyShare_2_5_8/libs/mframework.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

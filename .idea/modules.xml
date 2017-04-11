@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Aandroid-Handhoop.iml" filepath="$PROJECT_DIR$/Aandroid-Handhoop.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library_photoview/library_photoview.iml" filepath="$PROJECT_DIR$/library_photoview/library_photoview.iml" />
     </modules>
   </component>
 </project>
