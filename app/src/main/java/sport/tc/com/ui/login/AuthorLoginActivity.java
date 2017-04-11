@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -228,9 +229,8 @@ public class AuthorLoginActivity extends BaseActivity implements View.OnClickLis
 
                 @Override
                 public void onNext(Account account) {
-                    ToastUtil.show(AuthorLoginActivity.this, account.getCode() + "");
                     if (account != null && account.getCode().equals("000")) {
-
+                        Log.e("token","token>>>"+account.getData().getUser_identity());
                         SharedPerfercecesUtil.put(AuthorLoginActivity.this,AppContents.USER_IDENT,account.getData().getUser_identity());
                         Intent intent = new Intent(AuthorLoginActivity.this, HomeActivity.class);
                         startActivity(intent);

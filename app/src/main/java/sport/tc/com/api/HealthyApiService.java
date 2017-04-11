@@ -6,6 +6,7 @@ import retrofit2.http.POST;
 import rx.Observable;
 import sport.tc.com.modle.Account;
 import sport.tc.com.modle.BaseResponse;
+import sport.tc.com.modle.HealthyCircleResponse;
 
 /**
  * Created by punisher on 2017/3/2.
@@ -68,7 +69,7 @@ public interface HealthyApiService {
      */
     @FormUrlEncoded
     @POST ("api/get-article-list")
-    Observable<BaseResponse> artcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+    Observable<HealthyCircleResponse> artcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
 }

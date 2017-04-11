@@ -10,6 +10,8 @@ import org.json.JSONObject;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import sport.tc.com.modle.HealthyCircleResponse;
+
 /**
  */
 public final class GsonHelper {
@@ -75,9 +77,9 @@ public final class GsonHelper {
     /**
      * @Title: jsonStrToBean
      * @Description: json解析成java bean可用于多层解析
+     * @param 设定文件
      * @param jsonStr
      * @param c
-     * @param 设定文件
      * @return T 返回类型
      * @author fly
      */
