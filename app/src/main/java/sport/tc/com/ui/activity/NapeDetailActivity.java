@@ -3,7 +3,10 @@ package sport.tc.com.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
@@ -31,12 +34,34 @@ public class NapeDetailActivity extends BaseActivity {
     private String heealthyCircleAppType = "1";
     private String type = "";
     private String title = "";
+    //测试控件
+    private TextView titleTv;
+    private TextView timeTv;
+    private TextView tagTv;
+
+    private TextView SubTv;
+
+    private TextView orderOneTv;
+    private TextView orderTwoTv;
+
+    private TextView underoneTv;
+    private TextView undertwoTv;
+
+    private TextView normalOneTv;
+    private TextView normalTwoTv;
+
+    private TextView smallSubTv;
+
+    private ImageView mImageView;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nape_detail_layout);
-        title= getIntent().getStringExtra("title");
-
+        title = getIntent().getStringExtra("title");
+        type = getIntent().getStringExtra("type");
+        initView();
         initRightImgToolBar(title, R.drawable.chronic_disease_back, R.drawable.nape_detail_share, new OnCustomClickListener() {
             @Override
             public void onItemClick() {
@@ -46,6 +71,31 @@ public class NapeDetailActivity extends BaseActivity {
         getArticleList();
     }
 
+
+    private void initView() {
+        titleTv = (TextView) findViewById(R.id.nape_test_title);
+        timeTv = (TextView) findViewById(R.id.nape_test_time);
+        tagTv = (TextView) findViewById(R.id.nape_test_tag);
+
+        SubTv = (TextView) findViewById(R.id.nape_test_sub);
+
+
+        orderOneTv = (TextView) findViewById(R.id.nape_test_order_one);
+        orderTwoTv = (TextView) findViewById(R.id.nape_test_order_two);
+
+
+        underoneTv = (TextView) findViewById(R.id.nape_test_no_one);
+        undertwoTv = (TextView) findViewById(R.id.nape_test_no_two);
+
+
+        normalOneTv = (TextView) findViewById(R.id.nape_test_normal_one);
+        normalTwoTv = (TextView) findViewById(R.id.nape_test_normal_two);
+
+        smallSubTv = (TextView) findViewById(R.id.nape_test_small_title);
+
+        mImageView = (ImageView) findViewById(R.id.nape_test_image);
+
+    }
 
     private void getArticleList() {
         String validData = AppHelper.prouductValidData(this);
@@ -71,26 +121,40 @@ public class NapeDetailActivity extends BaseActivity {
                 Log.e("bean", articleListBean.getTitle() + "");
                 List<HealthyCircleResponse.DataBean.ArticleListBean.ArticleJsonBean> articleJsonBeanList = articleListBean.getArticle_json();
                 Log.e("bean  json size", articleListBean.getArticle_json().size() + "");
-
-                String type ="";
-                String paragraphs= "";
-                String text ="";
-                String src ="";
-                String other="";
-
-                for (int i=0;i<articleJsonBeanList.size();i++){
+                titleTv.setText(articleListBean.getTitle());
+                for (int i = 0; i < articleJsonBeanList.size(); i++) {
                     Log.e("bean  json type", articleJsonBeanList.get(i).getType() + "");
                     Log.e("bean  json paragraphs", articleJsonBeanList.get(i).getParagraphs() + "");
                     Log.e("bean  json text", articleJsonBeanList.get(i).getText() + "");
                     Log.e("bean  json src", articleJsonBeanList.get(i).getSrc() + "");
-                    type =articleJsonBeanList.get(i).getType();
-                    paragraphs =articleJsonBeanList.get(i).getParagraphs().toString();
-                    other =articleJsonBeanList.get(i).getParagraphs()+"";
-                    text=articleJsonBeanList.get(i).getText();
-                    src =articleJsonBeanList.get(i).getSrc();
+                    switch (i) {
+                        case 0:
+                            tagTv.setText(articleJsonBeanList.get(0).getParagraphs().get(0));
+                        case 1:
+                            SubTv.setText(articleJsonBeanList.get(1).getText());
+                        case 2:
+                            orderOneTv.setText(articleJsonBeanList.get(2).getParagraphs().get(0));
+                            orderTwoTv.setText(articleJsonBeanList.get(2).getParagraphs().get(1));
+
+                        case 3:
+                            underoneTv.setText(articleJsonBeanList.get(3).getParagraphs().get(0));
+                            undertwoTv.setText(articleJsonBeanList.get(3).getParagraphs().get(1));
+
+                        case 4:
+                            normalOneTv.setText(articleJsonBeanList.get(4).getParagraphs().get(0));
+                            normalTwoTv.setText(articleJsonBeanList.get(4).getParagraphs().get(1));
+
+                        case 5:
+
+                            smallSubTv.setText(articleJsonBeanList.get(5).getText());
+
+                        case 6:
+
+                        case 7:
+                            Glide.with(NapeDetailActivity.this).load(articleJsonBeanList.get(7).getSrc()).into(mImageView);
+
+                    }
                 }
-
-
             }
         });
 

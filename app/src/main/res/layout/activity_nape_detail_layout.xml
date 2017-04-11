@@ -9,83 +9,191 @@
     <include layout="@layout/custom_right_img_toolbar"/>
 
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="4"
-      android:orientation="vertical"
-      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
 
-      <TextView
-          android:id="@+id/nape_detail_title"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="29.5dp"
-          android:text="【颈部疾病有那些颈椎病是常见的职业病】"
-          android:textColor="@color/black_70"
-          android:textSize="@dimen/text_size_17"
-          />
+        <TextView
+            android:id="@+id/nape_detail_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="29.5dp"
+            android:text="【颈部疾病有那些颈椎病是常见的职业病】"
+            android:textColor="@color/black_70"
+            android:textSize="@dimen/text_size_17"
+            />
 
-      <RelativeLayout
+        <RelativeLayout
 
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/dp_24">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24">
 
-          <ImageView
-              android:id="@+id/nape_detail_img"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_centerVertical="true"
-              android:src="@drawable/nape_traver"
-              />
-
-
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_centerVertical="true"
-              android:layout_toRightOf="@+id/nape_detail_img"
-              android:text="兔子草"
-              android:textColor="#a0a0a0"/>
+            <ImageView
+                android:id="@+id/nape_detail_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/nape_traver"
+                />
 
 
-          <TextView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentRight="true"
-              android:layout_centerVertical="true"
-              android:text="2017-3-23"
-              android:textSize="@dimen/text_size_11"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/nape_detail_img"
+                android:text="兔子草"
+                android:textColor="#a0a0a0"/>
 
 
-      </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="2017-3-23"
+                android:textSize="@dimen/text_size_11"/>
 
 
-
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数"
-          />
+        </RelativeLayout>
 
 
-      <ImageView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:src="@drawable/home_big"
-          />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数"
+            />
 
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数"
-          />
-  </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_big"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数需要注意的是，目前绝大多数"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/nape_test_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="2017-4.12"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="11"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_sub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="标"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_order_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="标"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_order_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_no_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="标"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_no_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_normal_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="标"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_normal_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标"/>
+
+
+        <TextView
+            android:id="@+id/nape_test_small_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="标"/>
+
+
+        <ImageView
+            android:id="@+id/nape_test_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:src="@drawable/do_home_big"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="@color/red_text_color"
-        ></LinearLayout>
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/black"
+            />
+    </LinearLayout>
+
 </LinearLayout>
