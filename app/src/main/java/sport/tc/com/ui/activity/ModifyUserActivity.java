@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import sport.tc.com.AppContents;
+import sport.tc.com.MyApplication;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.event.BusProvider;
@@ -213,9 +214,10 @@ public class ModifyUserActivity extends BaseActivity {
                 Log.e("code", response.getCode());
                 if (response.getCode().equals("000")) {
                     ToastUtil.show(ModifyUserActivity.this, "修改成功");
-                    ModifyUserActivity.this.finish();
                     ModifyUserResponse.DataBean.UserInfoBean userInfoBean = response.getData().getUser_info();
-                    BusProvider.getInstance().post(new ModifyEvent(userInfoBean));// 通知HomeTopicFragment也刷新
+                    BusProvider.getInstance().post(new ModifyEvent(userInfoBean));
+                    MyApplication.getAppInstance().setUserInfoBean(userInfoBean);
+                    ModifyUserActivity.this.finish();
                 }
             }
         });

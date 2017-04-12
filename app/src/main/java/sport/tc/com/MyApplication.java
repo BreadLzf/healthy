@@ -2,6 +2,8 @@ package sport.tc.com;
 
 import android.app.Application;
 
+import sport.tc.com.modle.ModifyUserResponse;
+
 /**
  * Created by punisher on 2017/3/1.
  *
@@ -9,7 +11,7 @@ import android.app.Application;
 
 public class MyApplication  extends Application {
     private static MyApplication appInstance = null;
-    public  static   boolean  isFirst =false;
+    private ModifyUserResponse.DataBean.UserInfoBean  mUserInfoBean;
 
 
     @Override
@@ -18,11 +20,21 @@ public class MyApplication  extends Application {
         appInstance=this;
     }
 
-    /**
-     * 获取单例Application
-     * @return
-     */
-    public static MyApplication getInstance() {
+
+
+    public static MyApplication getAppInstance() {
         return appInstance;
+    }
+
+    public static void setAppInstance(MyApplication appInstance) {
+        MyApplication.appInstance = appInstance;
+    }
+
+    public ModifyUserResponse.DataBean.UserInfoBean getUserInfoBean() {
+        return mUserInfoBean;
+    }
+
+    public void setUserInfoBean(ModifyUserResponse.DataBean.UserInfoBean userInfoBean) {
+        mUserInfoBean = userInfoBean;
     }
 }

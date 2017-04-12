@@ -5,11 +5,22 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.squareup.otto.Subscribe;
 
 import java.io.File;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
+import sport.tc.com.MyApplication;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.customview.Crop;
+import sport.tc.com.event.BusProvider;
+import sport.tc.com.event.ModifyEvent;
+import sport.tc.com.modle.ModifyUserResponse;
 import sport.tc.com.ui.base.BaseActivity;
 import sport.tc.com.util.ToastUtil;
 
@@ -20,44 +31,79 @@ import sport.tc.com.util.ToastUtil;
 public class UserActivity extends BaseActivity {
 
 
-    /**
-     * id：用户的主键编号
-     * 电话：接受短信验证码的手机号码
-     * 性别：性别（1男2女）
-     * 生日：生日，传字符串即可
-     * 身高：身高，单位厘米
-     * 体重：体重，单位kg
-     * bmi：体质指数，由身高体重计算出来的浮点型数据
-     * 电话：绑定的手机号，新增时间默认为账号
-     * 佩戴手（1左手2右手）
-     */
-
-    private String sex;
-    private String birth;
-    private String height;
-    private String weight;
-    private String bmi;
-    private String phone;
-    private String wear_hand;
-
-
+    @BindView(R.id.user_head_img)
+    CircleImageView mUserHeadImg;
+    @BindView(R.id.user_nick_name)
+    TextView mUserNickName;
+    @BindView(R.id.user_sex_tv)
+    TextView mUserSexTv;
+    @BindView(R.id.user_brith_tv)
+    TextView mUserBrithTv;
+    @BindView(R.id.user_high_tv)
+    TextView mUserHighTv;
+    @BindView(R.id.user_weight_tv)
+    TextView mUserWeightTv;
+    @BindView(R.id.user_bind_phone)
+    TextView mUserBindPhone;
+    @BindView(R.id.user_bind_hand)
+    TextView mUserBindHand;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        ButterKnife.bind(this);
+        BusProvider.getInstance().register(this);
         initNoBackToolBar("个人信息", "修改", new OnCustomClickListener() {
             @Override
             public void onItemClick() {
-                Intent  intent =new Intent(UserActivity.this,ModifyUserActivity.class);
+                Intent intent = new Intent(UserActivity.this, ModifyUserActivity.class);
                 startActivity(intent);
             }
         });
+
+        if (MyApplication.getAppInstance().getUserInfoBean()!=null){
+            upUserView(MyApplication.getAppInstance().getUserInfoBean());
+        }
     }
 
 
+    @Subscribe
+    public void updateUserInfo(ModifyEvent event) {
+        Log.e("user", "succ");
+        ModifyUserResponse.DataBean.UserInfoBean userInfoBean = event.getUserInfoBean();
+        upUserView(userInfoBean);
 
+    }
 
+    private void upUserView(ModifyUserResponse.DataBean.UserInfoBean userInfoBean) {
+        if (!userInfoBean.getSex().isEmpty()) {
+            switch (userInfoBean.getSex()) {
+                case "1":
+                    mUserSexTv.setText("男");
+                    break;
+                case "2":
+                    mUserSexTv.setText("女");
+                    break;
+            }
+        }
+        mUserNickName.setText(userInfoBean.getNick_name());
+        mUserBrithTv.setText(userInfoBean.getBirth());
+        mUserHighTv.setText(userInfoBean.getHeight());
+        mUserWeightTv.setText(userInfoBean.getWeight());
+        mUserBindPhone.setText(userInfoBean.getPhone());
+        if (!userInfoBean.getWear_hand().isEmpty()) {
+            switch (userInfoBean.getWear_hand()) {
+                case "1":
+                    mUserBindHand.setText("左手");
+                    break;
+                case "2":
+                    mUserBindHand.setText("右手");
+
+                    break;
+            }
+        }
+    }
 
 
     private void beginCrop(Uri source) {
@@ -77,4 +123,10 @@ public class UserActivity extends BaseActivity {
         }
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BusProvider.getInstance().unregister(this);
+    }
 }
