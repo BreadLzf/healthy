@@ -67,8 +67,6 @@ public class HealthyCircleFragment extends BaseFragment {
 
     private void initView(Activity context) {
 
-
-
         try {
             Intent  shouldIntent =new Intent( context,NapeListActivity.class);
             shouldIntent.putExtra("type","1");
