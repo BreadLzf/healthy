@@ -1,8 +1,11 @@
 package sport.tc.com.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,11 +30,12 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
  * Created by punisher on 2017/3/22.
  */
 
-public class NapeDetailActivity extends BaseActivity {
+public class NapeDetailActivity extends BaseActivity implements View.OnClickListener {
 
     private static final int COUNT = 20;
     private int CUNRRENT_PAGE = 1;
     private String heealthyCircleAppType = "1";
+    private HealthyCircleResponse.DataBean.ArticleListBean articleListBean;
     private String type = "";
     private String title = "";
     //测试控件
@@ -53,6 +57,11 @@ public class NapeDetailActivity extends BaseActivity {
     private TextView smallSubTv;
 
     private ImageView mImageView;
+
+
+    private EditText commentEdit;
+    private TextView likeTv;
+    private TextView supportTv;
 
 
     @Override
@@ -95,6 +104,14 @@ public class NapeDetailActivity extends BaseActivity {
 
         mImageView = (ImageView) findViewById(R.id.nape_test_image);
 
+        commentEdit = (EditText) findViewById(R.id.nape_detail_comment_edit);
+
+        likeTv = (TextView) findViewById(R.id.nape_detail_like);
+
+        supportTv = (TextView) findViewById(R.id.nape_detail_heart);
+
+        supportTv.setOnClickListener(this);
+
     }
 
     private void getArticleList() {
@@ -104,12 +121,11 @@ public class NapeDetailActivity extends BaseActivity {
         articleRequest.page_num = COUNT;
         articleRequest.app_type = heealthyCircleAppType;
         articleRequest.type = type;
-        articleRequest.article_id="1";
         String executeData = javaBeanToJson(articleRequest);
 
         Novate novate = new Novate.Builder(NapeDetailActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.artcleDetailApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
+        novate.call(apiService.artcleListApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
 
             @Override
             public void onError(Throwable e) {
@@ -118,7 +134,7 @@ public class NapeDetailActivity extends BaseActivity {
 
             @Override
             public void onNext(HealthyCircleResponse healthyCircleResponse) {
-                HealthyCircleResponse.DataBean.ArticleListBean articleListBean = healthyCircleResponse.getData().getArticle_list().get(0);
+                articleListBean = healthyCircleResponse.getData().getArticle_list().get(0);
                 Log.e("bean", articleListBean.getTitle() + "");
                 List<HealthyCircleResponse.DataBean.ArticleListBean.ArticleJsonBean> articleJsonBeanList = articleListBean.getArticle_json();
                 Log.e("bean  json size", articleListBean.getArticle_json().size() + "");
@@ -161,4 +177,19 @@ public class NapeDetailActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onClick(View view) {
+        String articleId;
+        switch (view.getId()) {
+            case R.id.nape_detail_like:
+                if (articleListBean != null) {
+                    articleId = articleListBean.getArticle_id();
+                    Intent intent = new Intent(NapeDetailActivity.this, CommentListActivity.class);
+                    intent.putExtra("article_id", articleId);
+                    startActivity(intent);
+                }
+
+                break;
+        }
+    }
 }

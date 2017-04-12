@@ -108,6 +108,10 @@
             ></activity>
 
 
+        <activity
+            android:name="sport.tc.com.ui.activity.CommentListActivity"
+            android:launchMode="standard"
+            ></activity>
     </application>
 
 </manifest>

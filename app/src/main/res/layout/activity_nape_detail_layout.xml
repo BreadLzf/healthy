@@ -189,11 +189,39 @@
         android:layout_height="47dp"
         >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@color/black"
+        <EditText
+            android:id="@+id/nape_detail_comment_edit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
             />
+
+        <TextView
+            android:id="@+id/nape_detail_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="99+"
+            android:gravity="center"
+            android:layout_marginRight="@dimen/dp_30"
+            android:drawableLeft="@drawable/nape_detail_collect"
+            android:layout_toLeftOf="@+id/nape_detail_like"
+            />
+
+        <TextView
+            android:id="@+id/nape_detail_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="99+"
+            android:gravity="center"
+            android:drawableLeft="@drawable/nape_detail_like"
+            />
+
+
     </LinearLayout>
 
 </LinearLayout>
