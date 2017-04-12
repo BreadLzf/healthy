@@ -178,6 +178,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:hint="请输入你的身高"
+                    android:inputType="number"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_15"/>
 
@@ -209,6 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="请输入你的体重"
+                    android:inputType="number"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_15"
                     android:layout_centerVertical="true"

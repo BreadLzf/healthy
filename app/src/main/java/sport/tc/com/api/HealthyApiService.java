@@ -7,6 +7,7 @@ import rx.Observable;
 import sport.tc.com.modle.Account;
 import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.HealthyCircleResponse;
+import sport.tc.com.modle.ModifyUserResponse;
 
 /**
  * Created by punisher on 2017/3/2.
@@ -58,7 +59,7 @@ public interface HealthyApiService {
      */
     @FormUrlEncoded
     @POST ("api/set-user-info")
-    Observable<BaseResponse> modifyUserApi(@Field("validData") String validData, @Field("executeData") String executeData);
+    Observable<ModifyUserResponse> modifyUserApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
     /**

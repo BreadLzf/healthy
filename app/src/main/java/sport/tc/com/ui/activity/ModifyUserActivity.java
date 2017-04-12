@@ -2,6 +2,7 @@ package sport.tc.com.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -20,8 +21,10 @@ import butterknife.OnClick;
 import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
-import sport.tc.com.modle.BaseResponse;
+import sport.tc.com.event.BusProvider;
+import sport.tc.com.event.ModifyEvent;
 import sport.tc.com.modle.ModifyUser;
+import sport.tc.com.modle.ModifyUserResponse;
 import sport.tc.com.ui.base.BaseActivity;
 import sport.tc.com.util.AppHelper;
 import sport.tc.com.util.ToastUtil;
@@ -93,6 +96,8 @@ public class ModifyUserActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_user);
         ButterKnife.bind(this);
+        BusProvider.getInstance().register(this);
+        initView();
         initNoBackToolBar("个人信息", "保存", new OnCustomClickListener() {
             @Override
             public void onItemClick() {
@@ -100,43 +105,52 @@ public class ModifyUserActivity extends BaseActivity {
 
             }
         });
-        initView();
+
     }
 
     private void modifyUserMessage() {
-        nick =mModifyUserNickName.getText().toString();
-        birth="19901011";
-        height=mModifyUserHighEdit.getText().toString();
-        weight =mModifyUserWeightEdit.getText().toString();
-        bmi="22";
-        phone=mModifyPhoneEdit.getText().toString();
+        nick = mModifyUserNickName.getText().toString();
+        birth = "19901011";
+        height = mModifyUserHighEdit.getText().toString();
+        weight = mModifyUserWeightEdit.getText().toString();
+        bmi = "22";
+        phone = mModifyPhoneEdit.getText().toString();
 
-        if (nick.isEmpty()){
-            ToastUtil.show(ModifyUserActivity.this,"昵称不能为空");
+        Log.e("nick>>", nick);
+        Log.e("height>>", height);
+        Log.e("birth>>", birth);
+        Log.e("weight>>", weight);
+        Log.e("phone>>", phone);
+
+
+        if (nick.isEmpty()) {
+            ToastUtil.show(ModifyUserActivity.this, "昵称不能为空");
 
         }
-        if (height.isEmpty()){
-            ToastUtil.show(ModifyUserActivity.this,"身高不能为空");
+        if (height.isEmpty()) {
+            ToastUtil.show(ModifyUserActivity.this, "身高不能为空");
 
         }
-        if (weight.isEmpty()){
-            ToastUtil.show(ModifyUserActivity.this,"体重不能为空");
+        if (weight.isEmpty()) {
+            ToastUtil.show(ModifyUserActivity.this, "体重不能为空");
 
         }
-        if (phone.isEmpty()){
-            ToastUtil.show(ModifyUserActivity.this,"手机号不能为空");
+        if (phone.isEmpty()) {
+            ToastUtil.show(ModifyUserActivity.this, "手机号不能为空");
         }
-        if (!phone.isEmpty()&&!AppHelper.isPhoneNumber(phone)){
-            ToastUtil.show(ModifyUserActivity.this,"手机号码不正确");
+        if (!phone.isEmpty() && !AppHelper.isPhoneNumber(phone)) {
+            ToastUtil.show(ModifyUserActivity.this, "手机号码不正确");
         }
 
-        if (!nick.isEmpty()&&!birth.isEmpty()&&!birth.isEmpty()&&!weight.isEmpty()&&!bmi.isEmpty()&&!phone.isEmpty()){
+        if (!nick.isEmpty() && !birth.isEmpty() && !birth.isEmpty() && !weight.isEmpty() && !bmi.isEmpty() && !phone.isEmpty()) {
             postUserMessage();
         }
     }
 
 
     private void initView() {
+        mModifyUserSex.check(R.id.modify_user_sex_man);
+        mModifyUserBindGroup.check(R.id.modify_user_bind_left);
         mModifyUserSex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -186,7 +200,7 @@ public class ModifyUserActivity extends BaseActivity {
 
         Novate novate = new Novate.Builder(ModifyUserActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.modifyUserApi(validData, executeData), new BaseSubscriber<BaseResponse>(this) {
+        novate.call(apiService.modifyUserApi(validData, executeData), new BaseSubscriber<ModifyUserResponse>(this) {
 
 
             @Override
@@ -195,8 +209,14 @@ public class ModifyUserActivity extends BaseActivity {
             }
 
             @Override
-            public void onNext(BaseResponse baseResponse) {
-
+            public void onNext(ModifyUserResponse response) {
+                Log.e("code", response.getCode());
+                if (response.getCode().equals("000")) {
+                    ToastUtil.show(ModifyUserActivity.this, "修改成功");
+                    ModifyUserActivity.this.finish();
+                    ModifyUserResponse.DataBean.UserInfoBean userInfoBean = response.getData().getUser_info();
+                    BusProvider.getInstance().post(new ModifyEvent(userInfoBean));// 通知HomeTopicFragment也刷新
+                }
             }
         });
 
@@ -239,5 +259,11 @@ public class ModifyUserActivity extends BaseActivity {
             case R.id.modify_user_bind_group:
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        BusProvider.getInstance().unregister(this);
     }
 }
