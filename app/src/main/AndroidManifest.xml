@@ -32,7 +32,7 @@
 
 
         <activity
-            android:name="sport.tc.com.ui.activity.ModifyUserActivity"
+            android:name="sport.tc.com.ui.activity.UserActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name="sport.tc.com.ui.activity.HealthyFamilyActivity"

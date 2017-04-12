@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import sport.tc.com.android_handhoop.R;
-import sport.tc.com.ui.activity.ModifyUserActivity;
+import sport.tc.com.ui.activity.UserActivity;
 import sport.tc.com.ui.activity.MyCollectActivity;
 import sport.tc.com.ui.activity.MyExpertActivity;
 import sport.tc.com.ui.activity.MyHealthyFamilyActivity;
@@ -104,7 +104,7 @@ public class UserCenterFragment extends BaseFragment implements View.OnClickList
         Intent intent;
         switch (v.getId()) {
             case R.id.user_center_to_edit_btn:
-                intent = new Intent(mActivity, ModifyUserActivity.class);
+                intent = new Intent(mActivity, UserActivity.class);
                 startActivity(intent);
                 break;
 

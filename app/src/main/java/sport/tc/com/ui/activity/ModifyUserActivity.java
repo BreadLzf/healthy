@@ -35,10 +35,11 @@ import sport.tc.com.util.ToastUtil;
 import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 
 /**
- * Created by punisher on 2017/3/2.
+ * Created by punisher on 2017/4/12.
  */
 
 public class ModifyUserActivity extends BaseActivity {
+
 
 
     /**
@@ -187,6 +188,8 @@ public class ModifyUserActivity extends BaseActivity {
         Novate novate = new Novate.Builder(ModifyUserActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
         novate.call(apiService.modifyUserApi(validData, executeData), new BaseSubscriber<BaseResponse>(this) {
+
+
             @Override
             public void onError(Throwable e) {
 
@@ -218,5 +221,4 @@ public class ModifyUserActivity extends BaseActivity {
             ToastUtil.show(this, Crop.getError(result).getMessage());
         }
     }
-
 }
