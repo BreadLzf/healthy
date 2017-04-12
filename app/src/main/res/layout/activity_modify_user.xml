@@ -8,6 +8,6 @@
 
     <include layout="@layout/base_match_line_layout"/>
 
-    <include layout="@layout/activity_user"/>
+    <include layout="@layout/modify_include_layout"/>
 
 </LinearLayout>

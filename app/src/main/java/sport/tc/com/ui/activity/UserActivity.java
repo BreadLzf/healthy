@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 
 import java.io.File;
 
-import butterknife.ButterKnife;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.customview.Crop;
 import sport.tc.com.ui.base.BaseActivity;
@@ -46,11 +45,12 @@ public class UserActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modify_user);
-        ButterKnife.bind(this);
+        setContentView(R.layout.activity_user);
         initNoBackToolBar("个人信息", "修改", new OnCustomClickListener() {
             @Override
             public void onItemClick() {
+                Intent  intent =new Intent(UserActivity.this,ModifyUserActivity.class);
+                startActivity(intent);
             }
         });
     }

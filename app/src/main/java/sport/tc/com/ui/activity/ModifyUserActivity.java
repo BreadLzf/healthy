@@ -41,7 +41,6 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 public class ModifyUserActivity extends BaseActivity {
 
 
-
     /**
      * id：用户的主键编号
      * 电话：接受短信验证码的手机号码
@@ -204,7 +203,6 @@ public class ModifyUserActivity extends BaseActivity {
     }
 
 
-
     private void beginCrop(Uri source) {
         Uri outputUri = Uri.fromFile(new File(getCacheDir(), "cropped"));
         Intent intent = new Intent(this, CropPhotoActivity.class);
@@ -220,5 +218,11 @@ public class ModifyUserActivity extends BaseActivity {
         } else if (resultCode == Crop.RESULT_ERROR) {
             ToastUtil.show(this, Crop.getError(result).getMessage());
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.bind(this);
     }
 }
