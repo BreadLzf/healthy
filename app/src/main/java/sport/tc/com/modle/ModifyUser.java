@@ -9,8 +9,6 @@ import java.io.Serializable;
 
 public class ModifyUser implements Serializable {
 
-    //	{“id”：“25”，“sex”：“1”，“birth”：“1993/05/12”，
-// “height”：“175”，“weight”：“68”，“bmi” 22.1“，”电话“：”1383838438“，”wear_hand“：”1“}
     private String id;
     private String sex;
     private String birth;
@@ -19,6 +17,15 @@ public class ModifyUser implements Serializable {
     private String bmi;
     private String phone;
     private String wear_hand;
+    private  String nick_name;
+
+    public String getNick_name() {
+        return nick_name;
+    }
+
+    public void setNick_name(String nick_name) {
+        this.nick_name = nick_name == null ? "" : nick_name;
+    }
 
     public String getId() {
         return id;

@@ -1,23 +1,18 @@
 package sport.tc.com.ui.activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
-
-import java.io.File;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,7 +20,6 @@ import butterknife.OnClick;
 import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
-import sport.tc.com.customview.Crop;
 import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.ModifyUser;
 import sport.tc.com.ui.base.BaseActivity;
@@ -41,6 +35,38 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 public class ModifyUserActivity extends BaseActivity {
 
 
+    @BindView(R.id.modify_head_img)
+    ImageView mModifyHeadImg;
+    @BindView(R.id.modify_head_layout)
+    FrameLayout mModifyHeadLayout;
+    @BindView(R.id.modify_user_nick_name)
+    EditText mModifyUserNickName;
+    @BindView(R.id.modify_user_sex_man)
+    RadioButton mModifyUserSexMan;
+    @BindView(R.id.modify_user_sex_woman)
+    RadioButton mModifyUserSexWoman;
+    @BindView(R.id.modify_user_sex)
+    RadioGroup mModifyUserSex;
+    @BindView(R.id.modify_user_birth_layout)
+    RelativeLayout mModifyUserBirthLayout;
+    @BindView(R.id.modify_user_high_edit)
+    EditText mModifyUserHighEdit;
+    @BindView(R.id.modify_user_high_layout)
+    RelativeLayout mModifyUserHighLayout;
+    @BindView(R.id.modify_user_weight_edit)
+    EditText mModifyUserWeightEdit;
+    @BindView(R.id.modify_user_weight_layout)
+    RelativeLayout mModifyUserWeightLayout;
+    @BindView(R.id.modify_phone_edit)
+    EditText mModifyPhoneEdit;
+    @BindView(R.id.modify_user_bind_phone_layout)
+    RelativeLayout mModifyUserBindPhoneLayout;
+    @BindView(R.id.modify_user_bind_left)
+    RadioButton mModifyUserBindLeft;
+    @BindView(R.id.modify_user_bind_right)
+    RadioButton mModifyUserBindRight;
+    @BindView(R.id.modify_user_bind_group)
+    RadioGroup mModifyUserBindGroup;
     /**
      * id：用户的主键编号
      * 电话：接受短信验证码的手机号码
@@ -52,7 +78,7 @@ public class ModifyUserActivity extends BaseActivity {
      * 电话：绑定的手机号，新增时间默认为账号
      * 佩戴手（1左手2右手）
      */
-
+    private String nick;
     private String sex;
     private String birth;
     private String height;
@@ -62,33 +88,6 @@ public class ModifyUserActivity extends BaseActivity {
     private String wear_hand;
 
 
-    @BindView(R.id.modify_head_img)
-    ImageView mModifyHeadImg;
-    @BindView(R.id.modify_head_layout)
-    FrameLayout mModifyHeadLayout;
-    @BindView(R.id.modify_user_nick_name)
-    TextView mModifyUserNickName;
-    @BindView(R.id.modify_user_sex_man)
-    RadioButton mModifyUserSexMan;
-    @BindView(R.id.modify_user_sex_woman)
-    RadioButton mModifyUserSexWoman;
-    @BindView(R.id.modify_user_sex)
-    RadioGroup mModifyUserSex;
-    @BindView(R.id.modify_user_birth_layout)
-    RelativeLayout mModifyUserBirthLayout;
-    @BindView(R.id.modify_user_high_layout)
-    RelativeLayout mModifyUserHighLayout;
-    @BindView(R.id.modify_user_weight_layout)
-    RelativeLayout mModifyUserWeightLayout;
-    @BindView(R.id.modify_user_bind_phone_layout)
-    RelativeLayout mModifyUserBindPhoneLayout;
-    @BindView(R.id.modify_user_bind_left)
-    RadioButton mModifyUserBindLeft;
-    @BindView(R.id.modify_user_bind_right)
-    RadioButton mModifyUserBindRight;
-    @BindView(R.id.modify_user_bind_group)
-    RadioGroup mModifyUserBindGroup;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,10 +96,43 @@ public class ModifyUserActivity extends BaseActivity {
         initNoBackToolBar("个人信息", "保存", new OnCustomClickListener() {
             @Override
             public void onItemClick() {
-                postUserMessage();
+                modifyUserMessage();
+
             }
         });
         initView();
+    }
+
+    private void modifyUserMessage() {
+        nick =mModifyUserNickName.getText().toString();
+        birth="19901011";
+        height=mModifyUserHighEdit.getText().toString();
+        weight =mModifyUserWeightEdit.getText().toString();
+        bmi="22";
+        phone=mModifyPhoneEdit.getText().toString();
+
+        if (nick.isEmpty()){
+            ToastUtil.show(ModifyUserActivity.this,"昵称不能为空");
+
+        }
+        if (height.isEmpty()){
+            ToastUtil.show(ModifyUserActivity.this,"身高不能为空");
+
+        }
+        if (weight.isEmpty()){
+            ToastUtil.show(ModifyUserActivity.this,"体重不能为空");
+
+        }
+        if (phone.isEmpty()){
+            ToastUtil.show(ModifyUserActivity.this,"手机号不能为空");
+        }
+        if (!phone.isEmpty()&&!AppHelper.isPhoneNumber(phone)){
+            ToastUtil.show(ModifyUserActivity.this,"手机号码不正确");
+        }
+
+        if (!nick.isEmpty()&&!birth.isEmpty()&&!birth.isEmpty()&&!weight.isEmpty()&&!bmi.isEmpty()&&!phone.isEmpty()){
+            postUserMessage();
+        }
     }
 
 
@@ -137,50 +169,18 @@ public class ModifyUserActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.modify_head_img, R.id.modify_head_layout, R.id.modify_user_nick_name, R.id.modify_user_sex_man, R.id.modify_user_sex_woman,
-            R.id.modify_user_birth_layout, R.id.modify_user_high_layout,
-            R.id.modify_user_weight_layout, R.id.modify_user_bind_phone_layout,
-    })
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.modify_head_img:
-                ToastUtil.show(this, "头像");
-                break;
-            case R.id.modify_head_layout:
-                break;
-            case R.id.modify_user_nick_name:
-                ToastUtil.show(this, "昵称");
-
-                break;
-            case R.id.modify_user_sex_man:
-                break;
-            case R.id.modify_user_sex_woman:
-                break;
-
-            case R.id.modify_user_birth_layout:
-                break;
-            case R.id.modify_user_high_layout:
-                break;
-            case R.id.modify_user_weight_layout:
-                break;
-            case R.id.modify_user_bind_phone_layout:
-                break;
-
-        }
-    }
 
     private void postUserMessage() {
-
         String validData = AppHelper.prouductValidData(this);
-
         ModifyUser modifyUser = new ModifyUser();
-        modifyUser.setSex("1");
+        modifyUser.setNick_name(nick);
+        modifyUser.setSex(sex);
         modifyUser.setBirth("19890313");
-        modifyUser.setHeight("170");
-        modifyUser.setWeight("55");
+        modifyUser.setHeight(height);
+        modifyUser.setWeight(weight);
         modifyUser.setBmi("68");
-        modifyUser.setPhone("18576759600");
-        modifyUser.setWear_hand("1");
+        modifyUser.setPhone(phone);
+        modifyUser.setWear_hand(wear_hand);
         String executeData = javaBeanToJson(modifyUser);
 
 
@@ -202,27 +202,42 @@ public class ModifyUserActivity extends BaseActivity {
 
     }
 
+    @OnClick({R.id.modify_head_img, R.id.modify_head_layout, R.id.modify_user_nick_name, R.id.modify_user_sex_man, R.id.modify_user_sex_woman, R.id.modify_user_sex, R.id.modify_user_birth_layout, R.id.modify_user_high_edit, R.id.modify_user_high_layout, R.id.modify_user_weight_edit, R.id.modify_user_weight_layout, R.id.modify_phone_edit, R.id.modify_user_bind_phone_layout, R.id.modify_user_bind_left, R.id.modify_user_bind_right, R.id.modify_user_bind_group})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.modify_head_img:
+                break;
+            case R.id.modify_head_layout:
+                break;
+            case R.id.modify_user_nick_name:
 
-    private void beginCrop(Uri source) {
-        Uri outputUri = Uri.fromFile(new File(getCacheDir(), "cropped"));
-        Intent intent = new Intent(this, CropPhotoActivity.class);
-        intent.setData(source);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
-        startActivityForResult(intent, Crop.REQUEST_CROP);
-    }
-
-    private void handleCrop(int resultCode, Intent result) {
-        if (resultCode == RESULT_OK) {
-            Uri output = Crop.getOutput(result);
-//            new UploadAvatarTask(this, "正在上传图片...", output).start();
-        } else if (resultCode == Crop.RESULT_ERROR) {
-            ToastUtil.show(this, Crop.getError(result).getMessage());
+                break;
+            case R.id.modify_user_sex_man:
+                break;
+            case R.id.modify_user_sex_woman:
+                break;
+            case R.id.modify_user_sex:
+                break;
+            case R.id.modify_user_birth_layout:
+                break;
+            case R.id.modify_user_high_edit:
+                break;
+            case R.id.modify_user_high_layout:
+                break;
+            case R.id.modify_user_weight_edit:
+                break;
+            case R.id.modify_user_weight_layout:
+                break;
+            case R.id.modify_phone_edit:
+                break;
+            case R.id.modify_user_bind_phone_layout:
+                break;
+            case R.id.modify_user_bind_left:
+                break;
+            case R.id.modify_user_bind_right:
+                break;
+            case R.id.modify_user_bind_group:
+                break;
         }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnife.bind(this);
     }
 }

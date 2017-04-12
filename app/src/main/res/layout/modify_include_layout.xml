@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:focusable="true"
+              android:focusableInTouchMode="true"
               android:orientation="vertical">
 
 
@@ -48,13 +50,13 @@
 
                 </FrameLayout>
 
-                <TextView
+                <EditText
                     android:id="@+id/modify_user_nick_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="12dp"
-                    android:text="编辑昵称"
+                    android:hint="修改昵称"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_15"
                     android:layout_below="@+id/modify_head_layout"
@@ -169,12 +171,13 @@
 
 
                 <EditText
+                    android:id="@+id/modify_user_high_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="cm"
+                    android:hint="请输入你的身高"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_15"/>
 
@@ -202,13 +205,15 @@
 
 
                 <EditText
+                    android:id="@+id/modify_user_weight_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:hint="kg"
+                    android:hint="请输入你的体重"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_15"/>
+                    android:textSize="@dimen/text_size_15"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"/>
 
             </RelativeLayout>
 
@@ -265,6 +270,16 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_15"/>
 
+
+                <EditText
+                    android:id="@+id/modify_phone_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:hint="请输入手机号"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
 
             </RelativeLayout>
 
