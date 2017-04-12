@@ -14,7 +14,7 @@ import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.modle.ArticleRequest;
-import sport.tc.com.modle.HealthyCircleResponse;
+import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.ui.base.BaseActivity;
 import sport.tc.com.util.AppHelper;
 
@@ -49,27 +49,28 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
     private void initView() {
         napaLayout = (RelativeLayout) findViewById(R.id.nape_detail_top_layout);
         napaLayout.setOnClickListener(this);
+        getArticleList();
     }
 
-    private void getArticleList() {
+        private void getArticleList() {
         String validData = AppHelper.prouductValidData(this);
         ArticleRequest articleRequest = new ArticleRequest();
         articleRequest.cur_page = CUNRRENT_PAGE;
         articleRequest.page_num = COUNT;
         articleRequest.app_type = heealthyCircleAppType;
-        articleRequest.type = type;
         String executeData = javaBeanToJson(articleRequest);
 
         Novate novate = new Novate.Builder(NapeListActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.artcleListApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
+        novate.call(apiService.artcleListApi2(validData, executeData), new BaseSubscriber<BaseResponse>(this) {
+
             @Override
             public void onError(Throwable e) {
 
             }
 
             @Override
-            public void onNext(HealthyCircleResponse healthyCircleResponse) {
+            public void onNext(BaseResponse baseResponse) {
 
             }
         });

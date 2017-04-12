@@ -73,4 +73,27 @@ public interface HealthyApiService {
     Observable<HealthyCircleResponse> artcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
+
+    /**
+     * 文章列表
+     * @param validData
+     * @param executeData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-article-list")
+    Observable<BaseResponse> artcleListApi2(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+
+    /**
+     * 文章列表
+     * @param validData
+     * @param executeData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-article-content")
+    Observable<HealthyCircleResponse> artcleDetailApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
 }

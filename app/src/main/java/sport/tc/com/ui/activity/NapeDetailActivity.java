@@ -104,11 +104,12 @@ public class NapeDetailActivity extends BaseActivity {
         articleRequest.page_num = COUNT;
         articleRequest.app_type = heealthyCircleAppType;
         articleRequest.type = type;
+        articleRequest.article_id="1";
         String executeData = javaBeanToJson(articleRequest);
 
         Novate novate = new Novate.Builder(NapeDetailActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.artcleListApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
+        novate.call(apiService.artcleDetailApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
 
             @Override
             public void onError(Throwable e) {

@@ -28,4 +28,5 @@ public class ArticleRequest {
     public String is_index;
     public String app_type;
     public String type;
+    public String article_id;
 }
