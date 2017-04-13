@@ -6,6 +6,8 @@
 
     >
 
+    <include layout="@layout/custom_right_title_toolbar"/>
+
 
     <RelativeLayout
         android:layout_width="match_parent"

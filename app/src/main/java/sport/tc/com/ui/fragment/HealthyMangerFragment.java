@@ -1,5 +1,6 @@
 package sport.tc.com.ui.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,12 @@ import android.widget.Toast;
 
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.customview.CircleMenuLayout;
+import sport.tc.com.ui.activity.BodyCheckActivity;
+import sport.tc.com.ui.activity.LockHealthyActivity;
+import sport.tc.com.ui.activity.OpenHealthyRoadActivity;
+import sport.tc.com.ui.activity.SlowillActivity;
+import sport.tc.com.ui.activity.SportPrescribeActivity;
+import sport.tc.com.ui.activity.SportRiskActivity;
 import sport.tc.com.ui.base.BaseFragment;
 
 //import healthy.tichuang.com.customview.HealthyCircleView;
@@ -26,7 +33,7 @@ public class HealthyMangerFragment extends BaseFragment {
 
     private CircleMenuLayout mCircleMenuLayout;
 
-    private String[] mItemTexts = new String[] { "体质健康测评 ", "慢病评估", "运动风险评估",
+    private String[] mItemTexts = new String[] { "体质健康测评", "慢病评估", "运动风险评估",
             "锁定健康目标", "运动处方" };
     private int[] mItemImgs = new int[] { R.drawable.home_body_healthy,
             R.drawable.home_body_chronic, R.drawable.home_body_sport,
@@ -56,7 +63,7 @@ public class HealthyMangerFragment extends BaseFragment {
     }
 
 
-    private void initView(LayoutInflater inflater, ViewGroup container) {
+    private void initView(final LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_healthy_mag_layout, container, false);
         mCircleMenuLayout = (CircleMenuLayout)rootView.findViewById(R.id.custom_view);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
@@ -64,11 +71,46 @@ public class HealthyMangerFragment extends BaseFragment {
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override
             public void itemClick(View view, int pos) {
+                String itemStr =mItemTexts[pos];
+                Intent  intent;
+                switch (itemStr){
+                    case "体质健康测评":
+                        intent =new Intent(getActivity(), BodyCheckActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case "慢病评估":
+                        intent =new Intent(getActivity(), SlowillActivity.class);
+                        startActivity(intent);
+
+                        break;
+
+                    case "运动风险评估":
+                        intent =new Intent(getActivity(), SportRiskActivity.class);
+                        startActivity(intent);
+
+                        break;
+
+                    case "锁定健康目标":
+                        intent =new Intent(getActivity(), LockHealthyActivity.class);
+                        startActivity(intent);
+
+                        break;
+
+                    case "运动处方":
+                        intent =new Intent(getActivity(), SportPrescribeActivity.class);
+                        startActivity(intent);
+
+                        break;
+                }
                 Toast.makeText(getActivity(),mItemTexts[pos],Toast.LENGTH_SHORT).show();
             }
-
+     Intent  intent;
             @Override
             public void itemCenterClick(View view) {
+
+                intent =new Intent(getActivity(), OpenHealthyRoadActivity.class);
+                startActivity(intent);
                 Toast.makeText(getActivity(),"点击中心",Toast.LENGTH_SHORT).show();
 
             }

@@ -112,6 +112,47 @@
             android:name="sport.tc.com.ui.activity.CommentListActivity"
             android:launchMode="standard"
             ></activity>
+
+
+        <activity
+            android:name="sport.tc.com.ui.activity.BodyCheckActivity"
+            android:launchMode="standard"
+            ></activity>
+
+
+        <activity
+            android:name="sport.tc.com.ui.activity.SlowillActivity"
+            android:launchMode="standard"
+            ></activity>
+        <activity
+            android:name="sport.tc.com.ui.activity.OpenHealthyRoadActivity"
+            android:launchMode="standard"
+            ></activity>
+        <activity
+            android:name="sport.tc.com.ui.activity.SportRiskActivity"
+            android:launchMode="standard"
+            ></activity>
+        <activity
+            android:name="sport.tc.com.ui.activity.LockHealthyActivity"
+            android:launchMode="standard"
+            ></activity>
+        <activity
+            android:name="sport.tc.com.ui.activity.SportPrescribeActivity"
+            android:launchMode="standard"
+            ></activity>
+        <activity
+            android:name="sport.tc.com.ui.activity.SportNutritionActivity"
+            android:launchMode="standard"
+            ></activity>
+        <activity
+            android:name="sport.tc.com.ui.activity.HealthyPsychologyActicity"
+            android:launchMode="standard"
+            ></activity>
+        <activity
+            android:name="sport.tc.com.ui.activity.KnowledgeActivity"
+            android:launchMode="standard"
+            ></activity>
+
     </application>
 
 </manifest>
