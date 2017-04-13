@@ -107,10 +107,9 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
         commentEdit = (EditText) findViewById(R.id.nape_detail_comment_edit);
 
         likeTv = (TextView) findViewById(R.id.nape_detail_like);
-
+        likeTv.setOnClickListener(this);
         supportTv = (TextView) findViewById(R.id.nape_detail_heart);
 
-        supportTv.setOnClickListener(this);
 
     }
 
@@ -186,10 +185,12 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
                     articleId = articleListBean.getArticle_id();
                     Intent intent = new Intent(NapeDetailActivity.this, CommentListActivity.class);
                     intent.putExtra("article_id", articleId);
+
                     startActivity(intent);
                 }
 
                 break;
+
         }
     }
 }

@@ -15,4 +15,7 @@ public class AppContents {
      */
     public static  String USER_IDENT="user_ident";
 
+    public static final int COUNT = 20;
+    public static  String HEALTHY_TYPE = "1";
+
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import sport.tc.com.android_handhoop.R;
-import sport.tc.com.modle.Comment;
+import sport.tc.com.modle.CommentListResponse;
 
 /**
  * Created by punisher on 2017/4/12.
@@ -21,15 +21,17 @@ import sport.tc.com.modle.Comment;
 
 public class CommentListAdapter extends BaseAdapter {
 
-    private List<Comment> mCommentList;
+    private List<CommentListResponse.DataBean.CommentListBean> mCommentList;
     private LayoutInflater mLayoutInflater;
     private Context mContext;
 
 
-    public CommentListAdapter(List<Comment> commentList, LayoutInflater inflater, Context context) {
-        mCommentList = commentList;
-        mLayoutInflater = inflater;
+
+
+    public CommentListAdapter(List<CommentListResponse.DataBean.CommentListBean> commentList, Context context) {
         mContext = context;
+        mCommentList = commentList;
+        mLayoutInflater =  (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -62,11 +64,11 @@ public class CommentListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
 
-        Comment comment = mCommentList.get(position);
-        Glide.with(mContext).load(comment.getUrl()).into(viewHolder.mCircleImageView);
-        viewHolder.phoneTv.setText(comment.getPhone());
-        viewHolder.dateTv.setText(comment.getDate());
-        viewHolder.contentTv.setText(comment.getContent());
+        CommentListResponse.DataBean.CommentListBean comment = mCommentList.get(position);
+        Glide.with(mContext).load(comment.getHead_img()).into(viewHolder.mCircleImageView);
+        viewHolder.phoneTv.setText(comment.getLogin_name());
+        viewHolder.dateTv.setText(comment.getCreate_time());
+        viewHolder.contentTv.setText(comment.getUser_msg());
         return view;
     }
 
