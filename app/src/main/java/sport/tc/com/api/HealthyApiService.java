@@ -73,20 +73,6 @@ public interface HealthyApiService {
     @POST ("api/get-article-list")
     Observable<HealthyCircleResponse> artcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
-
-
-    /**
-     * 文章列表
-     * @param validData
-     * @param executeData
-     * @return
-     */
-    @FormUrlEncoded
-    @POST ("api/get-article-list")
-    Observable<BaseResponse> artcleListApi2(@Field("validData") String validData, @Field("executeData") String executeData);
-
-
-
     /**
      * 文章列表
      * @param validData
@@ -98,9 +84,36 @@ public interface HealthyApiService {
     Observable<HealthyCircleResponse> artcleDetailApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
-
+    /**
+     * 评论列表
+     * @param validData
+     * @param executeData
+     * @return
+     */
     @FormUrlEncoded
     @POST ("api/get-article-comment-list")
     Observable<CommentListResponse> commentListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 文章列表
+     * @param validData
+     @@ -82,25 +80,30 @@ public interface HealthyApiService {
+      * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-article-list")
+    Observable<BaseResponse> artcleListApi2(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 健康测评
+     * @param validData
+     * @param executeData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-assess-info")
+    Observable<BaseResponse> bodyCheckApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 }
