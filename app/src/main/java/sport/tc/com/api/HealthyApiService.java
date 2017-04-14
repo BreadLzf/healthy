@@ -6,6 +6,7 @@ import retrofit2.http.POST;
 import rx.Observable;
 import sport.tc.com.modle.Account;
 import sport.tc.com.modle.BaseResponse;
+import sport.tc.com.modle.BodyCheckResponse;
 import sport.tc.com.modle.CommentListResponse;
 import sport.tc.com.modle.HealthyCircleResponse;
 import sport.tc.com.modle.ModifyUserResponse;
@@ -114,6 +115,6 @@ public interface HealthyApiService {
      */
     @FormUrlEncoded
     @POST ("api/get-assess-info")
-    Observable<BaseResponse> bodyCheckApi(@Field("validData") String validData, @Field("executeData") String executeData);
+    Observable<BodyCheckResponse> bodyCheckApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 }

@@ -1,17 +1,29 @@
 package sport.tc.com.ui.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
+import com.zhy.view.flowlayout.FlowLayout;
+import com.zhy.view.flowlayout.TagAdapter;
+import com.zhy.view.flowlayout.TagFlowLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
-import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.BodyCheckRequest;
+import sport.tc.com.modle.BodyCheckResponse;
 import sport.tc.com.ui.base.BaseActivity;
 import sport.tc.com.util.AppHelper;
 
@@ -22,13 +34,33 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
  */
 
 public class BodyCheckActivity extends BaseActivity {
+    private  TagFlowLayout  mTagFlowLayout;
+    private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean>  mTagBeanList;
+    private  List<String>  tagLists=new ArrayList<>();
+    private LayoutInflater  mLayoutInflater;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_check);
+        initView();
         getArticleList();
     }
 
+    private  void  initView(){
+        mLayoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mTagFlowLayout = (TagFlowLayout) findViewById(R.id.id_flowlayout);
+        mTagFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener()
+        {
+            @Override
+            public boolean onTagClick(View view, int position, FlowLayout parent)
+            {
+                Toast.makeText(BodyCheckActivity.this, tagLists.get(position), Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
+    }
 
 
     private void getArticleList() {
@@ -41,7 +73,7 @@ public class BodyCheckActivity extends BaseActivity {
 
         Novate novate = new Novate.Builder(BodyCheckActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.bodyCheckApi(validData, executeData), new BaseSubscriber<BaseResponse>(this) {
+        novate.call(apiService.bodyCheckApi(validData, executeData), new BaseSubscriber<BodyCheckResponse>(this) {
 
             @Override
             public void onError(Throwable e) {
@@ -49,8 +81,23 @@ public class BodyCheckActivity extends BaseActivity {
             }
 
             @Override
-            public void onNext(BaseResponse baseResponse) {
-
+            public void onNext(BodyCheckResponse bodyCheckResponse) {
+                mTagBeanList=   bodyCheckResponse.getData().getAssessInfo().getTag();
+                for (int i =0;i<mTagBeanList.size();i++){
+                    mTagBeanList.get(i).getTag_title();
+                    tagLists.add(mTagBeanList.get(i).getTag_title());
+                }
+                Log.e("taglists  size",tagLists.size()+"");
+                mTagFlowLayout.setAdapter(new TagAdapter<String>(tagLists)
+                {
+                    @Override
+                    public View getView(FlowLayout parent, int position, String s)
+                    {
+                        TextView tv = (TextView) mLayoutInflater.inflate(R.layout.tag_body_check,mTagFlowLayout, false);
+                        tv.setText(s);
+                        return tv;
+                    }
+                });
             }
         });
     }
