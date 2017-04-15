@@ -21,8 +21,10 @@ import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.modle.ArticleRequest;
 import sport.tc.com.modle.HealthyCircleResponse;
+import sport.tc.com.modle.NapeLikeResponse;
 import sport.tc.com.ui.base.BaseActivity;
 import sport.tc.com.util.AppHelper;
+import sport.tc.com.util.ToastUtil;
 
 import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 
@@ -62,6 +64,9 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
     private EditText commentEdit;
     private TextView likeTv;
     private TextView supportTv;
+
+    //文章id
+    private String articleId="";
 
 
     @Override
@@ -108,7 +113,8 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
 
         likeTv = (TextView) findViewById(R.id.nape_detail_like);
         likeTv.setOnClickListener(this);
-        supportTv = (TextView) findViewById(R.id.nape_detail_heart);
+        supportTv = (TextView) findViewById(R.id.nape_detail_support);
+        supportTv.setOnClickListener(this);
 
 
     }
@@ -176,21 +182,59 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
 
     }
 
+
+
+    private void sendLike( ) {
+
+        String validData = AppHelper.prouductValidData(this);
+        ArticleRequest articleRequest = new ArticleRequest();
+        articleRequest.article_id=articleId;
+        String executeData = javaBeanToJson(articleRequest);
+
+        Novate novate = new Novate.Builder(NapeDetailActivity.this).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        novate.call(apiService.artcleLikeApi(validData, executeData), new BaseSubscriber<NapeLikeResponse>(this) {
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(NapeLikeResponse napeLikeResponse) {
+                if (napeLikeResponse!=null&&napeLikeResponse.getCode().equals("000")){
+                    ToastUtil.show(NapeDetailActivity.this,"支持成功");
+                }
+
+
+            }
+        });
+
+    }
+
     @Override
     public void onClick(View view) {
-        String articleId;
         switch (view.getId()) {
             case R.id.nape_detail_like:
                 if (articleListBean != null) {
                     articleId = articleListBean.getArticle_id();
-                    Intent intent = new Intent(NapeDetailActivity.this, CommentListActivity.class);
-                    intent.putExtra("article_id", articleId);
-
-                    startActivity(intent);
+                    if (!articleId.isEmpty()&&articleId.length()>0){
+                       sendLike();
+                    }
                 }
 
                 break;
 
+            case  R.id.nape_detail_support:
+                if (articleListBean != null) {
+                    articleId = articleListBean.getArticle_id();
+                    if (!articleId.isEmpty()&&articleId.length()>0){
+                        Intent intent = new Intent(NapeDetailActivity.this, CommentListActivity.class);
+                        intent.putExtra("article_id", articleId);
+                        startActivity(intent);
+                    }
+                }
+                break;
         }
     }
 }

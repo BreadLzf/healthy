@@ -149,7 +149,7 @@
             android:launchMode="standard"
             ></activity>
         <activity
-            android:name="sport.tc.com.ui.activity.KnowledgeActivity"
+            android:name="sport.tc.com.ui.activity.ExplainActivity"
             android:launchMode="standard"
             ></activity>
 

@@ -1,6 +1,7 @@
 package sport.tc.com.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -43,6 +44,13 @@ public class BodyCheckActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_body_check);
+        initRightTextToolBar(R.drawable.chronic_disease_back, "体质健康评测", "说明", new OnCustomClickListener() {
+            @Override
+            public void onItemClick() {
+                Intent  intent =new Intent(BodyCheckActivity.this,ExplainActivity.class);
+                startActivity(intent);
+            }
+        });
         initView();
         getArticleList();
     }

@@ -10,6 +10,7 @@ import sport.tc.com.modle.BodyCheckResponse;
 import sport.tc.com.modle.CommentListResponse;
 import sport.tc.com.modle.HealthyCircleResponse;
 import sport.tc.com.modle.ModifyUserResponse;
+import sport.tc.com.modle.NapeLikeResponse;
 
 /**
  * Created by punisher on 2017/3/2.
@@ -83,6 +84,17 @@ public interface HealthyApiService {
     @FormUrlEncoded
     @POST ("api/get-article-content")
     Observable<HealthyCircleResponse> artcleDetailApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 点赞
+     * @param validData
+     * @param executeData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/add-article-price")
+    Observable<NapeLikeResponse> artcleLikeApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
     /**

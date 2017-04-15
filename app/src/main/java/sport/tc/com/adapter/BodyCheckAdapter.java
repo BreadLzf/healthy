@@ -96,41 +96,66 @@ public class BodyCheckAdapter extends BaseAdapter {
 
                     switch (attr_type){
 
+                        case AppContents.BODY_CHECK_ATTR_TYPE_EDIT:
+                            switch (inputType){
+                                case AppContents.BODY_CHECK_INPUT_TYPE_SELF:
+                                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
+
+                                    break;
+
+                                case AppContents.BODY_CHECK_INPUT_TYPE_PROFESS:
+                                    editViewHolder.mEditText.setClickable(false);
+                                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
+
+                                    break;
+
+                                case AppContents.BODY_CHECK_INPUT_TYPE_SELF_AND_PROFESS:
+                                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
+
+                                    break;
+
+                                case AppContents.BODY_CHECK_INPUT_TYPE_SYSTEM:
+                                    editViewHolder.mEditText.setClickable(false);
+                                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
+
+                                    break;
+
+                                case AppContents.BODY_CHECK_INPUT_TYPE_SESTEM_HAND:
+                                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
+
+                                    break;
+
+                                case AppContents.BODY_CHECK_INPUT_TYPE_DEFAULT_CHECK:
+                                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
+
+                                    break;
+                            }
+                            break;
+
+                         //单选
+                        case AppContents.BODY_CHECK_ATTR_TYPE_DAN:
+                            switch (inputType){
+                                case AppContents.BODY_CHECK_INPUT_TYPE_DEFAULT_CHECK:
+
+                                    break;
+                            }
+                            break;
+                         //多个选项
+                        case AppContents.BODY_CHECK_ATTR_TYPE_GOU:
+                            switch (inputType){
+                                case AppContents.BODY_CHECK_INPUT_TYPE_DEFAULT_CHECK:
+
+                                    break;
+                            }
+
+
+                            break;
+
 
                     }
 
 
-                    switch (inputType){
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SELF:
-                            editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
 
-                            break;
-
-                        case AppContents.BODY_CHECK_INPUT_TYPE_PROFESS:
-                            editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
-
-                            break;
-
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SELF_AND_PROFESS:
-                            editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
-
-                            break;
-
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SYSTEM:
-                            editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
-
-                            break;
-
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SESTEM_HAND:
-                            editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
-
-                            break;
-
-                        case AppContents.BODY_CHECK_INPUT_TYPE_DEFAULT_CHECK:
-                            editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
-
-                            break;
-                    }
 
                     convertView.setTag(editViewHolder);
 
