@@ -2,6 +2,8 @@ package sport.tc.com.util;
 
 import android.content.Context;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,5 +49,19 @@ public class AppHelper {
         Pattern p = Pattern.compile("^1[34578]\\d{9}$");
         Matcher m = p.matcher(mobiles);
         return m.matches();
+    }
+
+
+    /**
+     * list  去重复的元素
+     * @param list
+     * @return
+     */
+    public static  java.util.List<String> removeDuplicate(java.util.List<String> list){
+        Set<String> set = new LinkedHashSet<String>();
+        set.addAll(list);
+        list.clear();
+        list.addAll(set);
+        return list;
     }
 }

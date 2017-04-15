@@ -3,7 +3,6 @@ package sport.tc.com.ui.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -38,6 +37,7 @@ public class BodyCheckActivity extends BaseActivity {
     private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean>  mTagBeanList;
     private  List<String>  tagLists=new ArrayList<>();
     private LayoutInflater  mLayoutInflater;
+    private  List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList=new ArrayList<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -87,7 +87,6 @@ public class BodyCheckActivity extends BaseActivity {
                     mTagBeanList.get(i).getTag_title();
                     tagLists.add(mTagBeanList.get(i).getTag_title());
                 }
-                Log.e("taglists  size",tagLists.size()+"");
                 mTagFlowLayout.setAdapter(new TagAdapter<String>(tagLists)
                 {
                     @Override
@@ -98,6 +97,9 @@ public class BodyCheckActivity extends BaseActivity {
                         return tv;
                     }
                 });
+
+
+            mConfigInfoBeanList= bodyCheckResponse.getData().getAssessInfo().getTag().get(0).getConfig_info();
             }
         });
     }
