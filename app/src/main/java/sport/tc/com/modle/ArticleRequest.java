@@ -23,8 +23,8 @@ public class ArticleRequest {
      * "5": "活动",
      * "6": "意见反馈"
      */
-    public int cur_page;
-    public int page_num;
+    public String cur_page;
+    public String page_num;
     public String is_index;
     public String app_type;
     public String type;

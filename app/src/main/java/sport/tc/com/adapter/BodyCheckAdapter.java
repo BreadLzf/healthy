@@ -106,9 +106,8 @@ public class BodyCheckAdapter extends BaseAdapter {
                 case CHECK:
                     groupViewHolder = new GroupViewHolder();
                     convertView = mLayoutInflater.inflate(R.layout.item_body_check_group, null);
-                    groupViewHolder.mRadioGroup = (RadioGroup) convertView.findViewById(R.id.item_body_check_radio_group);
-                    groupViewHolder.mTextView = (TextView) convertView.findViewById(R.id.item_body_check_group_title);
-
+                    groupViewHolder.mTextView = (TextView) convertView.findViewById(R.id.item_body_group_title);
+                    groupViewHolder.mRadioGroup = (RadioGroup) convertView.findViewById(R.id.item_body_group);
                     convertView.setTag(groupViewHolder);
 
             }

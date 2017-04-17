@@ -75,15 +75,7 @@ public interface HealthyApiService {
     @POST ("api/get-article-list")
     Observable<HealthyCircleResponse> artcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
-    /**
-     * 文章列表
-     * @param validData
-     @@ -82,25 +80,30 @@ public interface HealthyApiService {
-      * @return
-     */
-    @FormUrlEncoded
-    @POST ("api/get-article-list")
-    Observable<BaseResponse> artcleListApi2(@Field("validData") String validData, @Field("executeData") String executeData);
+
 
 
 
@@ -199,4 +191,18 @@ public interface HealthyApiService {
     @FormUrlEncoded
     @POST("api/get-expert-content")
     Observable<BaseResponse>  sportRecoverExperDetailtApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+
+    /**
+     * 文章列表
+     * @param validData
+     * @param executeData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-article-list")
+    Observable<BaseResponse> homeArtcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
 }

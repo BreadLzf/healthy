@@ -55,8 +55,8 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
         private void getArticleList() {
         String validData = AppHelper.prouductValidData(this);
         ArticleRequest articleRequest = new ArticleRequest();
-        articleRequest.cur_page = CUNRRENT_PAGE;
-        articleRequest.page_num = COUNT;
+        articleRequest.cur_page = CUNRRENT_PAGE+"";
+        articleRequest.page_num = COUNT+"";
         articleRequest.app_type = heealthyCircleAppType;
         String executeData = javaBeanToJson(articleRequest);
 
