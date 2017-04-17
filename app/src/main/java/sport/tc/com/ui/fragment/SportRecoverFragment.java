@@ -1,5 +1,6 @@
 package sport.tc.com.ui.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import sport.tc.com.android_handhoop.R;
+import sport.tc.com.ui.activity.SportHealthyWorkActivity;
 import sport.tc.com.ui.base.BaseFragment;
 
 /**
@@ -21,6 +24,7 @@ import sport.tc.com.ui.base.BaseFragment;
 
 public class SportRecoverFragment extends BaseFragment implements View.OnClickListener {
     private View rootView;
+    private RelativeLayout  workLayout;
 
     public static SportRecoverFragment newInstance() {
         return new SportRecoverFragment();
@@ -48,6 +52,8 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_sport_layout, container, false);
+        workLayout =(RelativeLayout)rootView.findViewById(R.id.sport_work_layout);
+        workLayout.setOnClickListener(this);
         initToolBar();
 
     }
@@ -103,6 +109,12 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.sport_work_layout:
+                Intent intent =new Intent(getActivity(), SportHealthyWorkActivity.class);
+                startActivity(intent);
+                break;
+        }
 
 
     }
