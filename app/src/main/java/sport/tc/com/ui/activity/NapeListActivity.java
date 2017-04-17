@@ -14,7 +14,7 @@ import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.modle.ArticleRequest;
-import sport.tc.com.modle.BaseResponse;
+import sport.tc.com.modle.HealthyCircleResponse;
 import sport.tc.com.ui.base.BaseActivity;
 import sport.tc.com.util.AppHelper;
 
@@ -62,7 +62,7 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
 
         Novate novate = new Novate.Builder(NapeListActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.artcleListApi2(validData, executeData), new BaseSubscriber<BaseResponse>(this) {
+        novate.call(apiService.artcleListApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
 
             @Override
             public void onError(Throwable e) {
@@ -70,7 +70,7 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
             }
 
             @Override
-            public void onNext(BaseResponse baseResponse) {
+            public void onNext(HealthyCircleResponse response) {
 
             }
         });

@@ -82,7 +82,7 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
 
             }
         });
-        getArticleList();
+        getArticleDetail ();
     }
 
 
@@ -119,18 +119,15 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
 
     }
 
-    private void getArticleList() {
+    private void getArticleDetail() {
         String validData = AppHelper.prouductValidData(this);
         ArticleRequest articleRequest = new ArticleRequest();
-        articleRequest.cur_page = CUNRRENT_PAGE;
-        articleRequest.page_num = COUNT;
-        articleRequest.app_type = heealthyCircleAppType;
-        articleRequest.type = type;
+        articleRequest.article_id="5";
         String executeData = javaBeanToJson(articleRequest);
 
         Novate novate = new Novate.Builder(NapeDetailActivity.this).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.artcleListApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
+        novate.call(apiService.artcleDetailApi(validData, executeData), new BaseSubscriber<HealthyCircleResponse>(this) {
 
             @Override
             public void onError(Throwable e) {

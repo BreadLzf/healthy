@@ -33,9 +33,9 @@ public class HealthyMangerFragment extends BaseFragment {
 
     private CircleMenuLayout mCircleMenuLayout;
 
-    private String[] mItemTexts = new String[] { "体质健康评测", "慢性病评估", "运动风险评估",
-            "锁定健康目标", "运动处方" };
-    private int[] mItemImgs = new int[] { R.drawable.home_body_healthy,
+    private String[] mItemTexts = new String[]{"体质健康评测", "慢性病评估", "运动风险评估",
+            "锁定健康目标", "运动处方"};
+    private int[] mItemImgs = new int[]{R.drawable.home_body_healthy,
             R.drawable.home_body_chronic, R.drawable.home_body_sport,
             R.drawable.home_body_lock, R.drawable.home_body_chu};
 
@@ -66,53 +66,53 @@ public class HealthyMangerFragment extends BaseFragment {
     private void initView(final LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_healthy_mag_layout, container, false);
         initToolBar();
-        mCircleMenuLayout = (CircleMenuLayout)rootView.findViewById(R.id.custom_view);
+        mCircleMenuLayout = (CircleMenuLayout) rootView.findViewById(R.id.custom_view);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
         mCircleMenuLayout.setRotateDrawable(getResources().getDrawable(R.drawable.round));
         mCircleMenuLayout.setOnMenuItemClickListener(new CircleMenuLayout.OnMenuItemClickListener() {
             @Override
             public void itemClick(View view, int pos) {
-                String itemStr =mItemTexts[pos];
-                Intent  intent;
-                switch (itemStr){
+                String itemStr = mItemTexts[pos];
+                Intent intent;
+                switch (itemStr) {
                     case "体质健康评测":
-                        intent =new Intent(getActivity(), BodyCheckActivity.class);
+                        intent = new Intent(getActivity(), BodyCheckActivity.class);
                         startActivity(intent);
                         break;
 
                     case "慢性病评估":
-                        intent =new Intent(getActivity(), SlowillActivity.class);
+                        intent = new Intent(getActivity(), SlowillActivity.class);
                         startActivity(intent);
 
                         break;
 
                     case "运动风险评估":
-                        intent =new Intent(getActivity(), SportRiskActivity.class);
+                        intent = new Intent(getActivity(), SportRiskActivity.class);
                         startActivity(intent);
 
                         break;
 
                     case "锁定健康目标":
-                        intent =new Intent(getActivity(), LockHealthyActivity.class);
+                        intent = new Intent(getActivity(), LockHealthyActivity.class);
                         startActivity(intent);
 
                         break;
 
                     case "运动处方":
-                        intent =new Intent(getActivity(), SportPrescribeActivity.class);
+                        intent = new Intent(getActivity(), SportPrescribeActivity.class);
                         startActivity(intent);
 
                         break;
                 }
-                Toast.makeText(getActivity(),mItemTexts[pos],Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), mItemTexts[pos], Toast.LENGTH_SHORT).show();
             }
-     Intent  intent;
+
+            Intent intent;
+
             @Override
             public void itemCenterClick(View view) {
-
-                intent =new Intent(getActivity(), OpenHealthyRoadActivity.class);
+                intent = new Intent(getActivity(), OpenHealthyRoadActivity.class);
                 startActivity(intent);
-                Toast.makeText(getActivity(),"点击中心",Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -121,9 +121,9 @@ public class HealthyMangerFragment extends BaseFragment {
     }
 
     private void initToolBar() {
-        Toolbar toolbar =(Toolbar)rootView.findViewById(R.id.healthy_no_back_tool);
-        TextView middle =(TextView)toolbar.findViewById(R.id.healthy_no_back_tool_title);
-        TextView right =(TextView)toolbar.findViewById(R.id.healthy_no_back_tool_msg);
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.healthy_no_back_tool);
+        TextView middle = (TextView) toolbar.findViewById(R.id.healthy_no_back_tool_title);
+        TextView right = (TextView) toolbar.findViewById(R.id.healthy_no_back_tool_msg);
         toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
         middle.setText("社区");
         right.setText("专家库");
@@ -132,11 +132,10 @@ public class HealthyMangerFragment extends BaseFragment {
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(),"ceshi",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "ceshi", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 
 
 }

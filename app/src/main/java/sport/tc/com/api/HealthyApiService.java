@@ -78,6 +78,19 @@ public interface HealthyApiService {
     /**
      * 文章列表
      * @param validData
+     @@ -82,25 +80,30 @@ public interface HealthyApiService {
+      * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-article-list")
+    Observable<BaseResponse> artcleListApi2(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+
+
+    /**
+     * 文章列表
+     * @param validData
      * @param executeData
      * @return
      */
@@ -108,15 +121,6 @@ public interface HealthyApiService {
     Observable<CommentListResponse> commentListApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
-    /**
-     * 文章列表
-     * @param validData
-     @@ -82,25 +80,30 @@ public interface HealthyApiService {
-      * @return
-     */
-    @FormUrlEncoded
-    @POST ("api/get-article-list")
-    Observable<BaseResponse> artcleListApi2(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
     /**
@@ -128,6 +132,17 @@ public interface HealthyApiService {
     @FormUrlEncoded
     @POST ("api/get-assess-info")
     Observable<BodyCheckResponse> bodyCheckApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 健康测评
+     * @param validData
+     * @param executeData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-assess-info")
+    Observable<BaseResponse> slowIllApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
     /**
@@ -171,6 +186,7 @@ public interface HealthyApiService {
      * 运动康复
      * 专家列表
      */
+
     @FormUrlEncoded
     @POST("api/get-all-expert-list")
     Observable<BaseResponse>  sportRecoverExpertListApi(@Field("validData") String validData, @Field("executeData") String executeData);

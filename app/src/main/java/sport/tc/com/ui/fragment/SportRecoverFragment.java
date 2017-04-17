@@ -13,9 +13,21 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tamic.novate.BaseSubscriber;
+import com.tamic.novate.Novate;
+import com.tamic.novate.Throwable;
+
+import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
+import sport.tc.com.api.HealthyApiService;
+import sport.tc.com.modle.BaseResponse;
+import sport.tc.com.modle.ExpertDetailRequest;
+import sport.tc.com.modle.SportWorkRequest;
 import sport.tc.com.ui.activity.SportHealthyWorkActivity;
 import sport.tc.com.ui.base.BaseFragment;
+import sport.tc.com.util.AppHelper;
+
+import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 
 /**
  * Created by punisher on 2017/3/1.
@@ -24,7 +36,7 @@ import sport.tc.com.ui.base.BaseFragment;
 
 public class SportRecoverFragment extends BaseFragment implements View.OnClickListener {
     private View rootView;
-    private RelativeLayout  workLayout;
+    private RelativeLayout workLayout;
 
     public static SportRecoverFragment newInstance() {
         return new SportRecoverFragment();
@@ -52,9 +64,11 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_sport_layout, container, false);
-        workLayout =(RelativeLayout)rootView.findViewById(R.id.sport_work_layout);
+        workLayout = (RelativeLayout) rootView.findViewById(R.id.sport_work_layout);
         workLayout.setOnClickListener(this);
         initToolBar();
+        getWorkList();
+        getExpertDetail();
 
     }
 
@@ -63,8 +77,8 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.healthy_sport_tool);
         final TextView middle = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_first);
         final TextView right = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_again);
-        final LinearLayout  middlelayout =(LinearLayout) toolbar.findViewById(R.id.healthy_sport_tool_first_layout) ;
-        final LinearLayout  rightlayout =(LinearLayout) toolbar.findViewById(R.id.healthy_sport_tool_again_layout) ;
+        final LinearLayout middlelayout = (LinearLayout) toolbar.findViewById(R.id.healthy_sport_tool_first_layout);
+        final LinearLayout rightlayout = (LinearLayout) toolbar.findViewById(R.id.healthy_sport_tool_again_layout);
 
         toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
         middle.setText("初诊");
@@ -106,16 +120,62 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
     }
 
 
-
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.sport_work_layout:
-                Intent intent =new Intent(getActivity(), SportHealthyWorkActivity.class);
+                Intent intent = new Intent(getActivity(), SportHealthyWorkActivity.class);
                 startActivity(intent);
                 break;
         }
+    }
 
 
+    private void getWorkList() {
+        String validData = AppHelper.prouductValidData(getActivity());
+        SportWorkRequest sportWorkRequest = new SportWorkRequest();
+        sportWorkRequest.setOrder_id("2");
+
+        String executeData = javaBeanToJson(sportWorkRequest);
+
+        Novate novate = new Novate.Builder(getActivity()).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        novate.call(apiService.sportRecoverWorkApi(validData, executeData), new BaseSubscriber<BaseResponse>(getActivity()) {
+
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(BaseResponse baseResponse) {
+
+            }
+        });
+    }
+
+
+    private void getExpertDetail() {
+        String validData = AppHelper.prouductValidData(getActivity());
+        ExpertDetailRequest expertDeatilRequest = new ExpertDetailRequest();
+        expertDeatilRequest.setExpert_id("2");
+        String executeData = javaBeanToJson(expertDeatilRequest);
+
+        Novate novate = new Novate.Builder(getActivity()).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        novate.call(apiService.sportRecoverExperDetailtApi(validData, executeData), new BaseSubscriber<BaseResponse>(getActivity()) {
+
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(BaseResponse baseResponse) {
+
+            }
+        });
     }
 }
