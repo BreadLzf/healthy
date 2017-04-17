@@ -129,4 +129,58 @@ public interface HealthyApiService {
     @POST ("api/get-assess-info")
     Observable<BodyCheckResponse> bodyCheckApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
+
+    /**
+     * 运动康复
+     * 康复计划
+     * 开始作业
+     */
+    @FormUrlEncoded
+    @POST("api/get-mala-detail")
+    Observable<BaseResponse>  sportRecoverWorkApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+
+    /**
+     * 运动康复
+     * 创建订单
+     */
+    @FormUrlEncoded
+    @POST("api/create-expert-order")
+    Observable<BaseResponse>  sportRecoverOrderApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+    /**
+     * 运动康复
+     * 获取订单列表
+     */
+    @FormUrlEncoded
+    @POST("api/get-my-expert-order")
+    Observable<BaseResponse>  sportRecoverOrderListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 运动康复
+     * 预约列表
+     */
+    @FormUrlEncoded
+    @POST("api/get-my-expert-order-with-mala")
+    Observable<BaseResponse>  sportRecoveranAppointmentApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 运动康复
+     * 专家列表
+     */
+    @FormUrlEncoded
+    @POST("api/get-all-expert-list")
+    Observable<BaseResponse>  sportRecoverExpertListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 运动康复
+     * 专家详情
+     */
+    @FormUrlEncoded
+    @POST("api/get-expert-content")
+    Observable<BaseResponse>  sportRecoverExperDetailtApi(@Field("validData") String validData, @Field("executeData") String executeData);
 }
