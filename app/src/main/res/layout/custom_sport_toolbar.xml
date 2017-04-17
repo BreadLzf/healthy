@@ -19,18 +19,35 @@
             android:layout_gravity="center"
             android:orientation="horizontal"
             >
-            <TextView
-                android:id="@+id/healthy_sport_tool_first"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="初诊"
-                />
-            <TextView
-                android:id="@+id/healthy_sport_tool_again"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="复诊"
-                />
+           <LinearLayout
+               android:id="@+id/healthy_sport_tool_first_layout"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
+                   android:id="@+id/healthy_sport_tool_first"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/healthy_one_shape"
+                   android:text="初诊"
+                   android:textColor="@color/white_80"
+
+                   />
+           </LinearLayout>
+           <LinearLayout
+               android:id="@+id/healthy_sport_tool_again_layout"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
+                   android:id="@+id/healthy_sport_tool_again"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:background="@drawable/healthy_two_shape"
+                   android:textColor="@color/white_80"
+                   android:text="复诊"
+                   />
+           </LinearLayout>
 
         </LinearLayout>
 

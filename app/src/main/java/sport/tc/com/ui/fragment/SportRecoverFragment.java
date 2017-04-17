@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,17 +55,32 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.healthy_sport_tool);
-        TextView middle = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_first);
-        TextView right = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_again);
+        final TextView middle = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_first);
+        final TextView right = (TextView) toolbar.findViewById(R.id.healthy_sport_tool_again);
+        final LinearLayout  middlelayout =(LinearLayout) toolbar.findViewById(R.id.healthy_sport_tool_first_layout) ;
+        final LinearLayout  rightlayout =(LinearLayout) toolbar.findViewById(R.id.healthy_sport_tool_again_layout) ;
+
         toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
         middle.setText("初诊");
         right.setText("复诊");
-        middle.setTextColor(Color.parseColor("#e5e5e5"));
-        right.setTextColor(Color.parseColor("#e5e5e5"));
+
+        middle.setTextColor(Color.parseColor("#1adddf"));
+        right.setTextColor(Color.parseColor("#ffffff"));
+
+        middle.setBackgroundResource(R.drawable.healthy_one_white_shape);
+        right.setBackgroundResource(R.drawable.healthy_two_shape);
+        middle.setTextColor(Color.parseColor("#1adddf"));
+        right.setTextColor(Color.parseColor("#ffffff"));
+
         middle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "初诊", Toast.LENGTH_SHORT).show();
+                middle.setBackgroundResource(R.drawable.healthy_one_white_shape);
+                right.setBackgroundResource(R.drawable.healthy_two_shape);
+                middle.setTextColor(Color.parseColor("#1adddf"));
+                right.setTextColor(Color.parseColor("#ffffff"));
+
 
             }
         });
@@ -72,6 +88,13 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "复诊", Toast.LENGTH_SHORT).show();
+                middle.setBackgroundResource(R.drawable.healthy_one_shape);
+                right.setBackgroundResource(R.drawable.healthy_two_white_shape);
+
+                middle.setTextColor(Color.parseColor("#ffffff"));
+                right.setTextColor(Color.parseColor("#1adddf"));
+
+
             }
         });
     }
