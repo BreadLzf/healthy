@@ -1,7 +1,6 @@
 package sport.tc.com.ui.fragment;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -61,10 +60,10 @@ public class HomePageFragment extends BaseFragment {
         TextView middle =(TextView)toolbar.findViewById(R.id.healthy_only_title_toolbar_text);
         toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
         middle.setText("运动健康康复");
-        //toolbar 设置图片
-        Drawable drawable =getResources().getDrawable(R.drawable.login_regist_head); //图片需要更换
-        drawable.setBounds(0,0,drawable.getMinimumWidth(),drawable.getMinimumHeight());
-        middle.setCompoundDrawables(drawable,null,null,null);
+//        //toolbar 设置图片
+//        Drawable drawable =getResources().getDrawable(R.drawable.login_regist_head); //图片需要更换
+//        drawable.setBounds(0,0,drawable.getMinimumWidth(),drawable.getMinimumHeight());
+//        middle.setCompoundDrawables(drawable,null,null,null);
         middle.setTextColor(Color.parseColor("#e5e5e5"));
     }
 

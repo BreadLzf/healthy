@@ -65,6 +65,7 @@ public class HealthyMangerFragment extends BaseFragment {
 
     private void initView(final LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_healthy_mag_layout, container, false);
+        initToolBar();
         mCircleMenuLayout = (CircleMenuLayout)rootView.findViewById(R.id.custom_view);
         mCircleMenuLayout.setMenuItemIconsAndTexts(mItemImgs, mItemTexts);
         mCircleMenuLayout.setRotateDrawable(getResources().getDrawable(R.drawable.round));
@@ -115,7 +116,7 @@ public class HealthyMangerFragment extends BaseFragment {
 
             }
         });
-        initToolBar();
+
 
     }
 

@@ -16,16 +16,11 @@
             android:orientation="vertical"
             >
 
-            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/calendarView"
+
+            <ListView
+                android:id="@+id/sport_recover_listview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_12"
-                app:mcv_selectionColor="#00F"
-                android:layout_marginBottom="@dimen/dp_5"
-                app:mcv_showOtherDates="all"/>
+                android:layout_height="wrap_content"></ListView>
 
 
             <TextView

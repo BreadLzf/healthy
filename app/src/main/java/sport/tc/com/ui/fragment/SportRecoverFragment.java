@@ -20,8 +20,6 @@ import sport.tc.com.ui.base.BaseFragment;
 
 public class SportRecoverFragment extends BaseFragment implements View.OnClickListener {
     private View rootView;
-    private TextView first_Vist_Doctor;
-    private TextView two_Vist_Doctor;
 
     public static SportRecoverFragment newInstance() {
         return new SportRecoverFragment();

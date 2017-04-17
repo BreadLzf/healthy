@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:focusable="true"
+             android:focusableInTouchMode="true">
 
 
     <!--注册登录的最终使用布局-->
@@ -10,64 +12,64 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="162dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginTop="162dp"
         android:orientation="vertical"
         >
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:paddingTop="19.5dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="19.5dp">
 
 
             <TextView
                 android:id="@+id/login_tv"
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
-                android:layout_marginLeft="48.5dp"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_17"
+                android:layout_alignParentLeft="true"
                 android:layout_marginBottom="6.5dp"
+                android:layout_marginLeft="48.5dp"
                 android:text="登录"
+                android:textSize="@dimen/text_size_17"
                 />
 
             <View
                 android:layout_width="@dimen/dp_40"
                 android:layout_height="@dimen/dp_2"
+                android:layout_below="@id/login_tv"
                 android:layout_marginLeft="44.5dp"
                 android:background="@color/login_base_color"
-                android:layout_below="@id/login_tv"
                 ></View>
 
             <TextView
                 android:id="@+id/register_tv"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right"
-                android:layout_marginRight="48.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_17"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
                 android:layout_marginBottom="6.5dp"
+                android:layout_marginRight="48.5dp"
                 android:text="注册"
+                android:textSize="@dimen/text_size_17"
                 />
 
             <View
                 android:layout_width="@dimen/dp_40"
                 android:layout_height="@dimen/dp_2"
-                android:layout_marginRight="44.5dp"
                 android:layout_alignParentRight="true"
-                android:background="@color/login_base_color"
                 android:layout_below="@id/register_tv"
+                android:layout_marginRight="44.5dp"
+                android:background="@color/login_base_color"
                 ></View>
 
         </RelativeLayout>
 
-        <include  layout="@layout/login_layout"></include>
+        <include layout="@layout/login_layout"></include>
 
         <include layout="@layout/register_layout"></include>
 
