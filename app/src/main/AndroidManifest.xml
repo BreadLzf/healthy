@@ -153,6 +153,11 @@
             android:launchMode="standard"
             ></activity>
 
+        <activity
+            android:name="sport.tc.com.ui.activity.LockHealthyDetailActivity"
+            android:launchMode="standard"
+            ></activity>
+
     </application>
 
 </manifest>

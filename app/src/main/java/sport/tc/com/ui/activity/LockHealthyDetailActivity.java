@@ -7,16 +7,15 @@ import sport.tc.com.android_handhoop.R;
 import sport.tc.com.ui.base.BaseActivity;
 
 /**
- * Created by punisher on 2017/4/13.
- * 开启健康之路 ui暂时不做
+ * Created by punisher on 2017/4/17.
  */
 
-public class OpenHealthyRoadActivity extends BaseActivity {
+public class LockHealthyDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_healthy);
-        initRightTextToolBar(R.drawable.chronic_disease_back, "开启健康之路", "说明", new OnCustomClickListener() {
+        setContentView(R.layout.activity_lock_healthy_detail);
+        initRightTextToolBar(R.drawable.chronic_disease_back, "锁定健康目标", "说明", new OnCustomClickListener() {
             @Override
             public void onItemClick() {
 

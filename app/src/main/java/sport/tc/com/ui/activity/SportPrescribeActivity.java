@@ -16,6 +16,13 @@ public class SportPrescribeActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport_precsribe_layout);
+        initRightTextToolBar(R.drawable.chronic_disease_back, "运动处方", "专家指导", new OnCustomClickListener() {
+            @Override
+            public void onItemClick() {
+
+            }
+        });
+
 
     }
 }

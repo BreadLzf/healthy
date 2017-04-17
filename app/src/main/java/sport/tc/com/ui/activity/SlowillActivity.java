@@ -15,5 +15,6 @@ public class SlowillActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slow_ill);
+        initToolBar("慢性病评估", R.drawable.chronic_disease_back);
     }
 }

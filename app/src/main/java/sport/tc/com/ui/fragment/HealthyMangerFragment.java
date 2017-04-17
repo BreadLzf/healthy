@@ -33,7 +33,7 @@ public class HealthyMangerFragment extends BaseFragment {
 
     private CircleMenuLayout mCircleMenuLayout;
 
-    private String[] mItemTexts = new String[] { "体质健康测评", "慢病评估", "运动风险评估",
+    private String[] mItemTexts = new String[] { "体质健康评测", "慢性病评估", "运动风险评估",
             "锁定健康目标", "运动处方" };
     private int[] mItemImgs = new int[] { R.drawable.home_body_healthy,
             R.drawable.home_body_chronic, R.drawable.home_body_sport,
@@ -74,12 +74,12 @@ public class HealthyMangerFragment extends BaseFragment {
                 String itemStr =mItemTexts[pos];
                 Intent  intent;
                 switch (itemStr){
-                    case "体质健康测评":
+                    case "体质健康评测":
                         intent =new Intent(getActivity(), BodyCheckActivity.class);
                         startActivity(intent);
                         break;
 
-                    case "慢病评估":
+                    case "慢性病评估":
                         intent =new Intent(getActivity(), SlowillActivity.class);
                         startActivity(intent);
 

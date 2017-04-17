@@ -16,5 +16,11 @@ public class LockHealthyActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_healthy);
+        initRightTextToolBar(R.drawable.chronic_disease_back, "锁定健康目标", "说明", new OnCustomClickListener() {
+            @Override
+            public void onItemClick() {
+
+            }
+        });
     }
 }
