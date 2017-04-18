@@ -9,6 +9,7 @@ import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.BodyCheckResponse;
 import sport.tc.com.modle.CommentListResponse;
 import sport.tc.com.modle.HealthyCircleResponse;
+import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.modle.ModifyUserResponse;
 import sport.tc.com.modle.NapeLikeResponse;
 
@@ -202,7 +203,7 @@ public interface HealthyApiService {
      */
     @FormUrlEncoded
     @POST ("api/get-article-list")
-    Observable<BaseResponse> homeArtcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+    Observable<HomeResponse> homeArtcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
 }

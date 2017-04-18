@@ -27,7 +27,7 @@
      >
 
      <ImageView
-         android:layout_below="@id/home_page_big_title"
+         android:layout_below="@id/home_page_small_title"
          android:layout_width="0dp"
          android:layout_weight="1"
          android:layout_height="78.5dp"
@@ -37,7 +37,7 @@
 
 
      <ImageView
-         android:layout_below="@id/home_page_big_title"
+         android:layout_below="@id/home_page_small_title"
          android:layout_width="0dp"
          android:layout_weight="1"
          android:layout_height="78.5dp"
@@ -50,7 +50,7 @@
 
 
      <ImageView
-         android:layout_below="@id/home_page_big_title"
+         android:layout_below="@id/home_page_small_title"
          android:layout_width="0dp"
          android:layout_weight="1"
          android:layout_height="78.5dp"

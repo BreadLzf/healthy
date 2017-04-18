@@ -72,7 +72,7 @@ public class HomePageAdapter extends ItemAdapter<HomePageModel> {
         if (view == null) {
             switch (type) {
                 case HomePageModel.big:
-                    view =mLayoutInflater.inflate(R.layout.home_page_big_item,parent,false);
+                    view =mLayoutInflater.inflate(R.layout.item_home_page,parent,false);
                     break;
 
                 case HomePageModel.small:

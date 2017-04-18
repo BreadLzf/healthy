@@ -7,17 +7,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import sport.tc.com.AppContents;
+import sport.tc.com.adapter.HomeAdapter;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.modle.ArticleRequest;
-import sport.tc.com.modle.BaseResponse;
+import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.ui.base.BaseFragment;
 import sport.tc.com.util.AppHelper;
 
@@ -30,6 +35,9 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 public class HomePageFragment extends BaseFragment {
     private boolean isInit = false;
     private View rootView;
+    private ListView mListView;
+    private List<HomeResponse.DataBean.ArticleListBean> mArticleListBeen = new ArrayList<>();
+    private HomeAdapter mHomeAdapter;
 
 
     public static HomePageFragment newInstance() {
@@ -60,6 +68,7 @@ public class HomePageFragment extends BaseFragment {
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
+        mListView = (ListView) rootView.findViewById(R.id.home_page_listview);
 
         initToolbar();
         getHomeArticleList();
@@ -67,10 +76,9 @@ public class HomePageFragment extends BaseFragment {
     }
 
 
-
     private void initToolbar() {
-        Toolbar toolbar =(Toolbar) rootView.findViewById(R.id.healthy_only_title_toolbar);
-        TextView middle =(TextView)toolbar.findViewById(R.id.healthy_only_title_toolbar_text);
+        Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.healthy_only_title_toolbar);
+        TextView middle = (TextView) toolbar.findViewById(R.id.healthy_only_title_toolbar_text);
         toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
         middle.setText("运动健康康复");
 //        //toolbar 设置图片
@@ -81,17 +89,15 @@ public class HomePageFragment extends BaseFragment {
     }
 
 
-
-
     private void getHomeArticleList() {
         String validData = AppHelper.prouductValidData(getActivity());
         ArticleRequest articleRequest = new ArticleRequest();
-        articleRequest.is_index ="1";
+        articleRequest.is_index = "1";
         String executeData = javaBeanToJson(articleRequest);
 
         Novate novate = new Novate.Builder(getActivity()).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.homeArtcleListApi(validData, executeData), new BaseSubscriber<BaseResponse>(getActivity()) {
+        novate.call(apiService.homeArtcleListApi(validData, executeData), new BaseSubscriber<HomeResponse>(getActivity()) {
 
             @Override
             public void onError(Throwable e) {
@@ -99,13 +105,16 @@ public class HomePageFragment extends BaseFragment {
             }
 
             @Override
-            public void onNext(BaseResponse response) {
-
+            public void onNext(HomeResponse response) {
+                if (response != null && response.getCode().equals("000")) {
+                    mArticleListBeen = response.getData().getArticle_list();
+                    mHomeAdapter = new HomeAdapter(mArticleListBeen, getActivity());
+                    mListView.setAdapter(mHomeAdapter);
+                }
             }
         });
 
     }
-
 
 
 }
