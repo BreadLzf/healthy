@@ -2,7 +2,6 @@ package sport.tc.com.adapter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sport.tc.com.AppContents;
@@ -23,12 +23,10 @@ import sport.tc.com.util.AppHelper;
  * Created by lzf on 16/5/5.
  */
 public class BodyCheckAdapter extends BaseAdapter {
-    private BodyCheckResponse mBodyCheckResponse;
-    private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList;
+    private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList =new ArrayList<>();
     private LayoutInflater mLayoutInflater;
     private Context mContext;
-    private Resources mResources;
-    private List<String> typeCount;
+    private List<String> typeCount =new ArrayList<>();
     /**
      * 1 : "文本框"
      * 2 : "单选框"
@@ -37,12 +35,10 @@ public class BodyCheckAdapter extends BaseAdapter {
     private final String EDIT = "1", RADIO = "2", CHECK = "3";
 
 
-    public BodyCheckAdapter(List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList, BodyCheckResponse mBodyCheckResponse, Context context, LayoutInflater inflater) {
+    public BodyCheckAdapter(List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList, Context context) {
         mConfigInfoBeanList = mConfigInfoBeanList;
         mContext = context;
-        mBodyCheckResponse = mBodyCheckResponse;
-        mLayoutInflater = LayoutInflater.from(mContext);
-        mResources = inflater.getContext().getResources();
+        mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 
     }
@@ -158,19 +154,19 @@ public class BodyCheckAdapter extends BaseAdapter {
 
             case RADIO:
 
-                if (!configInfoBean.getDefault_value().isEmpty()){
-                    radioViewHolder.titleTextView.setText(configInfoBean.getAttr_title() );
-                }else{
+                if (!configInfoBean.getDefault_value().isEmpty()) {
+                    radioViewHolder.titleTextView.setText(configInfoBean.getAttr_title());
+                } else {
                     //不是默认值
                 }
 
                 break;
 
             case CHECK:
-                if (!configInfoBean.getDefault_value().isEmpty()){
-                    groupViewHolder.mTextView.setText(configInfoBean.getAttr_title() );
-                }else{
-                  //不是默认值
+                if (!configInfoBean.getDefault_value().isEmpty()) {
+                    groupViewHolder.mTextView.setText(configInfoBean.getAttr_title());
+                } else {
+                    //不是默认值
                 }
 
                 break;

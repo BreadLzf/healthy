@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import sport.tc.com.AppContents;
+import sport.tc.com.adapter.BodyCheckAdapter;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.modle.BodyCheckRequest;
@@ -34,11 +36,13 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
  */
 
 public class BodyCheckActivity extends BaseActivity {
-    private  TagFlowLayout  mTagFlowLayout;
-    private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean>  mTagBeanList;
-    private  List<String>  tagLists=new ArrayList<>();
-    private LayoutInflater  mLayoutInflater;
-    private  List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList=new ArrayList<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean>();
+    private TagFlowLayout mTagFlowLayout;
+    private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean> mTagBeanList;
+    private List<String> tagLists = new ArrayList<>();
+    private LayoutInflater mLayoutInflater;
+    private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList = new ArrayList<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean>();
+    private ListView selfListview;
+    private BodyCheckAdapter mBodyCheckAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class BodyCheckActivity extends BaseActivity {
         initRightTextToolBar(R.drawable.chronic_disease_back, "体质健康评测", "说明", new OnCustomClickListener() {
             @Override
             public void onItemClick() {
-                Intent  intent =new Intent(BodyCheckActivity.this,ExplainActivity.class);
+                Intent intent = new Intent(BodyCheckActivity.this, ExplainActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,14 +59,15 @@ public class BodyCheckActivity extends BaseActivity {
         getArticleList();
     }
 
-    private  void  initView(){
+    private void initView() {
+//        selfListview =(ListView)findViewById(R.id.body_check_self_listview);
+//        mBodyCheckAdapter =new BodyCheckAdapter(mConfigInfoBeanList,BodyCheckActivity.this);
+//        selfListview.setAdapter(mBodyCheckAdapter);
         mLayoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mTagFlowLayout = (TagFlowLayout) findViewById(R.id.id_flowlayout);
-        mTagFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener()
-        {
+        mTagFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
             @Override
-            public boolean onTagClick(View view, int position, FlowLayout parent)
-            {
+            public boolean onTagClick(View view, int position, FlowLayout parent) {
                 Toast.makeText(BodyCheckActivity.this, tagLists.get(position), Toast.LENGTH_SHORT).show();
                 return true;
             }
@@ -90,24 +95,24 @@ public class BodyCheckActivity extends BaseActivity {
 
             @Override
             public void onNext(BodyCheckResponse bodyCheckResponse) {
-                mTagBeanList=   bodyCheckResponse.getData().getAssessInfo().getTag();
-                for (int i =0;i<mTagBeanList.size();i++){
+                mTagBeanList = bodyCheckResponse.getData().getAssessInfo().getTag();
+                for (int i = 0; i < mTagBeanList.size(); i++) {
                     mTagBeanList.get(i).getTag_title();
                     tagLists.add(mTagBeanList.get(i).getTag_title());
                 }
-                mTagFlowLayout.setAdapter(new TagAdapter<String>(tagLists)
-                {
+                mTagFlowLayout.setAdapter(new TagAdapter<String>(tagLists) {
                     @Override
-                    public View getView(FlowLayout parent, int position, String s)
-                    {
-                        TextView tv = (TextView) mLayoutInflater.inflate(R.layout.tag_body_check,mTagFlowLayout, false);
+                    public View getView(FlowLayout parent, int position, String s) {
+                        TextView tv = (TextView) mLayoutInflater.inflate(R.layout.tag_body_check, mTagFlowLayout, false);
                         tv.setText(s);
                         return tv;
                     }
                 });
 
 
-            mConfigInfoBeanList= bodyCheckResponse.getData().getAssessInfo().getTag().get(0).getConfig_info();
+//                mConfigInfoBeanList = bodyCheckResponse.getData().getAssessInfo().getTag().get(0).getConfig_info();
+//                mBodyCheckAdapter.setAlbumList(mConfigInfoBeanList);
+//                mBodyCheckAdapter.notifyDataSetChanged();
             }
         });
     }
