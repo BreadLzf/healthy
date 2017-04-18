@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class HomePageFragment extends BaseFragment {
     private View rootView;
     private ListView mListView;
     private List<HomeResponse.DataBean.ArticleListBean> mArticleListBeen = new ArrayList<>();
+
     private HomeAdapter mHomeAdapter;
 
 
@@ -60,18 +62,22 @@ public class HomePageFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         initView(inflater, container);
-        isPrepared = true;
-
+        getHomeArticleList();
         return rootView;
     }
 
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
+
+
         rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
         mListView = (ListView) rootView.findViewById(R.id.home_page_listview);
+        mHomeAdapter = new HomeAdapter(getActivity());
+
+        Log.e("initview", mArticleListBeen.size()+"test");
+
 
         initToolbar();
-        getHomeArticleList();
 
     }
 
@@ -106,10 +112,15 @@ public class HomePageFragment extends BaseFragment {
 
             @Override
             public void onNext(HomeResponse response) {
+                Log.e("data",response.getMsg()+ ">>>>"+response.getData().getArticle_list().get(0).getArticle_json().get(0).getParagraphs().get(0));
                 if (response != null && response.getCode().equals("000")) {
+
                     mArticleListBeen = response.getData().getArticle_list();
-                    mHomeAdapter = new HomeAdapter(mArticleListBeen, getActivity());
+                    mHomeAdapter.setListBeanList(mArticleListBeen);
+                    mHomeAdapter.notifyDataSetChanged();
                     mListView.setAdapter(mHomeAdapter);
+                    Log.e("data>>>",mArticleListBeen.size()+"");
+
                 }
             }
         });

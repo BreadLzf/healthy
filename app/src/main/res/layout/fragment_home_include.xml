@@ -8,13 +8,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility="gone"
         android:scrollbars="none"
         >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
 
             >
@@ -33,6 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_12"
+                android:visibility="gone"
+
                 >
 
                 <View
@@ -61,6 +64,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_12"
+                android:visibility="gone"
+
                 android:layout_marginRight="@dimen/dp_12">
 
 
@@ -223,14 +228,16 @@
             <include layout="@layout/base_match_line_layout"></include>
 
 
-            <ListView
-                android:id="@+id/home_page_listview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                ></ListView>
 
         </LinearLayout>
 
     </ScrollView>
+
+
+    <ListView
+        android:id="@+id/home_page_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></ListView>
 
 </LinearLayout>

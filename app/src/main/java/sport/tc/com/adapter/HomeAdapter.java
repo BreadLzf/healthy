@@ -1,6 +1,7 @@
 package sport.tc.com.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import sport.tc.com.android_handhoop.R;
@@ -22,10 +22,6 @@ import sport.tc.com.modle.HomeResponse;
 
 public class HomeAdapter extends BaseAdapter {
 
-    private List<HomeResponse.DataBean.ArticleListBean>  mListBeanList=new ArrayList<>();
-    private LayoutInflater mLayoutInflater;
-    private Context mContext;
-
     public List<HomeResponse.DataBean.ArticleListBean> getListBeanList() {
         return mListBeanList;
     }
@@ -34,19 +30,28 @@ public class HomeAdapter extends BaseAdapter {
         mListBeanList = listBeanList;
     }
 
-    public HomeAdapter(List<HomeResponse.DataBean.ArticleListBean> mListBeanList, Context context) {
+    private List<HomeResponse.DataBean.ArticleListBean>  mListBeanList;
+    private LayoutInflater mLayoutInflater;
+    private Context mContext;
+
+
+    public HomeAdapter( Context context) {
+        Log.e("data","homeadapter");
         mContext = context;
-        mListBeanList =mListBeanList;
         mLayoutInflater =  (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
+        Log.e("data","getCount"+mListBeanList.size()+"");
+
         return mListBeanList == null ? 0 : mListBeanList.size();
     }
 
     @Override
     public Object getItem(int position) {
+        Log.e("data","getItem"+mListBeanList.get(position));
+
         return mListBeanList == null ? 0 : mListBeanList.get(position);
     }
 
@@ -57,10 +62,10 @@ public class HomeAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        final ViewHolder viewHolder;
+        final HomeViewHolder viewHolder;
         if (view == null) {
             view = mLayoutInflater.inflate(R.layout.item_home_page, null);
-            viewHolder = new ViewHolder();
+            viewHolder = new HomeViewHolder();
             viewHolder.mImageView = (ImageView) view.findViewById(R.id.home_page_big_img);
             viewHolder.titleTv = (TextView) view.findViewById(R.id.home_page_big_title);
 
@@ -68,14 +73,19 @@ public class HomeAdapter extends BaseAdapter {
             viewHolder.tagTv = (TextView) view.findViewById(R.id.home_page_big_tag);
             view.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder) view.getTag();
+            viewHolder = (HomeViewHolder) view.getTag();
         }
 
         HomeResponse.DataBean.ArticleListBean articleListBean      = mListBeanList.get(position);
+
+        Log.e("data","getview"+articleListBean.getPics().get(0));
+
         Glide.with(mContext).load(articleListBean.getPics().get(0)).into(viewHolder.mImageView);
         viewHolder.titleTv.setText(articleListBean.getTitle());
         viewHolder.contentTv.setText(articleListBean.getArticle_json().get(0).getParagraphs().get(0));
         String type= articleListBean.getApp_type();
+        Log.e("data  adapter>>>",type);
+
         switch (type){
             case  "1":
                 viewHolder.tagTv.setText("健康圈");
@@ -97,7 +107,7 @@ public class HomeAdapter extends BaseAdapter {
         return view;
     }
 
-    static class ViewHolder {
+    static class HomeViewHolder {
         ImageView mImageView;
         TextView titleTv;
         TextView contentTv;
