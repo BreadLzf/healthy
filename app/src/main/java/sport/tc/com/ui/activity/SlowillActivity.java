@@ -1,5 +1,6 @@
 package sport.tc.com.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -86,6 +87,8 @@ public class SlowillActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View view) {
         switch (view.getId()){
             case  R.id.ill_slow_search_btn:
+                Intent  intent = new Intent(SlowillActivity.this,SlowillReportActivity.class);
+                startActivity(intent);
                 break;
         }
 
