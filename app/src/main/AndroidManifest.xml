@@ -161,7 +161,10 @@
             android:name="sport.tc.com.ui.activity.SportHealthyWorkActivity"
             android:launchMode="standard"
             ></activity>
-
+        <activity
+            android:name="sport.tc.com.ui.activity.SlowillReportActivity"
+            android:launchMode="standard"
+            ></activity>
 
     </application>
 
