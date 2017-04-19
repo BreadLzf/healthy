@@ -68,6 +68,9 @@ dependencies {
     compile 'com.android.support:support-v4:19.1.0'
     //自动换行的view
     compile 'com.zhy:flowlayout-lib:1.0.3'
+    //banner
+    compile 'com.youth.banner:banner:1.4.9'  //最新版本
+
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     testCompile 'junit:junit:4.12'

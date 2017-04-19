@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
+import com.youth.banner.Banner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +26,7 @@ import sport.tc.com.modle.ArticleRequest;
 import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.ui.base.BaseFragment;
 import sport.tc.com.util.AppHelper;
+import sport.tc.com.util.GlideImageLoader;
 
 import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 
@@ -36,10 +37,15 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 public class HomePageFragment extends BaseFragment {
     private boolean isInit = false;
     private View rootView;
+    private HomeAdapter mHomeAdapter;
     private HomePageListView mListView;
+    private Banner mBanner;
+    private TextView workTv;
+    private  TextView timeTv;
+    private  TextView  typeTv;
     private List<HomeResponse.DataBean.ArticleListBean> mArticleListBeen = new ArrayList<>();
 
-    private HomeAdapter mHomeAdapter;
+
 
 
     public static HomePageFragment newInstance() {
@@ -68,11 +74,15 @@ public class HomePageFragment extends BaseFragment {
 
 
     private void initView(LayoutInflater inflater, ViewGroup container) {
-
-
         rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
         mListView = (HomePageListView) rootView.findViewById(R.id.home_page_listview);
         mHomeAdapter = new HomeAdapter(getActivity());
+        mBanner =(Banner)rootView.findViewById(R.id.banner);
+        mBanner.setImageLoader(new GlideImageLoader());
+        workTv =(TextView)rootView.findViewById(R.id.home_page_first_work_content);
+        timeTv =(TextView)rootView.findViewById(R.id.home_page_cover_time_content);
+        typeTv =(TextView)rootView.findViewById(R.id.home_page_sport_type_content);
+
 
         initToolbar();
 
@@ -109,20 +119,16 @@ public class HomePageFragment extends BaseFragment {
 
             @Override
             public void onNext(HomeResponse response) {
-                Log.e("data",response.getMsg()+ ">>>>"+response.getData().getArticle_list().get(0).getArticle_json().get(0).getParagraphs().get(0));
                 if (response != null && response.getCode().equals("000")) {
-
                     mArticleListBeen = response.getData().getArticle_list();
                     mHomeAdapter.setListBeanList(mArticleListBeen);
                     mHomeAdapter.notifyDataSetChanged();
                     mListView.setAdapter(mHomeAdapter);
-                    Log.e("data>>>",mArticleListBeen.size()+"");
-
+                    mBanner.setImages(mArticleListBeen.get(0).getPics());
+                    timeTv.setText(mArticleListBeen.get(0).getCreate_time());
+                    mBanner.start();
                 }
             }
         });
-
     }
-
-
 }

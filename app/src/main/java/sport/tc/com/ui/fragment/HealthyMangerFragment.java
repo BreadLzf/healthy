@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.customview.CircleMenuLayout;
@@ -126,14 +125,14 @@ public class HealthyMangerFragment extends BaseFragment {
         TextView middle = (TextView) toolbar.findViewById(R.id.healthy_no_back_tool_title);
         TextView right = (TextView) toolbar.findViewById(R.id.healthy_no_back_tool_msg);
         toolbar.setBackgroundColor(Color.parseColor("#1adddf"));
-        middle.setText("社区");
+        middle.setText("运动健康管理");
         right.setText("专家库");
         middle.setTextColor(Color.parseColor("#e5e5e5"));
         right.setTextColor(Color.parseColor("#e5e5e5"));
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "ceshi", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

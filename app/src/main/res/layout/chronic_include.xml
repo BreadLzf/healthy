@@ -10,20 +10,6 @@
         android:layout_weight="4"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/ill_slow_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16.5dp"
-            android:layout_marginLeft="11.5dp"
-            android:layout_marginRight="11.5dp"
-            android:layout_marginTop="12.5dp"
-            android:text="文字说明 文字说明 文字说明文字说明 文字说明 文字说明文字说明 文字说明 文字说明文字说明 文字说明 文字说明"
-            android:textColor="@color/black_70"
-            android:textSize="@dimen/text_size_13"
-            />
-
         <ImageView
             android:id="@+id/ill_slow_imageView"
             android:layout_width="match_parent"
@@ -33,6 +19,17 @@
             />
 
 
+        <TextView
+            android:id="@+id/ill_slow_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16.5dp"
+            android:layout_marginLeft="11.5dp"
+            android:layout_marginRight="11.5dp"
+            android:layout_marginTop="12.5dp"
+            android:textColor="@color/black_70"
+            android:textSize="@dimen/text_size_13"
+            />
 
 
         <View
@@ -138,8 +135,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
+            android:text="开始筛查"
             android:textColor="@color/login_base_color"
-            android:text="开始筛选"
             />
     </RelativeLayout>
 
