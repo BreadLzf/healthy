@@ -23,7 +23,7 @@ import sport.tc.com.util.AppHelper;
 /**
  * Created by lzf on 16/5/5.
  */
-public class BodyCheckAdapter extends BaseAdapter {
+public class SlowIllSearchAdapter extends BaseAdapter {
     private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList = new ArrayList<>();
     private LayoutInflater mLayoutInflater;
     private Context mContext;
@@ -36,7 +36,7 @@ public class BodyCheckAdapter extends BaseAdapter {
     private final String EDIT = "1", RADIO = "2", CHECK = "3";
 
 
-    public BodyCheckAdapter(List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList, Context context) {
+    public SlowIllSearchAdapter(List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList, Context context) {
         mConfigInfoBeanList = mConfigInfoBeanList;
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

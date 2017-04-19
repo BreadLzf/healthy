@@ -104,7 +104,6 @@ public class HealthyMangerFragment extends BaseFragment {
 
                         break;
                 }
-//                Toast.makeText(getActivity(), mItemTexts[pos], Toast.LENGTH_SHORT).show();
             }
 
             Intent intent;
