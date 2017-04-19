@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tamic.novate.BaseSubscriber;
@@ -22,6 +21,7 @@ import sport.tc.com.AppContents;
 import sport.tc.com.adapter.HomeAdapter;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
+import sport.tc.com.customview.HomePageListView;
 import sport.tc.com.modle.ArticleRequest;
 import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.ui.base.BaseFragment;
@@ -36,7 +36,7 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 public class HomePageFragment extends BaseFragment {
     private boolean isInit = false;
     private View rootView;
-    private ListView mListView;
+    private HomePageListView mListView;
     private List<HomeResponse.DataBean.ArticleListBean> mArticleListBeen = new ArrayList<>();
 
     private HomeAdapter mHomeAdapter;
@@ -71,11 +71,8 @@ public class HomePageFragment extends BaseFragment {
 
 
         rootView = inflater.inflate(R.layout.fragment_home_page, container, false);
-        mListView = (ListView) rootView.findViewById(R.id.home_page_listview);
+        mListView = (HomePageListView) rootView.findViewById(R.id.home_page_listview);
         mHomeAdapter = new HomeAdapter(getActivity());
-
-        Log.e("initview", mArticleListBeen.size()+"test");
-
 
         initToolbar();
 

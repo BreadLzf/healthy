@@ -33,10 +33,11 @@ public class HealthyMangerFragment extends BaseFragment {
 
     private CircleMenuLayout mCircleMenuLayout;
 
-    private String[] mItemTexts = new String[]{"体质健康评测", "慢性病评估", "运动风险评估",
+    private String[] mItemTexts = new String[]{"慢性病评估", "运动风险评估", "体质健康评测",
             "锁定健康目标", "运动处方"};
-    private int[] mItemImgs = new int[]{R.drawable.home_body_healthy,
+    private int[] mItemImgs = new int[]{
             R.drawable.home_body_chronic, R.drawable.home_body_sport,
+            R.drawable.home_body_healthy,
             R.drawable.home_body_lock, R.drawable.home_body_chu};
 
 

@@ -8,8 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
+        android:layout_height="wrap_content"
         android:scrollbars="none"
         >
 
@@ -21,12 +20,11 @@
             >
 
 
-            <ImageView
+            <android.support.v4.view.ViewPager
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/home_banner"
-                android:visibility="gone"
                 />
 
             <RelativeLayout
@@ -34,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_12"
                 android:layout_marginRight="@dimen/dp_12"
-                android:visibility="gone"
 
                 >
 
@@ -64,7 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_12"
-                android:visibility="gone"
 
                 android:layout_marginRight="@dimen/dp_12">
 
@@ -227,17 +223,19 @@
 
             <include layout="@layout/base_match_line_layout"></include>
 
-
+            <sport.tc.com.customview.HomePageListView
+                android:id="@+id/home_page_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></sport.tc.com.customview.HomePageListView>
 
         </LinearLayout>
+
+
+
 
     </ScrollView>
 
 
-    <ListView
-        android:id="@+id/home_page_listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        ></ListView>
 
 </LinearLayout>

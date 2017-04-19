@@ -5,7 +5,7 @@
               android:orientation="vertical">
 
 
-    <include layout="@layout/custom_tool_back"/>
+    <include layout="@layout/custom_right_title_toolbar"/>
 
     <include layout="@layout/chronic_include"/>
 

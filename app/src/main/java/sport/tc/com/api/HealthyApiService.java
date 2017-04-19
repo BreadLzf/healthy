@@ -12,6 +12,7 @@ import sport.tc.com.modle.HealthyCircleResponse;
 import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.modle.ModifyUserResponse;
 import sport.tc.com.modle.NapeLikeResponse;
+import sport.tc.com.modle.SlowillResponse;
 
 /**
  * Created by punisher on 2017/3/2.
@@ -135,7 +136,7 @@ public interface HealthyApiService {
      */
     @FormUrlEncoded
     @POST ("api/get-assess-info")
-    Observable<BaseResponse> slowIllApi(@Field("validData") String validData, @Field("executeData") String executeData);
+    Observable<SlowillResponse> slowIllApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
     /**
