@@ -30,27 +30,27 @@ public class HomeAdapter extends BaseAdapter {
         mListBeanList = listBeanList;
     }
 
-    private List<HomeResponse.DataBean.ArticleListBean>  mListBeanList;
+    private List<HomeResponse.DataBean.ArticleListBean> mListBeanList;
     private LayoutInflater mLayoutInflater;
     private Context mContext;
 
 
-    public HomeAdapter( Context context) {
-        Log.e("data","homeadapter");
+    public HomeAdapter(Context context) {
+        Log.e("data", "homeadapter");
         mContext = context;
-        mLayoutInflater =  (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        Log.e("data","getCount"+mListBeanList.size()+"");
+        Log.e("data", "getCount" + mListBeanList.size() + "");
 
         return mListBeanList == null ? 0 : mListBeanList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        Log.e("data","getItem"+mListBeanList.get(position));
+        Log.e("data", "getItem" + mListBeanList.get(position));
 
         return mListBeanList == null ? 0 : mListBeanList.get(position);
     }
@@ -76,34 +76,49 @@ public class HomeAdapter extends BaseAdapter {
             viewHolder = (HomeViewHolder) view.getTag();
         }
 
-        HomeResponse.DataBean.ArticleListBean articleListBean      = mListBeanList.get(position);
+        HomeResponse.DataBean.ArticleListBean articleListBean = mListBeanList.get(position);
 
-        Log.e("data","getview"+articleListBean.getPics().get(0));
+        if (articleListBean != null) {
+            //图片集合
+            if (articleListBean.getPics() != null && articleListBean.getPics().size() > 0) {
+                Glide.with(mContext).load(articleListBean.getPics().get(0)).into(viewHolder.mImageView);
+            }
 
-        Glide.with(mContext).load(articleListBean.getPics().get(0)).into(viewHolder.mImageView);
-        viewHolder.titleTv.setText(articleListBean.getTitle());
-        viewHolder.contentTv.setText(articleListBean.getArticle_json().get(0).getParagraphs().get(0));
-        String type= articleListBean.getApp_type();
-        Log.e("data  adapter>>>",type);
+            //内容集合
+            if (articleListBean.getArticle_json()!=null&&articleListBean.getArticle_json().size()>0){
+                HomeResponse.DataBean.ArticleListBean.ArticleJsonBean articleJsonBean = articleListBean.getArticle_json().get(0);
+                viewHolder.titleTv.setText(articleListBean.getTitle());
+                if (articleJsonBean != null) {
+                    //文本集合
+                    if (articleJsonBean.getParagraphs() != null && articleJsonBean.getParagraphs().size() > 0) {
+                        viewHolder.contentTv.setText(articleListBean.getArticle_json().get(0).getParagraphs().get(0));
+                    }
+                }
+                String type = articleListBean.getApp_type();
 
-        switch (type){
-            case  "1":
-                viewHolder.tagTv.setText("健康圈");
+                switch (type) {
+                    case "1":
+                        viewHolder.tagTv.setText("健康圈");
 
-                break;
-            case  "2":
-                viewHolder.tagTv.setText("局部知识");
+                        break;
+                    case "2":
+                        viewHolder.tagTv.setText("局部知识");
 
-                break;
-            case  "3":
-                viewHolder.tagTv.setText("营养推荐");
+                        break;
+                    case "3":
+                        viewHolder.tagTv.setText("营养推荐");
 
-                break;
-            case  "4":
-                viewHolder.tagTv.setText("运动处方");
+                        break;
+                    case "4":
+                        viewHolder.tagTv.setText("运动处方");
 
-                break;
+                        break;
+                }
+            }
+
         }
+
+
         return view;
     }
 
