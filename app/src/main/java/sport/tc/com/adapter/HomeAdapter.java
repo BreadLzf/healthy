@@ -94,26 +94,8 @@ public class HomeAdapter extends BaseAdapter {
                         viewHolder.contentTv.setText(articleListBean.getArticle_json().get(0).getParagraphs().get(0));
                     }
                 }
-                String type = articleListBean.getApp_type();
+                        viewHolder.tagTv.setText(articleListBean.getType_str()+"知识");
 
-                switch (type) {
-                    case "1":
-                        viewHolder.tagTv.setText("健康圈");
-
-                        break;
-                    case "2":
-                        viewHolder.tagTv.setText("局部知识");
-
-                        break;
-                    case "3":
-                        viewHolder.tagTv.setText("营养推荐");
-
-                        break;
-                    case "4":
-                        viewHolder.tagTv.setText("运动处方");
-
-                        break;
-                }
             }
 
         }
