@@ -43,15 +43,11 @@ public class HomeAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        Log.e("data", "getCount" + mListBeanList.size() + "");
-
         return mListBeanList == null ? 0 : mListBeanList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        Log.e("data", "getItem" + mListBeanList.get(position));
-
         return mListBeanList == null ? 0 : mListBeanList.get(position);
     }
 

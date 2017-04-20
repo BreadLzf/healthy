@@ -60,9 +60,8 @@ public class BodyCheckActivity extends BaseActivity {
     }
 
     private void initView() {
-//        selfListview =(ListView)findViewById(R.id.body_check_self_listview);
-//        mBodyCheckAdapter =new BodyCheckAdapter(mConfigInfoBeanList,BodyCheckActivity.this);
-//        selfListview.setAdapter(mBodyCheckAdapter);
+        selfListview = (ListView) findViewById(R.id.body_check_self_listview);
+        mBodyCheckAdapter = new BodyCheckAdapter(BodyCheckActivity.this);
         mLayoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mTagFlowLayout = (TagFlowLayout) findViewById(R.id.id_flowlayout);
         mTagFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
@@ -95,25 +94,41 @@ public class BodyCheckActivity extends BaseActivity {
 
             @Override
             public void onNext(BodyCheckResponse bodyCheckResponse) {
-                mTagBeanList = bodyCheckResponse.getData().getAssessInfo().getTag();
-                for (int i = 0; i < mTagBeanList.size(); i++) {
-                    mTagBeanList.get(i).getTag_title();
-                    tagLists.add(mTagBeanList.get(i).getTag_title());
-                }
-                mTagFlowLayout.setAdapter(new TagAdapter<String>(tagLists) {
-                    @Override
-                    public View getView(FlowLayout parent, int position, String s) {
-                        TextView tv = (TextView) mLayoutInflater.inflate(R.layout.tag_body_check, mTagFlowLayout, false);
-                        tv.setText(s);
-                        return tv;
+                if (bodyCheckResponse != null && bodyCheckResponse.getCode().equals("000")) {
+                    mTagBeanList = bodyCheckResponse.getData().getAssessInfo().getTag();
+                    for (int i = 0; i < mTagBeanList.size(); i++) {
+                        mTagBeanList.get(i).getTag_title();
+                        tagLists.add(mTagBeanList.get(i).getTag_title());
                     }
-                });
 
 
-//                mConfigInfoBeanList = bodyCheckResponse.getData().getAssessInfo().getTag().get(0).getConfig_info();
-//                mBodyCheckAdapter.setAlbumList(mConfigInfoBeanList);
-//                mBodyCheckAdapter.notifyDataSetChanged();
+
+                    mTagFlowLayout.setAdapter(new TagAdapter<String>(tagLists) {
+                        @Override
+                        public View getView(FlowLayout parent, int position, String s) {
+                            TextView tv = (TextView) mLayoutInflater.inflate(R.layout.tag_body_check, mTagFlowLayout, false);
+                            tv.setText(s);
+                            return tv;
+                        }
+                    });
+
+                    List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean> tagBeanList = bodyCheckResponse.getData().getAssessInfo().getTag();
+                    List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> configInfoBeanList = new ArrayList<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean>();
+                    for (int i = 0; i < tagBeanList.size(); i++) {
+                        List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> list = tagBeanList.get(i).getConfig_info();
+                        if (list!=null&&list.size()>0){
+                            for (int j = 0; j < list.size(); j++) {
+                                configInfoBeanList.add(list.get(j));
+                            }
+                        }
+                    }
+                    mBodyCheckAdapter.setConfigInfoBeanList(configInfoBeanList);
+                    selfListview.setAdapter(mBodyCheckAdapter);
+                    mBodyCheckAdapter.notifyDataSetChanged();
+
+                }
             }
+
         });
     }
 }

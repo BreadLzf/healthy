@@ -15,7 +15,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.modle.BodyCheckResponse;
 import sport.tc.com.util.AppHelper;
@@ -28,16 +27,21 @@ public class BodyCheckAdapter extends BaseAdapter {
     private LayoutInflater mLayoutInflater;
     private Context mContext;
     private List<String> typeCount = new ArrayList<>();
+
+    public void setConfigInfoBeanList(List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> configInfoBeanList) {
+        mConfigInfoBeanList = configInfoBeanList;
+    }
+
     /**
      * 1 : "文本框"
      * 2 : "单选框"
      * 3 : "打钩选项框"
+
      */
-    private final String EDIT = "1", RADIO = "2", CHECK = "3";
+    private final String EDIT = "1",  CHECK = "2", RADIO = "3";
 
 
-    public BodyCheckAdapter(List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList, Context context) {
-        mConfigInfoBeanList = mConfigInfoBeanList;
+    public BodyCheckAdapter( Context context) {
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -49,9 +53,6 @@ public class BodyCheckAdapter extends BaseAdapter {
         return mConfigInfoBeanList;
     }
 
-    public void setAlbumList(List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList) {
-        mConfigInfoBeanList = mConfigInfoBeanList;
-    }
 
     @Override
     public int getCount() {
@@ -80,6 +81,7 @@ public class BodyCheckAdapter extends BaseAdapter {
         CheckViewHolder checkViewHolder = null;
         BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean configInfoBean = mConfigInfoBeanList.get(position);
         String type = configInfoBean.getAttr_type();
+
         if (convertView == null) {
             switch (type) {
                 case EDIT:
@@ -91,6 +93,17 @@ public class BodyCheckAdapter extends BaseAdapter {
 
                     break;
 
+                //单选
+                case CHECK:
+                    checkViewHolder = new CheckViewHolder();
+                    convertView = mLayoutInflater.inflate(R.layout.item_body_radio, null);
+                    checkViewHolder.titleTv = (TextView) convertView.findViewById(R.id.item_body_check_title);
+                    checkViewHolder.chooseTv = (TextView) convertView.findViewById(R.id.item_body_check_choose);
+                    convertView.setTag(checkViewHolder);
+                    break;
+
+
+
                 case RADIO:
                     radioViewHolder = new RadioViewHolder();
                     convertView = mLayoutInflater.inflate(R.layout.item_body_radio, null);
@@ -98,18 +111,11 @@ public class BodyCheckAdapter extends BaseAdapter {
                     radioViewHolder.mRadioGroup = (RadioGroup) convertView.findViewById(R.id.item_body_radio_group);
                     radioViewHolder.yesBtn = (RadioButton) convertView.findViewById(R.id.item_body_radio_group_yes);
                     radioViewHolder.noBtn = (RadioButton) convertView.findViewById(R.id.item_body_radio_group_no);
-
-
                     convertView.setTag(radioViewHolder);
                     break;
 
-                //单选
-                case CHECK:
-                    checkViewHolder = new CheckViewHolder();
-                    convertView = mLayoutInflater.inflate(R.layout.item_body_check_, null);
-                    checkViewHolder.titleTv = (TextView) convertView.findViewById(R.id.item_body_check_title);
-                    checkViewHolder.chooseTv = (TextView) convertView.findViewById(R.id.item_body_check_choose);
-                    convertView.setTag(checkViewHolder);
+
+
 
             }
         } else {
@@ -136,43 +142,17 @@ public class BodyCheckAdapter extends BaseAdapter {
         switch (type) {
 
             case EDIT:
-                if (!configInfoBean.getDefault_value().isEmpty()) {
-                    editViewHolder.mTextView.setText(configInfoBean.getAttr_title());
-                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
-                    switch (configInfoBean.getInput_type()) {
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SELF:
-                            break;
-                        case AppContents.BODY_CHECK_INPUT_TYPE_PROFESS:
-                            break;
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SELF_AND_PROFESS:
-                            break;
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SYSTEM:
-                            break;
-                        case AppContents.BODY_CHECK_INPUT_TYPE_SESTEM_HAND:
-                            break;
-                    }
-                } else {
-                    //不是默认值的
-                }
+
 
                 break;
 
             case RADIO:
 
-                if (!configInfoBean.getDefault_value().isEmpty()) {
-                    radioViewHolder.titleTextView.setText(configInfoBean.getAttr_title());
-                } else {
-                    //不是默认值
-                }
+
 
                 break;
 
             case CHECK:
-                if (!configInfoBean.getDefault_value().isEmpty()) {
-                    checkViewHolder.titleTv.setText(configInfoBean.getAttr_title());
-                } else {
-                    //不是默认值
-                }
 
                 break;
         }

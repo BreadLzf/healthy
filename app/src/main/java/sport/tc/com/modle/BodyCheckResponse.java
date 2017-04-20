@@ -315,7 +315,8 @@ public class BodyCheckResponse {
                      * attr_type : 1
                      * input_type : 5
                      * rank : 1
-                     * grade_json : {"gap_list":[{"min":"0","max":"160","description":"矮子"},{"min":"160","max":"175","description":"正常"},{"min":"175","max":"220","description":"高个"}]}
+                     * grade_json : {"gap_list":[{"min":"0","max":"160","description":"矮子"},{"min":"160","max":"175","description":"正常"},
+                     * {"min":"175","max":"220","description":"高个"}]}
                      * is_require : 1
                      * config_id : 3
                      * default_value : 189
