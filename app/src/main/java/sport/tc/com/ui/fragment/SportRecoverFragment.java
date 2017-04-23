@@ -66,7 +66,7 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
         rootView = inflater.inflate(R.layout.fragment_sport_layout, container, false);
         workLayout = (RelativeLayout) rootView.findViewById(R.id.sport_work_layout);
         workLayout.setOnClickListener(this);
-        initToolBar();
+//        initToolBar();
         getWorkList();
         getExpertDetail();
 

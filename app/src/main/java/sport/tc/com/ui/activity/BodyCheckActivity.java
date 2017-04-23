@@ -68,6 +68,7 @@ public class BodyCheckActivity extends BaseActivity {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
                 Toast.makeText(BodyCheckActivity.this, tagLists.get(position), Toast.LENGTH_SHORT).show();
+
                 return true;
             }
         });
