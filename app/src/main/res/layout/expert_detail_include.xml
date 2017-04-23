@@ -10,26 +10,27 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.0"
+        android:layout_weight="1.3"
         android:background="@color/login_base_color"
         >
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/expert_detail_img"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_marginTop="38dp"
+            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/expert_head"
             />
 
         <TextView
+            android:id="@+id/expert_detail_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/expert_detail_img"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="21.5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:text="专家姓名"
             android:textColor="@color/white_90"
             android:textSize="@dimen/text_size_15"

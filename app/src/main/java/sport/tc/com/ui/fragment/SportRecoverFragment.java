@@ -22,6 +22,7 @@ import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.ExpertDetailRequest;
+import sport.tc.com.modle.ExpertDetailResponse;
 import sport.tc.com.modle.SportWorkRequest;
 import sport.tc.com.ui.activity.SportHealthyWorkActivity;
 import sport.tc.com.ui.base.BaseFragment;
@@ -164,7 +165,7 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
 
         Novate novate = new Novate.Builder(getActivity()).baseUrl(AppContents.API_BASE_URL).build();
         HealthyApiService apiService = novate.create(HealthyApiService.class);
-        novate.call(apiService.sportRecoverExperDetailtApi(validData, executeData), new BaseSubscriber<BaseResponse>(getActivity()) {
+        novate.call(apiService.sportRecoverExperDetailtApi(validData, executeData), new BaseSubscriber<ExpertDetailResponse>(getActivity()) {
 
 
             @Override
@@ -173,7 +174,7 @@ public class SportRecoverFragment extends BaseFragment implements View.OnClickLi
             }
 
             @Override
-            public void onNext(BaseResponse baseResponse) {
+            public void onNext(ExpertDetailResponse expertDetailResponse) {
 
             }
         });

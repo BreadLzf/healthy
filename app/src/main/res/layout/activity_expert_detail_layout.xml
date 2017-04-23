@@ -12,23 +12,8 @@
     <!--第二层-->
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/dp_80"
-        android:layout_marginLeft="@dimen/dp_10"
-        android:layout_marginRight="@dimen/dp_10"
-        android:layout_marginTop="150dp"
-        android:background="@color/white_90"
-        android:paddingLeft="@dimen/dp_10"
-        android:paddingRight="@dimen/dp_10"
-        android:paddingTop="@dimen/dp_20"
-        android:text="@string/expert_detail"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_size_14"/>
-
-
     <Button
+        android:id="@+id/expert_detail_order"
         android:layout_width="222dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
@@ -38,5 +23,23 @@
         android:text="预约专家"
         android:textColor="@color/white_90"
         android:textSize="@dimen/text_size_17"/>
+
+    <TextView
+        android:id="@+id/expert_detail_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp_80"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="200dp"
+        android:maxLines="8"
+        android:ellipsize="end"
+        android:background="@color/white_90"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_20"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_14"/>
 
 </FrameLayout>
