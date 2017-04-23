@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
@@ -12,6 +13,7 @@ import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import sport.tc.com.AppContents;
@@ -29,7 +31,7 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
  * Created by punisher on 2017/3/22.
  */
 
-public class NapeListActivity extends BaseActivity implements View.OnClickListener {
+public class NapeListActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private static final int COUNT = 20;
     private int CUNRRENT_PAGE = 1;
@@ -37,8 +39,10 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
     private String title = "";
     private RelativeLayout napaLayout;
 
-    private ListView  napeListView;
-    private NapeListAdapter  mNapeListAdapter;
+    private ListView napeListView;
+    private NapeListAdapter mNapeListAdapter;
+    private List<HealthyCircleResponse.DataBean.ArticleListBean> mArticleListBeen = new ArrayList<>();
+    private HealthyCircleResponse.DataBean.ArticleListBean mArticleListBean;
 
 
     @Override
@@ -54,19 +58,21 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
 
 
     private void initView() {
-         napeListView =(ListView)findViewById(R.id.nape_list_view);
-        mNapeListAdapter =new NapeListAdapter(NapeListActivity.this);
-
+        mNapeListAdapter = new NapeListAdapter(NapeListActivity.this);
+        mNapeListAdapter.setArticleListBeen(mArticleListBeen);
+        napeListView = (ListView) findViewById(R.id.nape_list_view);
+        napeListView.setAdapter(mNapeListAdapter);
+        napeListView.setOnItemClickListener(this);
         napaLayout = (RelativeLayout) findViewById(R.id.nape_detail_top_layout);
         napaLayout.setOnClickListener(this);
         getArticleList();
     }
 
-        private void getArticleList() {
+    private void getArticleList() {
         String validData = AppHelper.prouductValidData(this);
         ArticleRequest articleRequest = new ArticleRequest();
-        articleRequest.cur_page = CUNRRENT_PAGE+"";
-        articleRequest.page_num = COUNT+"";
+        articleRequest.cur_page = CUNRRENT_PAGE + "";
+        articleRequest.page_num = COUNT + "";
         articleRequest.app_type = type;
         String executeData = javaBeanToJson(articleRequest);
 
@@ -81,16 +87,15 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onNext(HealthyCircleResponse response) {
-                if (response!=null&&response.getCode().equals("000")){
-                     List<HealthyCircleResponse.DataBean.ArticleListBean> article_list  = response.getData().getArticle_list();
-                    Log.e("article size", "size>>"+article_list.size()+"");
-                    if (article_list!=null&&article_list.size()>0){
-                        mNapeListAdapter.setArticleListBeen(article_list);
+                if (response != null && response.getCode().equals("000")) {
+                    List<HealthyCircleResponse.DataBean.ArticleListBean> article_list = response.getData().getArticle_list();
+                    Log.e("article size", "size>>" + article_list.size() + "");
+                    if (article_list != null && article_list.size() > 0) {
+                        mArticleListBeen = article_list;
+                        mNapeListAdapter.setArticleListBeen(mArticleListBeen);
                         mNapeListAdapter.notifyDataSetChanged();
-                        napeListView.setAdapter(mNapeListAdapter);
                     }
                 }
-
             }
         });
 
@@ -106,6 +111,17 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
                 intent.putExtra("type", type);
                 startActivity(intent);
                 break;
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        mArticleListBean = (HealthyCircleResponse.DataBean.ArticleListBean) mNapeListAdapter.getItem(i);
+        String article_id = mArticleListBean.getArticle_id();
+        if (article_id!=null&&article_id.length()>0){
+            Intent intent =new Intent(NapeListActivity.this,NapeDetailActivity.class);
+            intent.putExtra("article_id",article_id);
+            startActivity(intent);
         }
     }
 }

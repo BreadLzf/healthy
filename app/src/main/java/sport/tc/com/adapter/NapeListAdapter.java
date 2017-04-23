@@ -82,7 +82,7 @@ public class NapeListAdapter extends BaseAdapter {
 
 
             //内容集合
-            List<HealthyCircleResponse.DataBean.ArticleListBean.ArticleJsonBean> jsonBeanList = articleListBean.getArticle_json();
+//            List<HealthyCircleResponse.DataBean.ArticleListBean.ArticleJsonBean> jsonBeanList = articleListBean.getArticle_json();
 //            if (jsonBeanList != null && jsonBeanList.size() > 0) {
 //
 //                for (int i = 0; i < jsonBeanList.size(); i++) {
