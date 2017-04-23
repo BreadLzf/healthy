@@ -1,5 +1,6 @@
 package sport.tc.com.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -32,7 +33,7 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 public class ExpertListActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private ListView mListView;
     private ExpertListAdapter mListAdapter;
-    private List<ExpertListResponse.DataBean.ExpertListBean>  mExpertListBeen=new ArrayList<>();
+    private List<ExpertListResponse.DataBean.ExpertListBean> mExpertListBeen = new ArrayList<>();
 
     @Override
     public void onClick(View view) {
@@ -53,6 +54,7 @@ public class ExpertListActivity extends BaseActivity implements View.OnClickList
         mListAdapter = new ExpertListAdapter(ExpertListActivity.this);
         mListAdapter.setListBeanList(mExpertListBeen);
         mListView.setAdapter(mListAdapter);
+        mListView.setOnItemClickListener(this);
 
     }
 
@@ -87,6 +89,13 @@ public class ExpertListActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        ExpertListResponse.DataBean.ExpertListBean expertListBean = (ExpertListResponse.DataBean.ExpertListBean) mListAdapter.getItem(i);
+        String expert_id = expertListBean.getExpert_id();
+        if (!expert_id.isEmpty()) {
+            Intent intent = new Intent(ExpertListActivity.this, ExpertDetailActivity.class);
+            intent.putExtra("expert_id", expert_id);
+            startActivity(intent);
 
+        }
     }
 }

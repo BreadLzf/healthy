@@ -1,22 +1,30 @@
 package sport.tc.com.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.tamic.novate.BaseSubscriber;
+import com.tamic.novate.Novate;
+import com.tamic.novate.Throwable;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import sport.tc.com.AppContents;
 import sport.tc.com.android_handhoop.R;
+import sport.tc.com.api.HealthyApiService;
+import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.ExpertListResponse;
-import sport.tc.com.ui.activity.ExpertDetailActivity;
+import sport.tc.com.util.AppHelper;
+
+import static sport.tc.com.util.GsonHelper.javaBeanToJson;
 
 /**
  * Created by punisher on 2017/4/12.
@@ -73,7 +81,7 @@ public class ExpertListAdapter extends BaseAdapter {
             viewHolder = (ExpertViewHolder) view.getTag();
         }
 
-        ExpertListResponse.DataBean.ExpertListBean expertListBean = mListBeanList.get(position);
+        final ExpertListResponse.DataBean.ExpertListBean expertListBean = mListBeanList.get(position);
 
 
         if (expertListBean != null) {
@@ -93,13 +101,14 @@ public class ExpertListAdapter extends BaseAdapter {
         }
 
 
-
-
         viewHolder.oderTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ExpertDetailActivity.class);
-                mContext.startActivity(intent);
+                String expert_id = expertListBean.getExpert_id();
+                if (expert_id!=null){
+                    orderExpert(expert_id);
+
+                }
             }
         });
 
@@ -113,4 +122,29 @@ public class ExpertListAdapter extends BaseAdapter {
         TextView oderTv;
     }
 
+
+    private void orderExpert(String expert_id) {
+        String validData = AppHelper.prouductValidData(mContext);
+        ExpertListResponse.DataBean.ExpertListBean expertListResponse = new ExpertListResponse.DataBean.ExpertListBean();
+        expertListResponse.setExpert_id(expert_id);
+        String executeData = javaBeanToJson(expertListResponse);
+        Novate novate = new Novate.Builder(mContext).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        novate.call(apiService.sportRecoverOrderApi(validData, executeData), new BaseSubscriber<BaseResponse>(mContext) {
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(BaseResponse response) {
+                if (response!=null &&response.code.equals("000")){
+                    Toast.makeText(mContext,"预约专家成功",Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+
+    }
 }

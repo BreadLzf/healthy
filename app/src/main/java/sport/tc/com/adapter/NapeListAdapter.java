@@ -79,20 +79,6 @@ public class NapeListAdapter extends BaseAdapter {
             if (articleListBean.getPics() != null && articleListBean.getPics().size() > 0) {
                 Glide.with(mContext).load(articleListBean.getPics().get(0)).into(viewHolder.mImageView);
             }
-
-
-            //内容集合
-//            List<HealthyCircleResponse.DataBean.ArticleListBean.ArticleJsonBean> jsonBeanList = articleListBean.getArticle_json();
-//            if (jsonBeanList != null && jsonBeanList.size() > 0) {
-//
-//                for (int i = 0; i < jsonBeanList.size(); i++) {
-//                    List<String> paragraphs = jsonBeanList.get(i).getParagraphs();
-//                    if (paragraphs != null && paragraphs.size() > 0) {
-//                        viewHolder.contentTv.setText(paragraphs.get(i));
-//                    }
-//                }
-//            }
-
             viewHolder.tagTv.setText(articleListBean.getType_str() + "知识");
 
         }
