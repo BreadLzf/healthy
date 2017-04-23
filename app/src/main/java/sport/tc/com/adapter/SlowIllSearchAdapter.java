@@ -97,7 +97,7 @@ public class SlowIllSearchAdapter extends BaseAdapter {
                 //单选
                 case CHECK:
                     checkViewHolder = new CheckViewHolder();
-                    convertView = mLayoutInflater.inflate(R.layout.item_body_radio, null);
+                    convertView = mLayoutInflater.inflate(R.layout.item_body_check_, null);
                     checkViewHolder.titleTv = (TextView) convertView.findViewById(R.id.item_body_check_title);
                     checkViewHolder.chooseTv = (TextView) convertView.findViewById(R.id.item_body_check_choose);
                     convertView.setTag(checkViewHolder);

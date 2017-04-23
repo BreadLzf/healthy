@@ -96,7 +96,7 @@ public class BodyCheckAdapter extends BaseAdapter {
                 //单选
                 case CHECK:
                     checkViewHolder = new CheckViewHolder();
-                    convertView = mLayoutInflater.inflate(R.layout.item_body_radio, null);
+                    convertView = mLayoutInflater.inflate(R.layout.item_body_check_, null);
                     checkViewHolder.titleTv = (TextView) convertView.findViewById(R.id.item_body_check_title);
                     checkViewHolder.chooseTv = (TextView) convertView.findViewById(R.id.item_body_check_choose);
                     convertView.setTag(checkViewHolder);
@@ -122,6 +122,7 @@ public class BodyCheckAdapter extends BaseAdapter {
             switch (type) {
                 case EDIT:
                     editViewHolder = (EditViewHolder) convertView.getTag();
+
                     break;
 
                 case RADIO:
@@ -142,19 +143,35 @@ public class BodyCheckAdapter extends BaseAdapter {
         switch (type) {
 
             case EDIT:
-
-
-                break;
-
-            case RADIO:
-
-
+                if (configInfoBean.getAttr_unit()!=null&&configInfoBean.getAttr_unit().length()>0){
+                    editViewHolder.mTextView.setText(configInfoBean.getAttr_title()+"("+configInfoBean.getAttr_unit()+")");
+                }
+                if (configInfoBean.getDefault_value()!=null){
+                    editViewHolder.mEditText.setText(configInfoBean.getDefault_value());
+                }
 
                 break;
 
             case CHECK:
+                if (configInfoBean.getAttr_unit()!=null&&configInfoBean.getAttr_unit().length()>0){
+                    checkViewHolder.titleTv.setText(configInfoBean.getAttr_title()+"("+configInfoBean.getAttr_unit()+")");
+                }
+                if (configInfoBean.getDefault_value()!=null){
+                    checkViewHolder.chooseTv.setText(configInfoBean.getDefault_value());
+                }
 
                 break;
+
+
+            case RADIO:
+                if (configInfoBean.getAttr_unit()!=null&&configInfoBean.getAttr_unit().length()>0){
+                    radioViewHolder.titleTextView.setText(configInfoBean.getAttr_title()+"("+configInfoBean.getAttr_unit()+")");
+                }
+
+
+                break;
+
+
         }
         return convertView;
     }
@@ -162,14 +179,16 @@ public class BodyCheckAdapter extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        return Integer.valueOf(mConfigInfoBeanList.get(position).getAttr_type());
+        return Integer.valueOf(mConfigInfoBeanList.get(position).getAttr_type())-1;
     }
 
     @Override
     public int getViewTypeCount() {
 
         for (int i = 0; i < mConfigInfoBeanList.size(); i++) {
-            typeCount.add(mConfigInfoBeanList.get(i).getAttr_type());
+            if (mConfigInfoBeanList.get(i)!=null&&mConfigInfoBeanList.get(i).getAttr_type()!=null){
+                typeCount.add(mConfigInfoBeanList.get(i).getAttr_type());
+            }
         }
         List<String> newTypeCount = AppHelper.removeDuplicate(typeCount);
         return newTypeCount.size();
