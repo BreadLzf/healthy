@@ -11,6 +11,7 @@ import sport.tc.com.modle.CommentListResponse;
 import sport.tc.com.modle.ExpertDetailResponse;
 import sport.tc.com.modle.ExpertListResponse;
 import sport.tc.com.modle.HealthyCircleResponse;
+import sport.tc.com.modle.HomeAdResponse;
 import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.modle.ModifyUserResponse;
 import sport.tc.com.modle.NapeDatailResponse;
@@ -208,6 +209,16 @@ public interface HealthyApiService {
     @FormUrlEncoded
     @POST ("api/get-article-list")
     Observable<HomeResponse> homeArtcleListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+
+
+    /**
+     * 首页广告
+     * @param validData
+     * @return
+     */
+    @FormUrlEncoded
+    @POST ("api/get-ad-list")
+    Observable<HomeAdResponse> homeAdApi(@Field("validData") String validData);
 
 
 }

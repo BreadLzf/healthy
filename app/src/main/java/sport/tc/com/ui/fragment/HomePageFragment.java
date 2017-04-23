@@ -23,6 +23,7 @@ import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.customview.HomePageListView;
 import sport.tc.com.modle.ArticleRequest;
+import sport.tc.com.modle.HomeAdResponse;
 import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.ui.base.BaseFragment;
 import sport.tc.com.util.AppHelper;
@@ -69,6 +70,7 @@ public class HomePageFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         initView(inflater, container);
         getHomeArticleList();
+        getHomeAd();
         return rootView;
     }
 
@@ -124,11 +126,46 @@ public class HomePageFragment extends BaseFragment {
                     mHomeAdapter.setListBeanList(mArticleListBeen);
                     mHomeAdapter.notifyDataSetChanged();
                     mListView.setAdapter(mHomeAdapter);
-                    mBanner.setImages(mArticleListBeen.get(0).getPics());
                     timeTv.setText(mArticleListBeen.get(0).getCreate_time());
+
+                }
+            }
+        });
+    }
+
+
+
+    private void getHomeAd() {
+        String validData = AppHelper.prouductValidData(getActivity());
+        Novate novate = new Novate.Builder(getActivity()).baseUrl(AppContents.API_BASE_URL).build();
+        HealthyApiService apiService = novate.create(HealthyApiService.class);
+        novate.call(apiService.homeAdApi(validData), new BaseSubscriber<HomeAdResponse>(getActivity()) {
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(HomeAdResponse homeAdResponse) {
+                if (homeAdResponse!=null&&homeAdResponse.getCode().equals("000")){
+                       List<HomeAdResponse.DataBean>  dataBeanList=     homeAdResponse.getData();
+                    List<String>  images =new ArrayList<String>();
+                    if (dataBeanList!=null&&dataBeanList.size()>0){
+                        for (int i=0;i<dataBeanList.size();i++){
+                            String imageUrl =dataBeanList.get(i).getImg_url();
+                            if (!imageUrl.isEmpty()){
+                                images.add(dataBeanList.get(i).getImg_url());
+                            }
+                        }
+                    }
+                    mBanner.setImages(images);
                     mBanner.start();
                 }
             }
         });
     }
+
+
+
 }
