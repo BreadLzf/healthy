@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
@@ -51,7 +52,12 @@ public class ExpertDetailActivity extends BaseActivity implements View.OnClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expert_detail_layout);
-        initToolBar("专家详情", R.drawable.chronic_disease_back);
+        initRightImgToolBar("专家详情", R.drawable.chronic_disease_back, R.drawable.nape_detail_share, new OnCustomClickListener() {
+            @Override
+            public void onItemClick() {
+
+            }
+        });
 
         initView();
         getExpertDetail();
@@ -93,7 +99,8 @@ public class ExpertDetailActivity extends BaseActivity implements View.OnClickLi
 
                     if (expert_data != null) {
                         if (expert_data.getHead_pic() != null) {
-                            Glide.with(ExpertDetailActivity.this).load(expert_data.getHead_pic()).into(mCircleImageView);
+                            Glide.with(ExpertDetailActivity.this).load(expert_data.getHead_pic())
+                                    .error(R.drawable.expert_head).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).into(mCircleImageView);
                         }
 
                         if (!expert_data.getUser_name().isEmpty()) {
