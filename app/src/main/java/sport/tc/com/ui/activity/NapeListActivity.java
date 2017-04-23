@@ -3,14 +3,19 @@ package sport.tc.com.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
 
+import java.util.List;
+
 import sport.tc.com.AppContents;
+import sport.tc.com.adapter.NapeListAdapter;
 import sport.tc.com.android_handhoop.R;
 import sport.tc.com.api.HealthyApiService;
 import sport.tc.com.modle.ArticleRequest;
@@ -28,10 +33,12 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
 
     private static final int COUNT = 20;
     private int CUNRRENT_PAGE = 1;
-    private String heealthyCircleAppType = "1";
     private String type = "";
     private String title = "";
     private RelativeLayout napaLayout;
+
+    private ListView  napeListView;
+    private NapeListAdapter  mNapeListAdapter;
 
 
     @Override
@@ -47,6 +54,9 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
 
 
     private void initView() {
+         napeListView =(ListView)findViewById(R.id.nape_list_view);
+        mNapeListAdapter =new NapeListAdapter(NapeListActivity.this);
+
         napaLayout = (RelativeLayout) findViewById(R.id.nape_detail_top_layout);
         napaLayout.setOnClickListener(this);
         getArticleList();
@@ -57,7 +67,7 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
         ArticleRequest articleRequest = new ArticleRequest();
         articleRequest.cur_page = CUNRRENT_PAGE+"";
         articleRequest.page_num = COUNT+"";
-        articleRequest.app_type = heealthyCircleAppType;
+        articleRequest.app_type = type;
         String executeData = javaBeanToJson(articleRequest);
 
         Novate novate = new Novate.Builder(NapeListActivity.this).baseUrl(AppContents.API_BASE_URL).build();
@@ -71,6 +81,15 @@ public class NapeListActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onNext(HealthyCircleResponse response) {
+                if (response!=null&&response.getCode().equals("000")){
+                     List<HealthyCircleResponse.DataBean.ArticleListBean> article_list  = response.getData().getArticle_list();
+                    Log.e("article size", "size>>"+article_list.size()+"");
+                    if (article_list!=null&&article_list.size()>0){
+                        mNapeListAdapter.setArticleListBeen(article_list);
+                        mNapeListAdapter.notifyDataSetChanged();
+                        napeListView.setAdapter(mNapeListAdapter);
+                    }
+                }
 
             }
         });

@@ -9,6 +9,7 @@
     <RelativeLayout
         android:id="@+id/nape_detail_top_layout"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content">
 
         <TextView
@@ -41,9 +42,14 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/base_line_layout"/>
+    <include
+        android:visibility="gone"
+
+        layout="@layout/base_line_layout"/>
 
     <RelativeLayout
+        android:visibility="gone"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -77,10 +83,15 @@
 
     </RelativeLayout>
 
-    <include layout="@layout/base_line_layout"/>
+    <include
+        android:visibility="gone"
+
+        layout="@layout/base_line_layout"/>
 
 
     <RelativeLayout
+        android:visibility="gone"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -115,6 +126,8 @@
     </RelativeLayout>
 
     <View
+        android:visibility="gone"
+
         android:layout_width="match_parent"
         android:layout_height="7.5dp"
         android:background="@color/btn_bg_gray"/>
@@ -122,5 +135,5 @@
      <ListView
          android:id="@+id/nape_list_view"
          android:layout_width="match_parent"
-         android:layout_height="wrap_content"></ListView>
+         android:layout_height="match_parent"></ListView>
 </LinearLayout>

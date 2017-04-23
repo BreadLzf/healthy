@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.tamic.novate.BaseSubscriber;
 import com.tamic.novate.Novate;
 import com.tamic.novate.Throwable;
@@ -144,13 +143,13 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
                 for (int i = 0; i < articleJsonBeanList.size(); i++) {
                     Log.e("bean  json type", articleJsonBeanList.get(i).getType() + "");
                     Log.e("bean  json paragraphs", articleJsonBeanList.get(i).getParagraphs() + "");
-                    Log.e("bean  json text", articleJsonBeanList.get(i).getText() + "");
-                    Log.e("bean  json src", articleJsonBeanList.get(i).getSrc() + "");
+                    Log.e("bean  json text", articleJsonBeanList.get(i).getType() + "");
+//                    Log.e("bean  json src", articleJsonBeanList.get(i).get() + "");
                     switch (i) {
                         case 0:
                             tagTv.setText(articleJsonBeanList.get(0).getParagraphs().get(0));
                         case 1:
-                            SubTv.setText(articleJsonBeanList.get(1).getText());
+//                            SubTv.setText(articleJsonBeanList.get(1).getText());
                         case 2:
                             orderOneTv.setText(articleJsonBeanList.get(2).getParagraphs().get(0));
                             orderTwoTv.setText(articleJsonBeanList.get(2).getParagraphs().get(1));
@@ -165,12 +164,12 @@ public class NapeDetailActivity extends BaseActivity implements View.OnClickList
 
                         case 5:
 
-                            smallSubTv.setText(articleJsonBeanList.get(5).getText());
+//                            smallSubTv.setText(articleJsonBeanList.get(5).getText());
 
                         case 6:
 
                         case 7:
-                            Glide.with(NapeDetailActivity.this).load(articleJsonBeanList.get(7).getSrc()).into(mImageView);
+//                            Glide.with(NapeDetailActivity.this).load(articleJsonBeanList.get(7).getSrc()).into(mImageView);
 
                     }
                 }
