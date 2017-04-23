@@ -2,6 +2,7 @@ package sport.tc.com.util;
 
 import android.content.Context;
 
+import java.text.SimpleDateFormat;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -63,5 +64,17 @@ public class AppHelper {
         list.clear();
         list.addAll(set);
         return list;
+    }
+
+
+    public static String formatLongTime(long time) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            String sDateTime = sdf.format(time);
+            return sDateTime;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 }

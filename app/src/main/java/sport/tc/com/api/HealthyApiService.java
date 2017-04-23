@@ -8,6 +8,7 @@ import sport.tc.com.modle.Account;
 import sport.tc.com.modle.BaseResponse;
 import sport.tc.com.modle.BodyCheckResponse;
 import sport.tc.com.modle.CommentListResponse;
+import sport.tc.com.modle.ExpertListResponse;
 import sport.tc.com.modle.HealthyCircleResponse;
 import sport.tc.com.modle.HomeResponse;
 import sport.tc.com.modle.ModifyUserResponse;
@@ -184,7 +185,7 @@ public interface HealthyApiService {
 
     @FormUrlEncoded
     @POST("api/get-all-expert-list")
-    Observable<BaseResponse>  sportRecoverExpertListApi(@Field("validData") String validData, @Field("executeData") String executeData);
+    Observable<ExpertListResponse>  sportRecoverExpertListApi(@Field("validData") String validData, @Field("executeData") String executeData);
 
 
     /**

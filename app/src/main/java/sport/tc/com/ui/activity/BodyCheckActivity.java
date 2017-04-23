@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +36,7 @@ import static sport.tc.com.util.GsonHelper.javaBeanToJson;
  * Created by punisher on 2017/4/13.
  */
 
-public class BodyCheckActivity extends BaseActivity {
+public class BodyCheckActivity extends BaseActivity implements View.OnClickListener {
     private TagFlowLayout mTagFlowLayout;
     private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean> mTagBeanList;
     private List<String> tagLists = new ArrayList<>();
@@ -43,6 +44,7 @@ public class BodyCheckActivity extends BaseActivity {
     private List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> mConfigInfoBeanList = new ArrayList<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean>();
     private ListView selfListview;
     private BodyCheckAdapter mBodyCheckAdapter;
+    private Button testBtn, reportBtn;//预约测试，生成报告
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,6 +66,10 @@ public class BodyCheckActivity extends BaseActivity {
         mBodyCheckAdapter = new BodyCheckAdapter(BodyCheckActivity.this);
         mLayoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mTagFlowLayout = (TagFlowLayout) findViewById(R.id.id_flowlayout);
+        testBtn = (Button) findViewById(R.id.body_check_healthy_test);
+        reportBtn = (Button) findViewById(R.id.body_check_healthy_report);
+        testBtn.setOnClickListener(this);
+        reportBtn.setOnClickListener(this);
         mTagFlowLayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
@@ -103,7 +109,6 @@ public class BodyCheckActivity extends BaseActivity {
                     }
 
 
-
                     mTagFlowLayout.setAdapter(new TagAdapter<String>(tagLists) {
                         @Override
                         public View getView(FlowLayout parent, int position, String s) {
@@ -117,7 +122,7 @@ public class BodyCheckActivity extends BaseActivity {
                     List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> configInfoBeanList = new ArrayList<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean>();
                     for (int i = 0; i < tagBeanList.size(); i++) {
                         List<BodyCheckResponse.DataBean.AssessInfoBean.TagBean.ConfigInfoBean> list = tagBeanList.get(i).getConfig_info();
-                        if (list!=null&&list.size()>0){
+                        if (list != null && list.size() > 0) {
                             for (int j = 0; j < list.size(); j++) {
                                 configInfoBeanList.add(list.get(j));
                             }
@@ -131,5 +136,19 @@ public class BodyCheckActivity extends BaseActivity {
             }
 
         });
+    }
+
+    @Override
+        public void onClick(View view) {
+        Intent  intent;
+        switch (view.getId()) {
+            case R.id.body_check_healthy_test:
+                intent =new Intent(BodyCheckActivity.this,ExpertListActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.body_check_healthy_report:
+
+                break;
+        }
     }
 }
